@@ -72,9 +72,9 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/blog/";
               },
-            },{id: "post-test-post",
+            },{id: "post-nfl-tracking-data-project",
         
-          title: "Test Post",
+          title: "NFL Tracking Data Project",
         
         description: "A first post...",
         section: "Posts",
