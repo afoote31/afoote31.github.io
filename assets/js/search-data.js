@@ -405,12 +405,7 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement",
           title: 'A simple inline announcement.',
           description: "",
-          section: "News",},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
-          description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-graduated-wesleyan-with-an-ma-in-computer-science-mortar-board",
+          section: "News",},{id: "news-graduated-wesleyan-with-an-ma-in-computer-science-mortar-board",
           title: 'Graduated Wesleyan with an MA in computer science! :mortar_board:',
           description: "",
           section: "News",},{id: "projects-project-1",
