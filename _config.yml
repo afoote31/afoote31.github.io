@@ -88,8 +88,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio # blog_name will be displayed in your blog page
-blog_description: a simple whitespace theme for academics
+blog_name: FooteNotes # blog_name will be displayed in your blog page
+blog_description: I hope to write about papers I find interesting, break down side projects I'm working, and provide resources for applying to graduate school.
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
