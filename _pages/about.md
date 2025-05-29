@@ -9,9 +9,6 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
 
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
@@ -26,7 +23,10 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
-Computer scientist interested in algorithms and computational complexity as well as making machine learning safer, more reliable, and interpretable. For my undergrad, I earned a BA in computer science from Wesleyan University, researching algorithms and computational complexity problems related to the solving of the combinatorial puzzle [Nonogram](https://en.wikipedia.org/wiki/Nonogram). For also earned an MA in computer science from Wesleyan University, developing a nonparametric test to evaluate feature importance scores for bias. Both of these efforts were advised by [Danny Krizanc](https://dkrizanc.web.wesleyan.edu/).
+
+I am a computer scientist, interested in algorithms/computational complexity as well as making machine learning safe and interpretable. For my undergrad, I earned a BA in computer science from Wesleyan University, researching algorithms and computational complexity problems related to the solving of the combinatorial puzzle [Nonogram](https://en.wikipedia.org/wiki/Nonogram). I also earned an MA in computer science from Wesleyan University, developing a nonparametric test to evaluate feature importance scores for bias. Both of these efforts were advised by [Danny Krizanc](https://dkrizanc.web.wesleyan.edu/).
+
+This website is very much a work in progress, but feel free to look around! My CV linked at the top of the page has my email.
 
 <!-- and Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder. -->
 
