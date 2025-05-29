@@ -402,10 +402,7 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
-          description: "",
-          section: "News",},{id: "news-graduated-wesleyan-with-an-ma-in-computer-science-mortar-board",
+            },},{id: "news-graduated-wesleyan-with-an-ma-in-computer-science-mortar-board",
           title: 'Graduated Wesleyan with an MA in computer science! :mortar_board:',
           description: "",
           section: "News",},{id: "projects-project-1",
