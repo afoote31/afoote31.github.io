@@ -51,7 +51,7 @@ bibliography: 2018-12-22-distill.bib
   
 ---
 
-This post is a recap of a course project I worked on for a machine learning course. I was interested in learning how to implement some of the classic neural network architectures for image classification and apply them to something related to conservation. Forest fires are a natural disaster that can cause billions of dollars in damages, but they are also unique in that they humans are often the direct cause. Thus, we can potentially take action to help mitigate their destruction. For this project, I develop a tool that uses satellite data<d-cite key="gregor2015draw"></d-cite> to identify areas with high risk of the breakout of a wildfire. The risk labels are determined by the Wildfire Hazard Potential index, a tool maintained by the USDA Forest Service. The scores are determined by wildfire simulation modeling. The associated images that make up the features of the model are collected from the National Agriculture Imagery Program, in which aircraft or satellites capture 60-cm ground sample distance images of agricultural and forest land. Each image is annotated with its longitude and latitude, making it easy to identify the risk label of the area captured in the image, as provided by the Wildfire Hazard Potential index.
+This post is a recap of a course project I worked on for a machine learning course. I was interested in learning how to implement some of the classic neural network architectures for image classification and apply them to something related to conservation. Forest fires are a natural disaster that can cause billions of dollars in damages, but they are also unique in that they humans are often the direct cause. Thus, we can potentially take action to help mitigate their destruction. For this project, I develop a tool that uses satellite data<d-cite key="fireRiskData"></d-cite> to identify areas with high risk of the breakout of a wildfire. The risk labels are determined by the Wildfire Hazard Potential index, a tool maintained by the USDA Forest Service. The scores are determined by wildfire simulation modeling. The associated images that make up the features of the model are collected from the National Agriculture Imagery Program, in which aircraft or satellites capture 60-cm ground sample distance images of agricultural and forest land. Each image is annotated with its longitude and latitude, making it easy to identify the risk label of the area captured in the image, as provided by the Wildfire Hazard Potential index.
 
 This approach is useful due to the availability of aerial imaging data for much of the world. Furthermore, it can be used to identify risk in areas that are difficult to access, which would make the deployment of climate sensors difficult. It can also complement sensor-based approaches, serving as a coarse evaluation of fire risk that is bolstered by models utilizing data from sensors deployed on the ground.
 
@@ -62,3 +62,30 @@ The VGG-16 architecture employs blocks of repeated convolutional layers – with
 The GoogLeNet architecture employs so called ”Inception blocks”, by which the network subverts the traditional sequential feed-forward nature of neural networks. In the Inception blocks, a variety of kernels of different sizes can be used for convolution, and their results (with proper padding) concatenated together with the goal of approximat- ing the optimal kernel size. Occasional max pooling layers with stride 2 are used to halve the size of the layers and maintain a reasonable parameter count. Another element included by the team at Google is including loss at points in the middle network into the overall loss. This is done to mitigate vanishing gradients. Since the network fit for this project is much smaller than GoogLeNet, this loss checkpointing technique is not incorporated.
 
 For the training workflow, 21,541 images are held out to be used as a test set. Of the remaining 70,331 images, 75% are used for training and 25% are used as a validation set. The batch size is 16 images and each model is trained for 25 epochs. Following the ImageNet competition<d-cite key="ImageNet"></d-cite>, accuracy as well as top-2 are used to evaluate the model. In the case of fire risk evaluation, even if a model does not have the highest accuracy, if it categorizes a given image as an adjacent category or ranks the true category second with high accuracy, that model may in fact be more useful than one with slightly higher accuracy but lower top-2 accuracy.
+
+With just over fifty thousand images to train on, the complexity of the model must be reduced greatly as compared to the complexity of traditional neural network architectures for image classification to prevent overfitting and keep the training time reasonable. Steps taken to regularize are reducing the learning rate of the Adam optimizer to 1 × 10−5 (1 × 10−3 is default), implementing batch normalization on the final dense layer of each network, and incorporating dropout learning in that layer as well, with a dropout rate of 0.4. The structure for each of the networks is visualized below.
+
+{% include figure.html 
+  path="assets/img/baseline2.png" 
+  caption="Figure 1: This is my image caption." 
+  width="80%" 
+%}
+
+{% include figure.html 
+  path="assets/img/simpleCNN2.png" 
+  caption="Figure 2: This is my image caption." 
+  width="80%" 
+%}
+
+{% include figure.html 
+  path="assets/img/vggMini2.png" 
+  caption="Figure 3: This is my image caption." 
+  width="80%" 
+%}
+
+{% include figure.html 
+  path="assets/img/googLeNetMini2.png" 
+  caption="Figure 4: This is my image caption." 
+  width="80%" 
+%}
+
