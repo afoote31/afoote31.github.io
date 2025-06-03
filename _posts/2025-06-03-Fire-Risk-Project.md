@@ -65,27 +65,8 @@ For the training workflow, 21,541 images are held out to be used as a test set. 
 
 With just over fifty thousand images to train on, the complexity of the model must be reduced greatly as compared to the complexity of traditional neural network architectures for image classification to prevent overfitting and keep the training time reasonable. Steps taken to regularize are reducing the learning rate of the Adam optimizer to 1 × 10−5 (1 × 10−3 is default), implementing batch normalization on the final dense layer of each network, and incorporating dropout learning in that layer as well, with a dropout rate of 0.4. The structure for each of the networks is visualized below.
 
-{% include figure.html 
-  path="assets/img/baseline2.png" 
-  caption="Figure 1: This is my image caption." 
-  width="80%" 
-%}
+{% include figure.liquid path="assets/img/lossPlot.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+{% include figure.liquid path="assets/img/lossPlot.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+{% include figure.liquid path="assets/img/top2AccuracyPlot.png" class="img-fluid rounded z-depth-1" zoomable=true %}
 
-{% include figure.html 
-  path="assets/img/simpleCNN2.png" 
-  caption="Figure 2: This is my image caption." 
-  width="80%" 
-%}
-
-{% include figure.html 
-  path="assets/img/vggMini2.png" 
-  caption="Figure 3: This is my image caption." 
-  width="80%" 
-%}
-
-{% include figure.html 
-  path="assets/img/googLeNetMini2.png" 
-  caption="Figure 4: This is my image caption." 
-  width="80%" 
-%}
 
