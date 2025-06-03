@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-nfl-tracking-data-project",
+        },{id: "post-fire-risk-assessment-project",
+        
+          title: "Fire Risk Assessment Project",
+        
+        description: "A semester project I worked on to learn about computer vision and convolutional neural network architectures",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/Fire-Risk-Project/";
+          
+        },
+      },{id: "post-nfl-tracking-data-project",
         
           title: "NFL Tracking Data Project",
         
