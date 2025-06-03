@@ -63,6 +63,35 @@ The VGG-16 architecture employs blocks of repeated convolutional layers – with
 
 The GoogLeNet architecture employs so called ”Inception blocks”, by which the network subverts the traditional sequential feed-forward nature of neural networks. In the Inception blocks, a variety of kernels of different sizes can be used for convolution, and their results (with proper padding) concatenated together with the goal of approximat- ing the optimal kernel size. Occasional max pooling layers with stride 2 are used to halve the size of the layers and maintain a reasonable parameter count. Another element included by the team at Google is including loss at points in the middle network into the overall loss. This is done to mitigate vanishing gradients. Since the network fit for this project is much smaller than GoogLeNet, this loss checkpointing technique is not incorporated. The structure for each of the networks is visualized below.
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/baseline2.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/simpleCNN2.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+<div class="caption">
+    These are the architectures for the simple networks. On the left is a network with no convolution, and on the right is a simple convolutional neural network.
+</div>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/vggMini2.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+<div class="caption">
+    My implementation of the the VGG architecture, greatly simplified. What we see are the characteristic blocks of convolutions into poolings.
+</div>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/googLeNetMini2.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+<div class="caption">
+    My implementation of the the googLeNet architecture, greatly simplified. I've included inception blocks with convolutions of various size, but did not include the loss checkpointing, as the network is not nearly complex enough for vanishing gradients to be a big concern.
+</div>
 
 For the training workflow, 21,541 images are held out to be used as a test set. Of the remaining 70,331 images, 75% are used for training and 25% are used as a validation set. The batch size is 16 images and each model is trained for 25 epochs. Following the ImageNet competition<d-cite key="ImageNet"></d-cite>, accuracy as well as top-2 are used to evaluate the model. In the case of fire risk evaluation, even if a model does not have the highest accuracy, if it categorizes a given image as an adjacent category or ranks the true category second with high accuracy, that model may in fact be more useful than one with slightly higher accuracy but lower top-2 accuracy.
 
