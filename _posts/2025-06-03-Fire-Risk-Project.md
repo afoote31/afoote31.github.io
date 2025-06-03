@@ -121,13 +121,13 @@ Despite the varying extents of overfitting, all models with convolutional layers
 
 Examining the performance of each of the models on a held out test set of 21,541 images, it can be seen that despite the overfitting, the complex models do in fact generalize best to the test set. The baseline model is far and away worst performing, with the simple convolutional network serving as a middle ground. The enhanced architectures perform similarly in accuracy and top two accuracy, but the GoogLeNet architecture has by far the lowest loss, making it the best performing model fit in this project.
 
-```markdown
+
 |   Model         | Loss | Accuracy  | Top-2 Accuracy |
 |   :---------:   | :--: | :-------: | :------:       |
 | Baseline        |1.563 |   0.409   | 0.655          |
 | Simple CNN      |1.456 |   0.463   | 0.669          |
 | VGG Mini        |1.422 |   0.507   | 0.694          |
 | GoogLeNet Mini  |1.338 |   0.503   | 0.707          |
-```
+
 
 
