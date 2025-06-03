@@ -6,6 +6,7 @@ tags: distill formatting
 giscus_comments: false
 date: 2025-06-03
 featured: false
+pretty_table: true
 mermaid:
   enabled: true
   zoomable: true
@@ -101,12 +102,6 @@ With just over fifty thousand images to train on, the complexity of the model mu
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid path="assets/img/lossPlot.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
-</div>
-<div class="caption">
-    A simple, elegant caption looks good between image rows, after each row, or doesn't have to be there at all.
-</div>
-
-<div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid path="assets/img/accuracyPlot.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
@@ -115,7 +110,24 @@ With just over fifty thousand images to train on, the complexity of the model mu
     </div>
 </div>
 <div class="caption">
-    A simple, elegant caption looks good between image rows, after each row, or doesn't have to be there at all.
+    Loss, accuracy, and top-2 accuracy for the models. The baseline model is shown in <span style="color:blue">*blue*</span> 🟦, the simple convolutional model in <span style="color:pink">*pink*</span> 🟣, VGG mini in <span style="color:red">*red*</span> 🔺, and googLeNet mini in black ◾. The training performance is plotted in solid line style and the validation performance in dashed line style.
 </div>
+
+As a baseline, the convolution-free neural network performs considerably worse than the rest of the models. However, it interestingly does not overfit as the rest of the models do, as shown by the non-divergence of the training and validation curves for loss, accuracy, and top-two accuracy. The lack of flexibility of just one dense layer seems to prevent the model from capturing the complexities of image data, limiting both the predictive capabilities of the model and the extent to which it can overfit to the data. This confirms the basic intuition that convolutions are a valuable tool for the task of image classification.
+
+The rest of the models all have difficulty with one key issue: overfitting. Despite considerable steps taken to reduce the prevalence of overfitting, the flexibility inherent in the iterative convolutions proves too complex for the limited data available. The more complex that the model gets – simple CNN, then the VGG architecture, with the GoogLeNet architecture as most complex – the greater the divergence between training and validation performance, meaning the greater the overfit.
+
+Despite the varying extents of overfitting, all models with convolutional layers perform similarly in terms of validation loss, validation accuracy, and validation top-two accuracy. To highlight the importance of considering multiple performance metrics, note that even though the baseline model is undeniably worse than the others when compared on accuracy, it is competitive when compared on top-two accuracy. This suggests that even though the simple model is unable to detect the fine nuances that separate between categories, it is surprisingly good at providing a ballpark estimate of the risk.
+
+Examining the performance of each of the models on a held out test set of 21,541 images, it can be seen that despite the overfitting, the complex models do in fact generalize best to the test set. The baseline model is far and away worst performing, with the simple convolutional network serving as a middle ground. The enhanced architectures perform similarly in accuracy and top two accuracy, but the GoogLeNet architecture has by far the lowest loss, making it the best performing model fit in this project.
+
+```markdown
+|   Model         | Loss | Accuracy  | Top-2 Accuracy |
+|   :---------:   | :--: | :-------: | :------:       |
+| Baseline        |1.563 |   0.409   | 0.655          |
+| Simple CNN      |1.456 |   0.463   | 0.669          |
+| VGG Mini        |1.422 |   0.507   | 0.694          |
+| GoogLeNet Mini  |1.338 |   0.503   | 0.707          |
+```
 
 
