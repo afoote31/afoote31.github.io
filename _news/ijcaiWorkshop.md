@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Paper accepted for an oral presentation at the IJCAI 2025 Workshop on Explainable Artificial Intelligence! :grin:
+Paper accepted for an oral presentation at the IJCAI 2025 Workshop on XAI! :grin: 😁
