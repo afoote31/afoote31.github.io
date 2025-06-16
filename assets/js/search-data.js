@@ -405,7 +405,7 @@ ninja.data = [{
             },},{id: "news-graduated-wesleyan-with-an-ma-in-computer-science-mortar-board",
           title: 'Graduated Wesleyan with an MA in computer science! :mortar_board:',
           description: "",
-          section: "News",},{id: "news-paper-accepted-for-an-oral-presentation-at-the-ijcai-2025-workshop-on-xai-grin",
+          section: "News",},{id: "news-paper-accepted-for-an-oral-presentation-at-the-ijcai-2025-workshop-on-xai",
           title: 'Paper accepted for an oral presentation at the IJCAI 2025 Workshop on XAI!...',
           description: "",
           section: "News",},{id: "projects-project-1",
