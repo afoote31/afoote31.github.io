@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-fire-risk-assessment-project",
+        },{id: "post-grad-school-application-resources",
+        
+          title: "Grad School Application Resources",
+        
+        description: "A compilation of resources that I found helpful in framing my applications to graduate school.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/Grad-School-Resources/";
+          
+        },
+      },{id: "post-fire-risk-assessment-project",
         
           title: "Fire Risk Assessment Project",
         
