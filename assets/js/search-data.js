@@ -38,7 +38,7 @@ ninja.data = [{
         
           title: "NFL Tracking Data Project",
         
-        description: "A first post...",
+        description: "Summary of Project Presented at CASSIS",
         section: "Posts",
         handler: () => {
           
