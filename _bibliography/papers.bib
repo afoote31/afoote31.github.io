@@ -130,20 +130,24 @@
 }
 
 @conference{trip,
-  title        = {TRIP: A Nonparametric Test to Diagnose Biased Feature Importance Scores},
-  author       = {Aaron Foote and Danny Krizanc},
-  year         = 2025,
-  month        = {August},
-  booktitle    = {Proceedings of the IJCAI Workshop on Explainable Artificial Intelligence},
-  organization = {IJCAI}
+  	title = {TRIP: A Nonparametric Test to Diagnose Biased Feature Importance Scores},
+  	author = {Aaron Foote and Danny Krizanc},
+  	year = 2025,
+  	month = {August},
+  	booktitle = {Proceedings of the IJCAI Workshop on Explainable Artificial Intelligence},
+  	organization = {IJCAI},
+	doi = {10.48550/arXiv.2507.07276},
+	abstract = {Along with accurate prediction, understanding the contribution of each feature to the making of the prediction, i.e., the importance of the feature, is a desirable and arguably necessary component of a machine learning model. For a complex model such as a random forest, such importances are not innate – as they are, e.g., with linear regression. Efficient methods have been created to provide such capabilities, with one of the most popular among them being permutation feature importance due to its efficiency, model-agnostic nature, and perceived intuitiveness. However, permutation feature importance has been shown to be misleading in the presence of dependent features as a result of the creation of unrealistic observations when permuting the dependent features. In this work, we develop TRIP (\textbf{T}est for \textbf{R}eliable \textbf{I}nterpretation via \textbf{P}ermutation), a test requiring minimal assumptions that is able to detect unreliable permutation feature importance scores that are the result of model extrapolation. To build on this, we demonstrate how the test can be complemented in order to allow its use in high dimensional settings. Through testing on simulated data and applications, our results show that the test can be used to reliably detect when permutation feature importance scores are unreliable.}
 }
 
-@misc{foote2025tripnonparametrictestdiagnose,
-      title={TRIP: A Nonparametric Test to Diagnose Biased Feature Importance Scores}, 
-      author={Aaron Foote and Danny Krizanc},
-      year={2025},
-      eprint={2507.07276},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2507.07276}, 
+@misc{NonogramPhaseTransition,
+	title={Nonogram: Complexity of Inference and Phase Transition Behavior}, 
+      	author={Aaron Foote and Danny Krizanc},
+      	year={2025},
+      	eprint={2507.07283},
+      	archivePrefix={arXiv},
+      	primaryClass={cs.CC},
+      	url={https://arxiv.org/abs/2507.07283}, 
+	abstract = {Nonogram is a popular combinatorial puzzle (similar in nature to Sudoku or Minesweeper) in which a puzzle solver must determine if there exists a setting of the puzzle parameters that satisfy a given set of constraints. It has long been known that the problem of deciding if a solution exists is a computationally difficult problem. Despite this fact, humans still seem to enjoy playing it. This work aims to reconcile these seemingly contradictory facts by (1) analyzing the complexity of the inference problem for Nonogram (the problem of determining if there exists a puzzle parameter that can be inferred from the constraints without guessing) and (2) experimentally establishing the existence of a phase transition behavior for this inference problem. Our results show that the difficulty of the inference problem is largely determined by the density of filled cells (positive parameters) in a given puzzle. Along the way we implement an efficient encoding of a Nonogram board as a Boolean formula in Conjunctive Normal Form (CNF) through the use of regular expressions in order to make our experiments feasible.},
+	doi = {10.48550/arXiv.2507.07283}
 }
