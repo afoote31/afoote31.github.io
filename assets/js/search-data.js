@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-grad-school-application-resources",
+        },{id: "post-a-mathematical-argument-against-easy-exams",
+        
+          title: "A Mathematical Argument Against Easy Exams",
+        
+        description: "A thought experiment, using probability theory, on why exams should not be made easy.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/Make-Tests-Hard/";
+          
+        },
+      },{id: "post-grad-school-application-resources",
         
           title: "Grad School Application Resources",
         
