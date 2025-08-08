@@ -3,7 +3,7 @@ layout: distill
 title: Fire Risk Assessment Project
 description: A semester project I worked on to learn about computer vision and convolutional neural network architectures
 tags: distill formatting
-giscus_comments: false
+giscus_comments: true
 date: 2025-06-03
 featured: false
 pretty_table: true
