@@ -3,7 +3,7 @@ layout: distill
 title: A Mathematical Argument Against Easy Exams
 description: A thought experiment, using probability theory, on why exams should not be made easy.
 tags:
-giscus_comments: false
+giscus_comments: true
 date: 2025-07-24
 featured: false
 pretty_table: true
