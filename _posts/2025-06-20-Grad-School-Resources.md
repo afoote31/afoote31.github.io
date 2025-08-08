@@ -3,7 +3,7 @@ layout: post
 title: Grad School Application Resources
 description: A compilation of resources that I found helpful in framing my applications to graduate school.
 tags:
-giscus_comments: false
+giscus_comments: true
 date: 2025-06-20
 featured: false
 related_posts: false
