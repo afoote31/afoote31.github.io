@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-a-mathematical-argument-against-easy-exams",
+        },{id: "post-a-formulation-for-a-general-combinatorial-puzzle",
+        
+          title: "A Formulation for a General Combinatorial Puzzle",
+        
+        description: "I present one way in which I might approach studying combinatorial puzzles more generally.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/Abstract-Combinatorial-Puzzles/";
+          
+        },
+      },{id: "post-a-mathematical-argument-against-easy-exams",
         
           title: "A Mathematical Argument Against Easy Exams",
         
