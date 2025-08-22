@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-different-flavors-of-combinatorial-puzzle",
+        },{id: "post-failed-research-ideas",
+        
+          title: "Failed Research Ideas",
+        
+        description: "A running list, with descriptions, of ideas I had for research that ultimately fell flat (and why).",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/Failed-Research-Ideas/";
+          
+        },
+      },{id: "post-different-flavors-of-combinatorial-puzzle",
         
           title: "Different Flavors of Combinatorial Puzzle",
         
