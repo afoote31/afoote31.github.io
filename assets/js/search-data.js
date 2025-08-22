@@ -23,15 +23,15 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-a-formulation-for-a-general-combinatorial-puzzle",
+        },{id: "post-different-flavors-of-combinatorial-puzzle",
         
-          title: "A Formulation for a General Combinatorial Puzzle",
+          title: "Different Flavors of Combinatorial Puzzle",
         
-        description: "I present one way in which I might approach studying combinatorial puzzles more generally.",
+        description: "I present an observation I had on structures of constraints for combinatorial puzzles.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/Abstract-Combinatorial-Puzzles/";
+            window.location.href = "/blog/2025/Neighborhoods-for-Combinatorial-Puzzles/";
           
         },
       },{id: "post-a-mathematical-argument-against-easy-exams",
