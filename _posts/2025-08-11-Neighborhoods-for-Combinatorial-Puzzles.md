@@ -1,7 +1,7 @@
 ---
 layout: distill
-title: A Formulation for a General Combinatorial Puzzle
-description: I present one way in which I might approach studying combinatorial puzzles more generally.
+title: Different Flavors of Combinatorial Puzzle
+description: I present an observation I had on structures of constraints for combinatorial puzzles.
 tags:
 giscus_comments: true
 date: 2025-08-11
@@ -29,8 +29,7 @@ bibliography: 2018-12-22-distill.bib
 - What combinatorial puzzles are
 - What puzzles are not combinatorial puzzles
 - Why they're interesting
-- Things that differentiate puzzles (neighborhoods as an example)
-- The underlying structure, intuitively
-- Expressing it formally
-- Important decision problems related to combinatorial puzzles
-- Formulations of important decision problems related to combinatorial puzzles
+- Puzzles as constraint problems
+- Neighborhoods
+- Implications for encodings
+- Interest in classifying difficulty of puzzles
