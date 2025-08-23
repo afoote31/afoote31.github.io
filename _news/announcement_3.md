@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Graduated Wesleyan with an MA in computer science! :mortar_board:
+Graduated with an MA in computer science! :mortar_board:
