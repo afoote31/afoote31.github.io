@@ -446,7 +446,10 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-graduated-with-an-ma-in-computer-science-mortar-board",
+            },},{id: "news-graduated-with-a-ba-with-high-honors-in-computer-science-data-analysis-mortar-board",
+          title: 'Graduated with a BA with high honors in computer science/data analysis! :mortar_board:',
+          description: "",
+          section: "News",},{id: "news-graduated-with-an-ma-in-computer-science-mortar-board",
           title: 'Graduated with an MA in computer science! :mortar_board:',
           description: "",
           section: "News",},{id: "news-paper-accepted-for-an-oral-presentation-at-the-ijcai-2025-workshop-on-xai",
