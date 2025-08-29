@@ -60,9 +60,27 @@ $$
 Taking a step back, we see that the score on an exam $\xi \sim Binom(n,p)$ and the rank of a student, conditional on answering $k$ questions correctly, follows a distribtion 
 
 $$
-1 + Binom(s-1,\sum_{i=k+1} \binom{n}{i}p^i(1-p)^{n-i}).
+1 + Binom(s-1,\sum_{i=k+1}^n \binom{n}{i}p^i(1-p)^{n-i}).
 $$
 
-Again, what we're really interested in here is comparing the variability in score and the variability in rank. Thus, next we will compute the variance of each.
+Again, what we're really interested in here is comparing the variability in score and the variability in rank. Thus, next we will compute the variance of each. For convenience, we will take $q_k = \sum_{i=k+1}^n \binom{n}{i}p^i(1-p)^{n-i}$. The variance of $xi$ is simple, it is just $np(1-p)$. For the rank, however, we only have the distribution conditional on the exam score, so we must use the law of total variance:
 
-- Put in sliders + plots
+$$
+V(Rank) = E\left[V(Rank \vert \xi = k)\right] + V\left(E\left[Rank \vert \xi = k\right]\right)
+$$
+
+Let's consider each of the elements of the sum individually.
+
+$$
+E\left[V(Rank \vert \xi = k)\right] = \sum_{k=0}^n \mathbb{P}(\xi = k)V(Rank \vert \xi = k) = \sum_{k=0}^n \binom{n}{k} p^k(1-p)^{n-k} \left[(s-1)q_k(1-q_k)\right]
+$$
+
+$$
+\begin{align}
+V\left(E\left[Rank \vert \xi = k\right]\right) &= V(1 + (s-1)q_k) = (s-1)^2V(q_k) = (s-1)^2\left[E(q_k^2) - E(q_k)^2\right] \\
+&= (s-1)^2\left[\sum_{k=0}^n\mathbb{P}(\xi = k)q_k^2 - \left(\sum_{k=0}^n \mathbb{P}(\xi=k)q_k\right)^2\right] \\
+&= (s-1)^2\left[\sum_{k=0}^n\binom{n}{k}p^k(1-p)^{n-k}q_k^2 - \left(\sum_{k=0}^n \binom{n}{k}p^k(1-p)^{n-k} q_k\right)^2\right]
+\end{align}
+$$
+
+We end up with an ugly term for the variance that can probably be crunched down, but I don't explore that here. Instead, I want to explore how the two variances relate to one another. Below I will include sliders that allow the user to try out different values for $n$,$k$, and $s$ and from that see how the variability in a student's score relates to the variability in their rank. That is still to come...
