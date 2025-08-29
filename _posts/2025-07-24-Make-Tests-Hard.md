@@ -63,7 +63,7 @@ $$
 1 + Binom(s-1,\sum_{i=k+1}^n \binom{n}{i}p^i(1-p)^{n-i}).
 $$
 
-Again, what we're really interested in here is comparing the variability in score and the variability in rank. Thus, next we will compute the variance of each. For convenience, we will take $q_k = \sum_{i=k+1}^n \binom{n}{i}p^i(1-p)^{n-i}$. The variance of $xi$ is simple, it is just $np(1-p)$. For the rank, however, we only have the distribution conditional on the exam score, so we must use the law of total variance:
+Again, what we're really interested in here is comparing the variability in score and the variability in rank. Thus, next we will compute the variance of each. For convenience, we will take $q_k = \sum_{i=k+1}^n \binom{n}{i}p^i(1-p)^{n-i}$. The variance of $\xi$ is simple, it is just $np(1-p)$. For the rank, however, we only have the distribution conditional on the exam score, so we must use the law of total variance:
 
 $$
 V(Rank) = E\left[V(Rank \vert \xi = k)\right] + V\left(E\left[Rank \vert \xi = k\right]\right)
