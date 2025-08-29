@@ -39,13 +39,30 @@ Suppose we have a class of $s$ students, and each of them is given an exam with 
 
 Let's review these assumptions. The first two certainly may not reflect reality. Exams usually include softballs to start and a handful of tricky questions at the end, and some students will simply be more knowledgeable about the topic than others. The third assumption is plausible, especially for larger cumulative exams where each question may cover a topic. Lastly, it is reasonable to assume that the performance of one student is independent of the performance of another, assuming they can't communicate during the exam.
 
-With these assumptions in place, the scores on the exam can be treated as following a binomial distribution with parameters $p$ and $n$, givig us some real substance with which to work.
+Since an exam is just a sequence of $n$ independent trials with success probability $p$ on each trial, a random variable $\xi$ for a student's score is a binomial random variable, thus they will get $k$ questions correct with probability 
 
+$$
+\mathbb{P}(\xi = k) = \binom{n}{k}p^k(1-p)^{n-k}.
+$$
 
-- Describe setup
-- Justify setup
+Next, we want to describe probabilities related to the student's rank. For this, let's consider the probability that $r-1$ students get more than $k$ questions correct. Since we assumed that student scores are independent, we again have a binomial random variable setup! There are $s-1$ independent trials, where a success means that student answers more than $k$ questions correctly on the exam. This occurs with probability 
 
-- Explain what is to be calculated
-- Show the calculations
+$$
+\sum_{i=k+1}^n \binom{n}{i}p^i(1-p)^{n-i}.
+$$
+
+The probability that a student, answering $k$ questions correctly, has $r-1$ students perform better, is then
+
+$$
+\binom{s-1}{r-1}\left(\sum_{i=k+1}^n \binom{n}{i}p^i(1-p)^{n-i}\right)^{r-1}\left(1 - \sum_{i=k+1}^n \binom{n}{i}p^i(1-p)^{n-i}\right)^{s-r}.
+$$
+
+Taking a step back, we see that the score on an exam $\xi \sim Binom(n,p)$ and the rank of a student, conditional on answering $k$ questions correctly, follows a distribtion 
+
+$$
+1 + Binom(s-1,\sum_{i=k+1} \binom{n}{i}p^i(1-p)^{n-i}).
+$$
+
+Again, what we're really interested in here is comparing the variability in score and the variability in rank. Thus, next we will compute the variance of each.
 
 - Put in sliders + plots
