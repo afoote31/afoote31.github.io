@@ -76,11 +76,11 @@ E\left[V(Rank \vert \xi = k)\right] = \sum_{k=0}^n \mathbb{P}(\xi = k)V(Rank \ve
 $$
 
 $$
-\begin{align}
+\begin{align*}
 V\left(E\left[Rank \vert \xi = k\right]\right) &= V(1 + (s-1)q_k) = (s-1)^2V(q_k) = (s-1)^2\left[E(q_k^2) - E(q_k)^2\right] \\
 &= (s-1)^2\left[\sum_{k=0}^n\mathbb{P}(\xi = k)q_k^2 - \left(\sum_{k=0}^n \mathbb{P}(\xi=k)q_k\right)^2\right] \\
 &= (s-1)^2\left[\sum_{k=0}^n\binom{n}{k}p^k(1-p)^{n-k}q_k^2 - \left(\sum_{k=0}^n \binom{n}{k}p^k(1-p)^{n-k} q_k\right)^2\right]
-\end{align}
+\end{align*}
 $$
 
 We end up with an ugly term for the variance that can probably be crunched down, but I don't explore that here. Instead, I want to explore how the two variances relate to one another. Below I will include sliders that allow the user to try out different values for $n$, $k$, and $s$ and from that see how the variability in a student's score relates to the variability in their rank. That is still to come...
