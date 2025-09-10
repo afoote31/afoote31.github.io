@@ -24,7 +24,11 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a computer scientist, interested in algorithms/computational complexity as well as making machine learning safe and interpretable. For my undergrad, I earned a BA in computer science from Wesleyan University, researching algorithms and computational complexity problems related to the solving of the combinatorial puzzle [Nonogram](https://en.wikipedia.org/wiki/Nonogram). I also earned an MA in computer science from Wesleyan University, developing a nonparametric test to evaluate feature importance scores for bias. Both of these efforts were advised by [Danny Krizanc](https://dkrizanc.web.wesleyan.edu/).
+I'm currently working as a data science consultant with [CMC: Foundation for Change](https://cmcffc.org/), a nonprofit focused on providing evidence-based skills to those suffering from addiction, as well as family members of those addicted. 
+
+For my undergrad I earned a BA with high honors in computer science and data analysis from Wesleyan, researching algorithms and computational complexity problems related ot the solving of the combinatorial puzzle [Nonogram](https://en.wikipedia.org/wiki/Nonogram). Furthermore, I served as a TA for courses in algorithms and computational complexity. I also earned an MA in computer science from Wesleyan, developing tools to evaluate feature attribution methods for bias. Both of these efforts were advised by [Danny Krizanc](https://dkrizanc.web.wesleyan.edu/). I have loads of experience as an applied statistician, working on personal projects (see my blog for a few) and working as a TA for survival analysis and applied data analysis courses.
+
+Along with my work as a data scientist, I'm interested in continuing to conduct research and learn more theoretical computer science and statistics in my free time. Currently, I'm working through Roughgarden's *Beyond the Worst-Case Analysis of Algorithms* textbook. Don't be a stranger, reach out!
 
 This website is very much a work in progress, but feel free to look around! My CV linked at the top of the page has my email.
 
