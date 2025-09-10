@@ -87,7 +87,7 @@ We end up with an ugly term for the variance that can probably be crunched down,
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/9.jpg" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/scoreVariance.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -98,11 +98,11 @@ Now, this by itself does not mean that easier exams are more riskier for a stude
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/9.jpg" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/examPlot.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    The variability in rank is almost always many times greater than the variability in score, but the multiplicative factor is greater for easy exams (about $p > 0.9$).
+    The variability in rank is almost always many times greater than the variability in score, but the multiplicative factor is greater for very easy/hard exams.
 </div>
 
 While we certainly studied exams under a simplified model, the insights hold intuitively. If an exam is really easy or really hard, the scores are clumped and the smallest influences to a score can result in a large change to ranking. This means that a bad night of sleep, other exams, or a fight with a friend would have a larger impact on a student's grade in the course if they are graded based on rank rather than raw score. Thus, if a student is to be scored on rank, I believe it would be in their best interest to have the exam be a little harder, with the probability of answering a question right being between 0.4 and 0.6 rather than above 0.7.
