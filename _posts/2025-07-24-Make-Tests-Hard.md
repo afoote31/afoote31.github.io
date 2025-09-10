@@ -83,4 +83,26 @@ V\left(E\left[Rank \vert \xi = k\right]\right) &= V(1 + (s-1)q_k) = (s-1)^2V(q_k
 \end{align*}
 $$
 
-We end up with an ugly term for the variance that can probably be crunched down, but I don't explore that here. Instead, I want to explore how the two variances relate to one another. Below I will include sliders that allow the user to try out different values for $n$, $k$, and $s$ and from that see how the variability in a student's score relates to the variability in their rank. That is still to come...
+We end up with an ugly term for the variance that can probably be crunched down, but I don't explore that here. Instead, I want to explore how the two variances relate to one another. To start, note that the variability in one's own score does not depend on $s$. Below, I plot the variability in one's own score across values of $p$ and $n$, with $p$ on the horizontal axis, the variance on the vertical axis, and different exam lengths $n$ as different colors. As expected, we see that really hard/easy exams have considerably less variance in the score than exams of the same length for which each question has more of a 50-50 chance of being answered correctly.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/9.jpg" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    For a fixed number of questions, very easy/hard exams exhibit much less variability in scores.
+</div>
+
+Now, this by itself does not mean that easier exams are more riskier for a student when graded on rank as opposed to raw score. To compare these two, let's examine the ratio between the two variances. For this, I've used class sizes $s \in \{5,20,100,200\}$ and exam lengths of $n \in \{25,50,100\}$. For each, we consider varying levels of exam difficulty and plot the ratio of the rank variance to the score variance. In the plot, note that the vertical axis is on a logarithmic scale and that the scaling is not fixed across the plots. What we see is that for exams given in all classes but the smallest, the variability in rank is many times greater than the variability in the score (the dashed horizontal at one would indicate equal variance). Furthermore, for larger courses, this difference is enormous. This difference is also exacerbated for very hard exams and very easy exams, around $p > 0.9$.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/9.jpg" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    The variability in rank is almost always many times greater than the variability in score, but the multiplicative factor is greater for easy exams (about $p > 0.9$).
+</div>
+
+While we certainly studied exams under a simplified model, the insights hold intuitively. If an exam is really easy or really hard, the scores are clumped and the smallest influences to a score can result in a large change to ranking. This means that a bad night of sleep, other exams, or a fight with a friend would have a larger impact on a student's grade in the course if they are graded based on rank rather than raw score. Thus, if a student is to be scored on rank, I believe it would be in their best interest to have the exam be a little harder, with the probability of answering a question right being between 0.4 and 0.6 rather than above 0.7.
