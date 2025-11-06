@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-failed-research-ideas",
+        },{id: "post-where-to-park-your-bike",
+        
+          title: "Where to Park Your Bike",
+        
+        description: "How to optimize your bike parking",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/Bike-Parking/";
+          
+        },
+      },{id: "post-failed-research-ideas",
         
           title: "Failed Research Ideas",
         
