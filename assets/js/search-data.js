@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-where-to-park-your-bike",
+        },{id: "post-",
+        
+          title: "",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/2025-11-09-March-Madness.md/";
+          
+        },
+      },{id: "post-where-to-park-your-bike",
         
           title: "Where to Park Your Bike",
         
