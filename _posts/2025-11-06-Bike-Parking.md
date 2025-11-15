@@ -58,14 +58,14 @@ From above, it looks like we need the expected costs from future racks in order 
 $$
 V_i = \begin{cases}
     C                                                       & i = 0 \\
-    \left(1-(1-p)^n\right)min(c_i,V_i-1) + (1-p)^nV_i-1     & \text{otherwise.}
+    \left(1-(1-p)^n\right)min(c_i,V_{i-1}) + (1-p)^nV_{i-1}     & \text{otherwise.}
 \end{cases}
 $$
 
 Starting with the closest rack to the door ($i=1$), we can compute the expected cost of each rack in linear time. With those values in hand, we can now make a decision on where to park! Beginning at rack $r$ (the furthest from the seminar), decide the following at rack $i$:
 1. If no spots, continue to rack $i-1$ and repeat.
 2. Else:
-    1. If $c_i < V_i-1$, park.
+    1. If $c_i < V_{i-1}$, park.
     2. Otherwise, continue to rack $i-1$.
 
 
