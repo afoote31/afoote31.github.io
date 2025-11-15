@@ -71,19 +71,28 @@ Starting with the closest rack to the door ($i=1$), we can compute the expected 
     2. Otherwise, continue to rack $i-1$.
 
 
-### Adding Complexity
+### Unknown Values for $p$
 The previous setup is not very realistic. I believe that it is reasonable to assume biking happens at random, but it is not reasonable to assume that the rider knows the probability $p$ of each spot being open. So, now let's consider the case when the rider must use an estimate $\hat{p}$. To estimate $p$, we can use the spots we've seen thus far, which are just Bernoulli trials with parameter $p$. Our estimator $\hat{p}$ will be the sample mean.
 
 Our estimate introduces variance into the expected costs. If they become very noisy, it will be hard to know 
 
 
 
-### Beyond Minimizing Expected Cost
+### Arriving to an Exam on Time
 Minimizing the expected cost is a very natural thing to do, but certainly not the only. Imagine if you were racing to class, and an exam was going to start soon and you couldn't sit the exam if you arrived late. With a time $t$ until the exam starts and costs $c_i$ in terms of times, you want to find a rack that maximizes your probability of having cost less than $t$. Note that this may not result in you picking the same rack as the one that minimizes expected time. For instance, you might take a rack with a high cost just under $t$, even if, on average, you would be able to find a rack with lower cost by skipping the current rack.
 
 I believe you just end up with a knapsack-like problem that you can also use dynamic programming on. I think that the incorporation of unknown/estimated $p$ could be interesting here.
 
 1. What do we want to measure here? I would like to be able to say things about the increase in expected error that results in not knowing the true probability $p$. Figure out precisely how to formulate this.
+
+### Allowing Circling Back
+
+The rider always has the choice to turn back and return to a previously open spot. While this backtracking can be costly, it can also save time if the bike either overestimates the probability of open spots or ends up hitting a few unlucky racks in a row that are taken. To consider that, we have to incorporate information about the cost to travel between racks, as well as the openings seen thus far. I believe dynamic programming can still work here, as we're just developing a state space, but I haven't thought much about how to actually formulate it yet. I think that unknown/estimated $p$ will be interesting here.
+
+
+### Limitations
+
+I like to think that we have built up towards models of bike parking that are rich and decently realistic. However, they are all still built on the assumption that spots are filled randomly with equal probability. A very natural way to add complexity is to model the opening probabilities as a function of cost or rack index. That could make a lot of sense in settings where there is only one place people could be heading towards, so everyone has a similar objective (time or distance) and same priority.
 
 
 - Biking is everywhere on Stanford campus
