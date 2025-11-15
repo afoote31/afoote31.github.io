@@ -26,11 +26,29 @@ bibliography: 2018-12-22-distill.bib
 
 ---
 
-#### Introduction
-I'm a resident of Palo Alto, and on Wednesdays I bike over to the Stanford campus to participate in the Department of Biomedical Data Science [Data Studio](https://dbds.stanford.edu/data-studio/). Stanford is an enormous, flat campus, so many traverse it via a bike. Since the seminar starts at 3pm, many of the bike racks are full or close to full as I arrive. This presents me with a decision to make: when should I continue biking towards the seminar, and at what point should I settle for an available spot that I come upon? During my journeys to and from the seminar, I've been thinking about this problem, and considering different framings of the problem to help me park as close as I can to the seminar.
+**This post is still a work in progress. I hope you enjoy!**
 
-#### Setup
-To optimize the decision, we have to make some assumptions about the behavior of other bikers, decide how we want to value each parking spot, and define the bike rack setup. For starters, there is a cost to arriving at the entrance to the seminar and still be riding the bike. This happens if all spots are passed or all are taken. We will call this cost $C$. Then, whenever we consider an algorithm, it will weigh the probability of reaching the seminar without parking in the process 
+### Introduction
+I'm a resident of Palo Alto, and on Wednesdays I bike over to the Stanford campus to participate in the Department of Biomedical Data Science [Data Studio](https://dbds.stanford.edu/data-studio/). Stanford is an enormous, flat campus, so many traverse it via a bike. Since the seminar starts at 3pm, many of the bike racks are full or close to full as I arrive. This presents me with a decision to make: when should I continue biking towards the seminar, and at what point should I settle for an available spot that I come upon? 
+
+#### Basic Setup
+I'm going to start by describing the setup that I actually experience on my bike ride to work, where there are a few bike racks, and one cannot see the other racks when passing by one.
+
+To state it somewhat more formally, there are $r$ bike racks, each of which has a cost $c_i$ associated with parking there. For simplicity, we will start by assuming that all racks have $n$ slots on them, potentially with some filled. Let $c$ be the cost that is incurred if you arrive at the door to the seminar without having found a parking spot. Our first goal will be to minimize the expected cost incurred when parking. To say anything about decisions, however, we need to say something about the parking process for the other bikes. Again, to start simple, we will assume that people park randomly. Honestly, I don't think that this is a particularly bad assumption. Even though I'm going to one building for the seminar, there are many other buildings that people might be going to, which would put different costs on each rack. Additionally, people might have different valuations of racks, and the combination of all of these policies might wash out to little better than random guessing anyways. So, each spot on each rack will be open with probability $p$. 
+
+Just as a note, rather than assigning a cost $c$ to reaching the door without parking, we could pick some tolerance $\epsilon$ that dictates the probability of reaching the door that the rider is willing to take on. I like this setup better I think.
+
+To build some intuition, let's consider the cases of one, and two racks.
+
+##### One Rack
+Let the size of the rack be $n_1$. If there is no spot open, I'm out of luck and just lose. If there is a spot open, we might have a decision to make. If we don't take the spot at this rack we will reach the door having not parked with probability one. So, if $\epsilon = 1$, we can go either way. Otherwise we have to park.
+
+#### Two Racks
+It gets more interesting here. 
+
+
+### Adding Complexity
+The previous setup is not very realistic. I believe that it is reasonable to assume biking happens at random, but it is not reasonable to assume that the rider knows the probability $p$ of each spot being open. Additionally, 
 
 
 I'm thinking that we might just frame the problem as a matter of risk tolerance, where we compute the probability of reaching the door
