@@ -42,12 +42,14 @@ You have to incur cost $C$.
 
 ##### One Rack
 When arriving at this rack, if there are no spots open, it is just the zero rack case. If there is a spot open, continue when $c_1 < C$, and park at rack one otherwise. The expected cost of the first rack is 
+
 $$
 V_1 = C(1 - p)^n + min(C,c_1)\left(1 - (1-p)^n\right).
 $$
 
 ##### Two Racks
 When arriving at this rack, if there are no spots open, we have to go to the next rack, which has expected cost $V_1$. However, if there is an open spot, there is a decision to be made. One should take the spot when $c_2 < V_1$, meaning that the cost incurred by parking is less than what you would see on average by continuing. This yields an expected cost for the first rack of 
+
 $$
 V_2 = V_1(1-p)^n + min(V_1,c_2)\left(1 - (1-p)^n\right).
 $$
