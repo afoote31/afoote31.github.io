@@ -54,7 +54,7 @@ $$
 V_2 = V_1(1-p)^n + min(V_1,c_2)\left(1 - (1-p)^n\right).
 $$
 
-#### General Algorithm
+##### General Algorithm
 From above, it looks like we need the expected costs from future racks in order to compute the cost of rack $i$. This is a textbook case of dynamic programming! In general, we have:
 
 $$
@@ -72,7 +72,16 @@ Starting with the closest rack to the door ($i=1$), we can compute the expected 
 
 
 ### Adding Complexity
-The previous setup is not very realistic. I believe that it is reasonable to assume biking happens at random, but it is not reasonable to assume that the rider knows the probability $p$ of each spot being open. So, now let's consider the case when the rider must use an estimate $\hat{p}$. A simple and intuitive way for a rider to estimate $p$ is to simply take the proportion of spots open from the spots that they have seen thus far. Let's see how this changes things.
+The previous setup is not very realistic. I believe that it is reasonable to assume biking happens at random, but it is not reasonable to assume that the rider knows the probability $p$ of each spot being open. So, now let's consider the case when the rider must use an estimate $\hat{p}$. To estimate $p$, we can use the spots we've seen thus far, which are just Bernoulli trials with parameter $p$. Our estimator $\hat{p}$ will be the sample mean.
+
+Our estimate introduces variance into the expected costs. If they become very noisy, it will be hard to know 
+
+
+
+### Beyond Minimizing Expected Cost
+Minimizing the expected cost is a very natural thing to do, but certainly not the only. Imagine if you were racing to class, and an exam was going to start soon and you couldn't sit the exam if you arrived late. With a time $t$ until the exam starts and costs $c_i$ in terms of times, you want to find a rack that maximizes your probability of having cost less than $t$. Note that this may not result in you picking the same rack as the one that minimizes expected time. For instance, you might take a rack with a high cost just under $t$, even if, on average, you would be able to find a rack with lower cost by skipping the current rack.
+
+I believe you just end up with a knapsack-like problem that you can also use dynamic programming on. I think that the incorporation of unknown/estimated $p$ could be interesting here.
 
 1. What do we want to measure here? I would like to be able to say things about the increase in expected error that results in not knowing the true probability $p$. Figure out precisely how to formulate this.
 
