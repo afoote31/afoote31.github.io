@@ -31,7 +31,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/2025-11-09-March-Madness.md/";
+            window.location.href = "/blog/2025/2025-11-09-March-Madness/";
           
         },
       },{id: "post-where-to-park-your-bike",
