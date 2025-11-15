@@ -41,19 +41,27 @@ To build some intuition, let's consider the cases of one, and two racks. We'll c
 You have to incur cost $C$.
 
 ##### One Rack
-When arriving at this rack, if there are no spots open, it is just the zero rack case. If there is a spot open, continue when $c_1 < C$, and park at rack one otherwise. The expected cost of the first rack is \[V_1 = C(1 - p)^n + min(C,c_1)\left(1 - (1-p)^n\right).\]
+When arriving at this rack, if there are no spots open, it is just the zero rack case. If there is a spot open, continue when $c_1 < C$, and park at rack one otherwise. The expected cost of the first rack is 
+$$
+V_1 = C(1 - p)^n + min(C,c_1)\left(1 - (1-p)^n\right).
+$$
 
 ##### Two Racks
-When arriving at this rack, if there are no spots open, we have to go to the next rack, which has expected cost $V_1$. However, if there is an open spot, there is a decision to be made. One should take the spot when $c_2 < V_1$, meaning that the cost incurred by parking is less than what you would see on average by continuing. This yields an expected cost for the first rack of \[V_2 = V_1(1-p)^n + min(V_1,c_2)\left(1 - (1-p)^n\right).\]
+When arriving at this rack, if there are no spots open, we have to go to the next rack, which has expected cost $V_1$. However, if there is an open spot, there is a decision to be made. One should take the spot when $c_2 < V_1$, meaning that the cost incurred by parking is less than what you would see on average by continuing. This yields an expected cost for the first rack of 
+$$
+V_2 = V_1(1-p)^n + min(V_1,c_2)\left(1 - (1-p)^n\right).
+$$
 
 #### General Algorithm
 From above, it looks like we need the expected costs from future racks in order to compute the cost of rack $i$. This is a textbook case of dynamic programming! In general, we have:
+
 $$
 V_i = \begin{cases}
     C                                                       & i = 0 \\
     \left(1-(1-p)^n\right)min(c_i,V_i-1) + (1-p)^nV_i-1     & \text{otherwise.}
 \end{cases}
 $$
+
 Starting with the closest rack to the door ($i=1$), we can compute the expected cost of each rack in linear time. With those values in hand, we can now make a decision on where to park! Beginning at rack $r$ (the furthest from the seminar), decide the following at rack $i$:
 1. If no spots, continue to rack $i-1$ and repeat.
 2. Else:
