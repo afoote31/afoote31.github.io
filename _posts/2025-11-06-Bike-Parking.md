@@ -76,14 +76,14 @@ The previous setup is not very realistic. I believe that it is reasonable to ass
 
 Our estimate introduces variance into the expected costs. If they become very noisy, it will be hard to know 
 
+1. What do we want to measure here? I would like to be able to say things about the increase in expected error that results in not knowing the true probability $p$. Figure out precisely how to formulate this.
+
 
 
 ### Arriving to an Exam on Time
 Minimizing the expected cost is a very natural thing to do, but certainly not the only. Imagine if you were racing to class, and an exam was going to start soon and you couldn't sit the exam if you arrived late. With a time $t$ until the exam starts and costs $c_i$ in terms of times, you want to find a rack that maximizes your probability of having cost less than $t$. Note that this may not result in you picking the same rack as the one that minimizes expected time. For instance, you might take a rack with a high cost just under $t$, even if, on average, you would be able to find a rack with lower cost by skipping the current rack.
 
 I believe you just end up with a knapsack-like problem that you can also use dynamic programming on. I think that the incorporation of unknown/estimated $p$ could be interesting here.
-
-1. What do we want to measure here? I would like to be able to say things about the increase in expected error that results in not knowing the true probability $p$. Figure out precisely how to formulate this.
 
 ### Allowing Circling Back
 
@@ -105,4 +105,4 @@ I like to think that we have built up towards models of bike parking that are ri
 - A few simple algorithms
 - Analysis
 - Probability components
-- Large parking lots or parking garages or maybe even emergency room
+- Large parking lots (Costco) or parking garages or maybe even emergency room
