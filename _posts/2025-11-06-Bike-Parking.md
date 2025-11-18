@@ -81,9 +81,11 @@ Our estimate introduces variance into the expected costs. If they become very no
 
 
 ### Arriving to an Exam on Time
-Minimizing the expected cost is a very natural thing to do, but certainly not the only. Imagine if you were racing to class, and an exam was going to start soon and you couldn't sit the exam if you arrived late. With a time $t$ until the exam starts and costs $c_i$ in terms of times, you want to find a rack that maximizes your probability of having cost less than $t$. Note that this may not result in you picking the same rack as the one that minimizes expected time. For instance, you might take a rack with a high cost just under $t$, even if, on average, you would be able to find a rack with lower cost by skipping the current rack.
+Minimizing the expected cost is a very natural thing to do, but certainly not the only way to frame the problem. Imagine if you were racing to class, and an exam was going to start soon and you couldn't sit the exam if you arrived late. Let the time budge be $t$ until the exam starts and costs $c_i$ in terms of times. Your goal now is to pick a rack that maximizes your probability of arriving on time. Note that this may not result in you picking the same rack as the one that minimizes expected time. For instance, you might take a rack with a high cost just under $t$, even if, on average, you would be able to find a rack with lower cost by skipping the current rack.
 
-I believe you just end up with a knapsack-like problem that you can also use dynamic programming on. I think that the incorporation of unknown/estimated $p$ could be interesting here.
+Under some assumptions that I believe are reasonable, we get a very simple greedy policy. As you arrive at each rack, see if $c_i \leq t$ and if the rack has an open spot. If so, park there, as parking there will yield a probability of one for arriving to the exam on time. If $c_i > t$, continue, as parking here has probability zero of arriving to the exam on time. If the rack is occupied, you must continue.
+
+A key assumption for the greedy algorithm to work is that travel time between racks is negligible. Since biking is much faster than walking (especially when rushing to an exam), the cost of travel between racks would end up being negligible relative to the $c_i$.
 
 ### Allowing Circling Back
 
