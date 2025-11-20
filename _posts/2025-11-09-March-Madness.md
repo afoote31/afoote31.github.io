@@ -1,6 +1,6 @@
 ---
 layout: distill
-title: Survive & Advance: Survival Analysis Applied to March Madness
+title: "Survive & Advance: Survival Analysis Applied to March Madness"
 description: Some work I've done on applying survival analysis tools to help fill out brackets.
 tags:
 giscus_comments: true
