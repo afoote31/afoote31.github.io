@@ -70,16 +70,6 @@ Starting with the closest rack to the door ($i=1$), we can compute the expected 
     1. If $c_i < V_{i-1}$, park.
     2. Otherwise, continue to rack $i-1$.
 
-
-### Unknown Values for $p$
-The previous setup is not very realistic. I believe that it is reasonable to assume biking happens at random, but it is not reasonable to assume that the rider knows the probability $p$ of each spot being open. So, now let's consider the case when the rider must use an estimate $\hat{p}$. To estimate $p$, we can use the spots we've seen thus far, which are just Bernoulli trials with parameter $p$. Our estimator $\hat{p}$ will be the sample mean.
-
-Our estimate introduces variance into the expected costs. If they become very noisy, it will be hard to know 
-
-1. What do we want to measure here? I would like to be able to say things about the increase in expected error that results in not knowing the true probability $p$. Figure out precisely how to formulate this.
-
-
-
 ### Arriving to an Exam on Time
 Minimizing the expected cost is a very natural thing to do, but certainly not the only way to frame the problem. Imagine if you were racing to class, and an exam was going to start soon and you couldn't sit the exam if you arrived late. Let the time budge be $t$ until the exam starts and costs $c_i$ in terms of times. Your goal now is to pick a rack that maximizes your probability of arriving on time. Note that this may not result in you picking the same rack as the one that minimizes expected time. For instance, you might take a rack with a high cost just under $t$, even if, on average, you would be able to find a rack with lower cost by skipping the current rack.
 
@@ -90,6 +80,17 @@ A key assumption for the greedy algorithm to work is that travel time between ra
 ### Allowing Circling Back
 
 The rider always has the choice to turn back and return to a previously open spot. While this backtracking can be costly, it can also save time if the bike either overestimates the probability of open spots or ends up hitting a few unlucky racks in a row that are taken. To consider that, we have to incorporate information about the cost to travel between racks, as well as the openings seen thus far. I believe dynamic programming can still work here, as we're just developing a state space, but I haven't thought much about how to actually formulate it yet. I think that unknown/estimated $p$ will be interesting here.
+
+### Unknown Values for $p$
+The previous setup is not very realistic. I believe that it is reasonable to assume biking happens at random, but it is not reasonable to assume that the rider knows the probability $p$ of each spot being open. So, now let's consider the case when the rider must use an estimate $\hat{p}$. To estimate $p$, we can use the spots we've seen thus far, which are just Bernoulli trials with parameter $p$. Our estimator $\hat{p}$ will be the sample mean.
+
+Our estimate introduces variance into the expected costs. If they become very noisy, it will be hard to know 
+
+1. What do we want to measure here? I would like to be able to say things about the increase in expected error that results in not knowing the true probability $p$. Figure out precisely how to formulate this.
+
+##### The Basic Setup, with Uncertainty
+##### The Time-Limited Extension, with Uncertainty
+##### The Backtracking Extension, with Uncertainty
 
 
 ### Limitations
