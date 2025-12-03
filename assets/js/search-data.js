@@ -23,15 +23,15 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-",
+        },{id: "post-the-impact-of-tanking-on-nba-team-ratings",
         
-          title: "",
+          title: "The Impact of Tanking on NBA Team Ratings",
         
-        description: "",
+        description: "Some work I&#39;ve done on applying survival analysis tools to help fill out brackets.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/2025-11-09-March-Madness/";
+            window.location.href = "/blog/2025/Point-Differential/";
           
         },
       },{id: "post-where-to-park-your-bike",
