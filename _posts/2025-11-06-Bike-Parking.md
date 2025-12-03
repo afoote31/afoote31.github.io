@@ -60,7 +60,7 @@ From above, it looks like we need the expected costs from future racks in order 
 $$
 V_i = \begin{cases}
     C                                                       & i = 0 \\
-    \left(1-(1-p)^n\right)min(c_i,V_{i-1}) + (1-p)^nV_{i-1}     & \text{otherwise.}
+    \left[1-(1-p)^n\right]min(c_i,V_{i-1}) + (1-p)^nV_{i-1}     & \text{otherwise.}
 \end{cases}
 $$
 
@@ -79,10 +79,24 @@ A key assumption for the greedy algorithm to work is that travel time between ra
 
 ### Allowing Circling Back
 
-The rider always has the choice to turn back and return to a previously open spot. While this backtracking can be costly, it can also save time if the bike either overestimates the probability of open spots or ends up hitting a few unlucky racks in a row that are taken. To consider that, we have to incorporate information about the cost to travel between racks, as well as the openings seen thus far. I believe dynamic programming can still work here, as we're just developing a state space, but I haven't thought much about how to actually formulate it yet. I think that unknown/estimated $p$ will be interesting here.
+The rider always has the choice to turn back and return to a previously open spot. While this backtracking can be costly, it can also save time if the bike either overestimates the probability of open spots or ends up hitting a few unlucky racks in a row that are taken. To consider that, we have to incorporate information about the cost to travel between racks, as well as the openings seen thus far. We can still use relatively straight-forward dynamic programming here. We will assume that if we pass an open rack that rack remains open and we do not have to consider the probability of it being taken. Our objective is to minimize the cost incurred, on average.
+
+Take $b_{ij}$ to be the cost to travel from rack $i$ to rack $j$, with the $b$ to emphasize that it is for backtracking. The costs will not be symmetric, meaning $b_{ij}$ doesn't necessarily equal $b_{ji}$ and $c_i$ doesn't necessarily equal the sum of $b_{ij} for $j$ between zero and $i$. Since time is the most natural cost here, this is sensible, as backtracking from rack $i$ to rack $j$ would require slowing down, turning around, and speeding up again, while traveling from rack $j$ to rack $i$ can be done with direct biking.
+
+Intuitively, upon reaching rack $i$ and seeing it to be open, we can park, continue, or backtrack. If we continue, we should remember that this rack is open, as it will influence our calculation at later racks. If rack $i$ is closed, the choices are to continue or to backtrack, and we should note down that it is a closed rack for later calculations.
+
+For the dynamic program, we don't want to enumerate it in a bottom-up fashion, as that does not allow us to incorporate information on the availability of racks that we have seen thus far. We'll compute it in a top-down fashion, starting with the furthest rack. Let's start with a general algorithm, and consider how it can be made simpler if we impose some very natural constraints on the $b_{ij}$'s and $c_{i}'s.
+
+$$
+V_i = \begin{cases}
+    C                                                                                       & i = 0 \\
+    \left[1-(1-p)^n\right]min(c_i,c_j + b_{ij},V_{i-1}) + (1-p)^nmin(c_j + b_{ij},V_{i-1})  & \text{otherwise.}
+\end{cases}
+$$
+
 
 ### Unknown Values for $p$
-The previous setup is not very realistic. I believe that it is reasonable to assume biking happens at random, but it is not reasonable to assume that the rider knows the probability $p$ of each spot being open. So, now let's consider the case when the rider must use an estimate $\hat{p}$. To estimate $p$, we can use the spots we've seen thus far, which are just Bernoulli trials with parameter $p$. Our estimator $\hat{p}$ will be the sample mean.
+The previous setup is not very realistic. I believe that it is reasonable to assume parking happens at random, but it is not reasonable to assume that the rider knows the probability $p$ of each spot being open. So, now let's consider the case when the rider must use an estimate $\hat{p}$. To estimate $p$, we can use the spots we've seen thus far, which are just Bernoulli trials with parameter $p$. Our estimator $\hat{p}$ will be the sample mean.
 
 Our estimate introduces variance into the expected costs. If they become very noisy, it will be hard to know 
 
