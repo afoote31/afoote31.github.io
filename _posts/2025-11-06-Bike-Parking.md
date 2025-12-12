@@ -114,11 +114,16 @@ $$
 Q(i,S,\text{Park}) = c_i \\
 $$
 $$
-Q(i,S,\text{Forward})  = \rho V(i-1, S \cup \\{i-1\\}) + (1-\rho)V(i-1, S)
+Q(i,S,\text{Forward})  = \rho V(i-1, S \cup \\{i-1\\}) + (1-\rho)V(i-1, S)\\
 $$
 $$
-Q(i,S,\text{Backtrack to }j) = V(j, S)
+Q(i,S,\text{Backtrack to }j) = V(j, S)\\
 $$
+
+Still to write up:
+1. Enumeration process for states
+2. Counting the states
+3. Consider the impact of monotonicity on Bellman equations and state space
 
 ### Unknown Values for $p$
 The previous setup is not very realistic. I believe that it is reasonable to assume parking happens at random, but it is not reasonable to assume that the rider knows the probability $p$ of each spot being open. So, now let's consider the case when the rider must use an estimate $\hat{p}$. To estimate $p$, we can use the spots we've seen thus far, which are just Bernoulli trials with parameter $p$. Our estimator $\hat{p}$ will be the sample mean.
@@ -137,14 +142,4 @@ Our estimate introduces variance into the expected costs. If they become very no
 I like to think that we have built up towards models of bike parking that are rich and decently realistic. However, they are all still built on the assumption that spots are filled randomly with equal probability. A very natural way to add complexity is to model the opening probabilities as a function of cost or rack index. That could make a lot of sense in settings where there is only one place people could be heading towards, so everyone has a similar objective (time or distance) and same priority.
 
 
-- Biking is everywhere on Stanford campus
-- Lots of bike racks
-- Naturally you want to park close to the building you will end up in
-- Want to avoid getting to the building without finding a parking spot and then circling back
-- Setups for the problem
-  * Different cost functions (linear, squared)
-  * Blocks of racks, visibility
-- A few simple algorithms
-- Analysis
-- Probability components
 - Large parking lots (Costco) or parking garages or maybe even emergency room
