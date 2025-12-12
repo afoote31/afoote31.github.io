@@ -33,25 +33,29 @@ I'm a resident of Palo Alto, and on Wednesdays I bike over to the Stanford campu
 ### Basic Setup
 I'm going to start by describing the setup that I actually experience on my bike ride to work, where there are a few bike racks, and one cannot see the other racks when passing by one.
 
-To state it somewhat more formally, there are $r$ bike racks, each of which has a cost $c_i$ associated with parking there. For simplicity, we will start by assuming that all racks have $n$ slots on them, potentially with some filled. Let $C$ be the cost that is incurred if you arrive at the door to the seminar without having found a parking spot. Our first goal will be to minimize the expected cost incurred when parking. To say anything about decisions, however, we need to say something about the parking process for the other bikes. Again, to start simple, we will assume that people park randomly. Honestly, I don't think that this is a particularly bad assumption. Even though I'm going to one building for the seminar, there are many other buildings that people might be going to, which would put different costs on each rack. Additionally, people might have different valuations of racks, and the combination of all of these policies might wash out to little better than random guessing anyways. So, each spot on each rack will be open with probability $p$.
+To state it somewhat more formally, there are $r$ bike racks, each of which has a cost $c_i$ associated with parking there. For simplicity, we will start by assuming that all racks have $n$ slots on them, potentially with some filled. Let $C$ be the cost that is incurred if you arrive at the door to the seminar without having found a parking spot. Our first goal will be to minimize the expected cost incurred when parking. To say anything about decisions, however, we need to say something about the parking process for the other bikes. Again, to start simple, we will assume that people park randomly. Honestly, I don't think that this is a particularly bad assumption. Even though I'm going to one building for the seminar, there are many other buildings that people might be going to, which would put different costs on each rack. Additionally, people might have different valuations of racks, and the combination of all of these policies might wash out to little better than random guessing anyways. So, each spot on each rack will be open with probability $p$. For the sake of notation, 
 
-To build some intuition, let's consider the cases of one, and two racks. We'll consider the expected cost, as well as the decision that a rider would make upon arriving at that rack.
+$$
+\rho = 1 - (1-p)^n
+$$
+
+will be the probability that a rack has an open spot. To build some intuition, let's consider the cases of zero, one, and two racks. We'll consider the expected cost, as well as the decision that a rider would make upon arriving at that rack.
 
 ##### Zero Racks
 You have to incur cost $C$.
 
 ##### One Rack
-When arriving at this rack, if there are no spots open, it is just the zero rack case. If there is a spot open, continue when $c_1 < C$, and park at rack one otherwise. The expected cost of the first rack is 
+When arriving at this rack, if there are no spots open, it is just the zero rack case. If there is a spot open, continue when $c_1 > C$, and park at rack one otherwise. The expected cost of the first rack is 
 
 $$
-V_1 = C(1 - p)^n + min(C,c_1)\left(1 - (1-p)^n\right).
+V_1 = C(1-\rho) + min(C,c_1)\rho.
 $$
 
 ##### Two Racks
 When arriving at this rack, if there are no spots open, we have to go to the next rack, which has expected cost $V_1$. However, if there is an open spot, there is a decision to be made. One should take the spot when $c_2 < V_1$, meaning that the cost incurred by parking is less than what you would see on average by continuing. This yields an expected cost for the first rack of 
 
 $$
-V_2 = V_1(1-p)^n + min(V_1,c_2)\left(1 - (1-p)^n\right).
+V_2 = V_1(1-\rho) + min(V_1,c_2)\rho.
 $$
 
 ##### General Algorithm
@@ -60,7 +64,7 @@ From above, it looks like we need the expected costs from future racks in order 
 $$
 V_i = \begin{cases}
     C                                                       & i = 0 \\
-    \left[1-(1-p)^n\right]min(c_i,V_{i-1}) + (1-p)^nV_{i-1}     & \text{otherwise.}
+    \rho min(c_i,V_{i-1}) + (1-\rho)V_{i-1}     & \text{otherwise.}
 \end{cases}
 $$
 
@@ -81,19 +85,40 @@ A key assumption for the greedy algorithm to work is that travel time between ra
 
 The rider always has the choice to turn back and return to a previously open spot. While this backtracking can be costly, it can also save time if the bike either overestimates the probability of open spots or ends up hitting a few unlucky racks in a row that are taken. To consider that, we have to incorporate information about the cost to travel between racks, as well as the openings seen thus far. We can still use relatively straight-forward dynamic programming here. We will assume that if we pass an open rack that rack remains open and we do not have to consider the probability of it being taken. Our objective is to minimize the cost incurred, on average.
 
-Take $b_{ij}$ to be the cost to travel from rack $i$ to rack $j$, with the $b$ to emphasize that it is for backtracking. The costs will not be symmetric, meaning $b_{ij}$ doesn't necessarily equal $b_{ji}$ and $c_i$ doesn't necessarily equal the sum of $b_{ij} for $j$ between zero and $i$. Since time is the most natural cost here, this is sensible, as backtracking from rack $i$ to rack $j$ would require slowing down, turning around, and speeding up again, while traveling from rack $j$ to rack $i$ can be done with direct biking.
+Take $b_{ij}$ to be the cost to travel from rack $i$ to rack $j$, with the $b$ to emphasize that it is for backtracking. The costs will not be symmetric, meaning $b_{ij}$ doesn't necessarily equal $b_{ji}$ and $c_i$ doesn't necessarily equal the sum of $b_{ij}$ for $j$ between zero and $i$. Since time is the most natural cost here, this is sensible, as backtracking from rack $i$ to rack $j$ would require slowing down, turning around, and speeding up again, while traveling from rack $j$ to rack $i$ can be done with direct biking.
 
-Intuitively, upon reaching rack $i$ and seeing it to be open, we can park, continue, or backtrack. If we continue, we should remember that this rack is open, as it will influence our calculation at later racks. If rack $i$ is closed, the choices are to continue or to backtrack, and we should note down that it is a closed rack for later calculations.
+Intuitively, upon reaching rack $i$ and seeing it to be open, we can park, continue, or backtrack. If we continue, we should remember that this rack is open, as it will influence our calculation at later racks. If rack $i$ is closed, the choices are to continue or to backtrack, and we should note down that it is a closed rack for later calculations. This scenario still has a dynamic programming feel to it, but now the actions and values of a state depend on the index of the rack being observed as well as the set $S$ of racks observed to be open. Note that we have a Markov decision process on our hands, as the value at a state $(i,S)$ does not depend on any history, and the future depends only on the state and the actions taken.
 
-For the dynamic program, we don't want to enumerate it in a bottom-up fashion, as that does not allow us to incorporate information on the availability of racks that we have seen thus far. We'll compute it in a top-down fashion, starting with the furthest rack. Let's start with a general algorithm, and consider how it can be made simpler if we impose some very natural constraints on the $b_{ij}$'s and $c_{i}'s.
+The actions that can be taken in a state $(i,S)$ depend on whether rack $i$ is open or not. If the door is reached without parking, one can either incur the cost $C$ or backtrack. Next, if forward progress is still possible and rack $i$ is open, the options are to park, backtrack, or continue forward. In the case that forward progress is possible but parking is not, the options are only to backtrack or continue forward.
 
 $$
-V_i = \begin{cases}
-    C                                                                                       & i = 0 \\
-    \left[1-(1-p)^n\right]min(c_i,c_j + b_{ij},V_{i-1}) + (1-p)^nmin(c_j + b_{ij},V_{i-1})  & \text{otherwise.}
+\mathcal{A}(i,S) = 
+\begin{cases}
+\\{\text{Incur cost} C,\text{Backtrack to }j > i\\} & i = 0,j \in S,i \in S \\
+\\{\text{Park},\text{Backtrack to }j > i, \text{Forward to }i-1 \\} & i > 0,j \in S, i \in S \\
+\\{\text{Backtrack to }j > i, \text{Forward to }i-1 \\} & i > 0,j \in S, i \notin S \\
 \end{cases}
 $$
 
+Upon parking, a terminal state is reached with cost $c_i$ for rack $i$ or $C$ if all racks are passed and backtracking not chosen. If the action chosen is backtracking to rack $j$, then new state is $(j,S)$ with probability 1. Finally, if continuing forward is chosen, state $(i-1, S \cup \\{i-1\\})$ is reached with probability $\rho$ and state 
+$(i-1, S)$ is reached with probability $1-\rho$. The value of a state, $V(i,S)$, defined as
+
+$$
+V(i,S) = min_{a \in \mathcal{A}(i,s)} Q(i,S,a)
+$$
+
+can be computed relatively easily, as the Q-values more or less fall right out from the discussion above.
+
+
+$$
+Q(i,S,\text{Park}) = c_i \\
+$$
+$$
+Q(i,S,\text{Forward})  = \rho V(i-1, S \cup \\{i-1\\}) + (1-\rho)V(i-1, S)
+$$
+$$
+Q(i,S,\text{Backtrack to }j) = V(j, S)
+$$
 
 ### Unknown Values for $p$
 The previous setup is not very realistic. I believe that it is reasonable to assume parking happens at random, but it is not reasonable to assume that the rider knows the probability $p$ of each spot being open. So, now let's consider the case when the rider must use an estimate $\hat{p}$. To estimate $p$, we can use the spots we've seen thus far, which are just Bernoulli trials with parameter $p$. Our estimator $\hat{p}$ will be the sample mean.
