@@ -94,13 +94,13 @@ The actions that can be taken in a state $(i,S)$ depend on whether rack $i$ is o
 $$
 \mathcal{A}(i,S) = 
 \begin{cases}
-\\{\text{Incur cost} C,\text{Backtrack to }j > i\\} & i = 0,j \in S,i \in S \\
+\\{\text{Incur cost } C,\text{Backtrack to }j > i\\} & i = 0,j \in S,i \in S \\
 \\{\text{Park},\text{Backtrack to }j > i, \text{Forward to }i-1 \\} & i > 0,j \in S, i \in S \\
 \\{\text{Backtrack to }j > i, \text{Forward to }i-1 \\} & i > 0,j \in S, i \notin S \\
 \end{cases}
 $$
 
-Upon parking, a terminal state is reached with cost $c_i$ for rack $i$ or $C$ if all racks are passed and backtracking not chosen. If the action chosen is backtracking to rack $j$, then new state is $(j,S)$ with probability 1. Finally, if continuing forward is chosen, state $(i-1, S \cup \\{i-1\\})$ is reached with probability $\rho$ and state 
+Upon parking, a terminal state is reached with cost $c_i$ for rack $i$ or $C$ if all racks are passed and backtracking not chosen. If the action chosen is backtracking to rack $j$, then the new state is $(j,S)$ with probability 1. Finally, if continuing forward is chosen, state $(i-1, S \cup \\{i-1\\})$ is reached with probability $\rho$ and state 
 $(i-1, S)$ is reached with probability $1-\rho$. The value of a state, $V(i,S)$, defined as
 
 $$
@@ -111,18 +111,29 @@ can be computed relatively easily, as the Q-values more or less fall right out f
 
 
 $$
-Q(i,S,\text{Park}) = c_i \\
+Q(i,S,\text{Park}) = c_i\\
 $$
+
 $$
 Q(i,S,\text{Forward})  = \rho V(i-1, S \cup \\{i-1\\}) + (1-\rho)V(i-1, S)\\
 $$
+
 $$
 Q(i,S,\text{Backtrack to }j) = V(j, S)\\
 $$
 
+Unfortunately, the number of states is exponential in the number of racks in the worst case, as there are funky policies that could put you in any rack position with any combination of open/closed racks. However, we often wouldn't see this in practice. Given a vector of costs $c_i$ and backtrack costs $b_{ij}$, one can use a branch-and-bound approach to enumerate the states, pruning out branches that only include options that would never be taken under the costs provided.
+
+One way to make the computation more feasible is to impose constraints on $c_i$ and $b_{ij}$. It is natural to assume that parking at a rack seen earlier is more costly than parking at a later rack, and that backtracking further costs more, i.e., 
+
+$$
+c_i > c_{i-1}\\
+$$
+$$
+b_{ij+1} > b_{ij}\\
+$$
+
 Still to write up:
-1. Enumeration process for states
-2. Counting the states
 3. Consider the impact of monotonicity on Bellman equations and state space
 
 ### Unknown Values for $p$
