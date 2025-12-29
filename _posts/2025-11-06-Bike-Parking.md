@@ -5,7 +5,7 @@ description: How to optimize your bike parking
 tags:
 giscus_comments: true
 date: 2025-11-06
-featured: false
+featured: true
 pretty_table: true
 mermaid:
   enabled: true
