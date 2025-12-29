@@ -26,8 +26,6 @@ bibliography: 2018-12-22-distill.bib
 
 ---
 
-**This post is still a work in progress.**
-
 I'm a resident of Palo Alto, and on Wednesdays I bike over to the Stanford campus to participate in the Department of Biomedical Data Science [Data Studio](https://dbds.stanford.edu/data-studio/). Stanford is an enormous, flat campus, so many traverse it via a bike. Since the seminar starts at 3pm, many of the bike racks are full or close to full as I arrive. This presents me with a decision to make: when should I continue biking towards the seminar, and at what point should I settle for an available spot that I come upon? 
 
 ### Basic Setup
@@ -129,28 +127,15 @@ One way to make the computation more feasible is to impose constraints on $c_i$ 
 $$
 c_i > c_{i-1}\\
 $$
+
 $$
-b_{ij+1} > b_{ij}\\
+b_{ij+1} > b_{ij}.\\
 $$
 
-Still to write up:
-3. Consider the impact of monotonicity on Bellman equations and state space
-
-### Unknown Values for $p$
-The previous setup is not very realistic. I believe that it is reasonable to assume parking happens at random, but it is not reasonable to assume that the rider knows the probability $p$ of each spot being open. So, now let's consider the case when the rider must use an estimate $\hat{p}$. To estimate $p$, we can use the spots we've seen thus far, which are just Bernoulli trials with parameter $p$. Our estimator $\hat{p}$ will be the sample mean.
-
-Our estimate introduces variance into the expected costs. If they become very noisy, it will be hard to know 
-
-1. What do we want to measure here? I would like to be able to say things about the increase in expected error that results in not knowing the true probability $p$. Figure out precisely how to formulate this.
-
-##### The Basic Setup, with Uncertainty
-##### The Time-Limited Extension, with Uncertainty
-##### The Backtracking Extension, with Uncertainty
-
+With these assumptions, it would never make sense to backtrack, since a backtracking cost would be incurred just to park at a more costly rack! The inclusion of both monotonicity constraints reduces the problem to the first one we considered, but both of these monotonicity constraints seem natural to me.
 
 ### Limitations
 
-I like to think that we have built up towards models of bike parking that are rich and decently realistic. However, they are all still built on the assumption that spots are filled randomly with equal probability. A very natural way to add complexity is to model the opening probabilities as a function of cost or rack index. That could make a lot of sense in settings where there is only one place people could be heading towards, so everyone has a similar objective (time or distance) and same priority.
+I like to think that we have considered models of bike parking that are rich and decently realistic. However, they are all still built on the assumption that spots are filled randomly with equal probability. A very natural way to add complexity is to model the opening probabilities as a function of cost or rack index. That could make a lot of sense in settings where there is only one place people could be heading towards, so everyone has a similar objective (time or distance) and same priority. Additionally, a natural next step would be to estimate $p$ from observed parking, rather than taking it as a known quantity. One could then combine those two additional complexities as well. I hope to explore these possibilities in future posts, potentially extending this one.
 
-
-- Large parking lots (Costco) or parking garages or maybe even emergency room
+Along with using this approach to understand bike parking, one could use it to model parking in large parking lots such as Costco or in parking garages, where there are multiple discrete parking options to observe (parking lot aisles for Costco or levels for a parking garage), and one must decide whether to park at an observed open spot or to continue to a more desirable location.
