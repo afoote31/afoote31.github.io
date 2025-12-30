@@ -1,0 +1,62 @@
+[
+  {
+    "Player" : "Pete Werner",
+    "Position" : "OLB",
+    "Uniform" : 16.31,
+    "Inverse Distance" : 7.52
+  },
+  {
+    "Player" : "Greg Gaines",
+    "Position" : "NT",
+    "Uniform" : 23.96,
+    "Inverse Distance" : 7.35
+  },
+  {
+    "Player" : "Zack Sieler",
+    "Position" : "DT",
+    "Uniform" : 15.24,
+    "Inverse Distance" : 7.21
+  },
+  {
+    "Player" : "Derrick Brown",
+    "Position" : "DE",
+    "Uniform" : 16.83,
+    "Inverse Distance" : 6.37
+  },
+  {
+    "Player" : "DeForest Buckner",
+    "Position" : "DT",
+    "Uniform" : 9.35,
+    "Inverse Distance" : 6.24
+  },
+  {
+    "Player" : "Davon Godchaux",
+    "Position" : "NT",
+    "Uniform" : 18.57,
+    "Inverse Distance" : 5.83
+  },
+  {
+    "Player" : "Quinnen Williams",
+    "Position" : "NT",
+    "Uniform" : 11.68,
+    "Inverse Distance" : 5.74
+  },
+  {
+    "Player" : "Grover Stewart",
+    "Position" : "DT",
+    "Uniform" : 10.07,
+    "Inverse Distance" : 5.74
+  },
+  {
+    "Player" : "Christian Kirksey",
+    "Position" : "OLB",
+    "Uniform" : 10.35,
+    "Inverse Distance" : 5.71
+  },
+  {
+    "Player" : "Shaq Thompson",
+    "Position" : "ILB",
+    "Uniform" : 18.39,
+    "Inverse Distance" : 5.66
+  },
+]
