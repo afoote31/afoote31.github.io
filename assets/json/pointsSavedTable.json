@@ -1,62 +1,62 @@
 [
   {
-    "Player" : "Pete Werner",
-    "Position" : "OLB",
-    "Uniform" : 16.31,
-    "Inverse Distance" : 7.52
+    "player" : "Pete Werner",
+    "position" : "OLB",
+    "uniform" : 16.31,
+    "inverse" : 7.52
   },
   {
-    "Player" : "Greg Gaines",
-    "Position" : "NT",
-    "Uniform" : 23.96,
-    "Inverse Distance" : 7.35
+    "player" : "Greg Gaines",
+    "position" : "NT",
+    "uniform" : 23.96,
+    "inverse" : 7.35
   },
   {
-    "Player" : "Zack Sieler",
-    "Position" : "DT",
-    "Uniform" : 15.24,
-    "Inverse Distance" : 7.21
+    "player" : "Zack Sieler",
+    "position" : "DT",
+    "uniform" : 15.24,
+    "inverse" : 7.21
   },
   {
-    "Player" : "Derrick Brown",
-    "Position" : "DE",
-    "Uniform" : 16.83,
-    "Inverse Distance" : 6.37
+    "player" : "Derrick Brown",
+    "position" : "DE",
+    "uniform" : 16.83,
+    "inverse" : 6.37
   },
   {
-    "Player" : "DeForest Buckner",
-    "Position" : "DT",
-    "Uniform" : 9.35,
-    "Inverse Distance" : 6.24
+    "player" : "DeForest Buckner",
+    "position" : "DT",
+    "uniform" : 9.35,
+    "inverse" : 6.24
   },
   {
-    "Player" : "Davon Godchaux",
-    "Position" : "NT",
-    "Uniform" : 18.57,
-    "Inverse Distance" : 5.83
+    "player" : "Davon Godchaux",
+    "position" : "NT",
+    "uniform" : 18.57,
+    "inverse" : 5.83
   },
   {
-    "Player" : "Quinnen Williams",
-    "Position" : "NT",
-    "Uniform" : 11.68,
-    "Inverse Distance" : 5.74
+    "player" : "Quinnen Williams",
+    "position" : "NT",
+    "uniform" : 11.68,
+    "inverse" : 5.74
   },
   {
-    "Player" : "Grover Stewart",
-    "Position" : "DT",
-    "Uniform" : 10.07,
-    "Inverse Distance" : 5.74
+    "player" : "Grover Stewart",
+    "position" : "DT",
+    "uniform" : 10.07,
+    "inverse" : 5.74
   },
   {
-    "Player" : "Christian Kirksey",
-    "Position" : "OLB",
-    "Uniform" : 10.35,
-    "Inverse Distance" : 5.71
+    "player" : "Christian Kirksey",
+    "position" : "OLB",
+    "uniform" : 10.35,
+    "inverse" : 5.71
   },
   {
-    "Player" : "Shaq Thompson",
-    "Position" : "ILB",
-    "Uniform" : 18.39,
-    "Inverse Distance" : 5.66
+    "player" : "Shaq Thompson",
+    "position" : "ILB",
+    "uniform" : 18.39,
+    "inverse" : 5.66
   },
 ]
