@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-where-to-park-your-bike",
+        },{id: "post-where-does-myles-garrett-39-s-season-stack-against-all-time-great-sack-seasons",
+        
+          title: "Where Does Myles Garrett&#39;s Season Stack Against All Time Great Sack Seasons?",
+        
+        description: "With Myles Garrett breaking the official sack record, I wanted to explore how it compares to other all time great pass rushers.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/Deacon-Jones/";
+          
+        },
+      },{id: "post-where-to-park-your-bike",
         
           title: "Where to Park Your Bike",
         
