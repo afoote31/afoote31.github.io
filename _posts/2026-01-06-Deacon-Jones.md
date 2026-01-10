@@ -1,7 +1,7 @@
 ---
 layout: distill
-title: Where Does Myles Garrett's Season Stack Against All Time Great Sack Seasons?
-description: With Myles Garrett breaking the official sack record, I wanted to explore how it compares to other all time great pass rushers. 
+title: Myles Garrett Broke the Single Season Sack Record. So?
+description: With Myles Garrett breaking the official single season sack record, I explore how it compares to other all time great pass rush seasons. 
 tags:
 giscus_comments: true
 date: 2026-1-06
@@ -33,7 +33,7 @@ In the 2025 NFL regular season, Myles Garrett chasing the all time single season
 
 However, it took him until the final game of the season to earn the record, meaning it took him 17 games. This has led some critics to discredit the record as the byproduct of more opportunities. Some even take issue with the way that Joe Burrow fell to the ground when pressured by Garrett, although it certainly doesn't have the same optics as the Strahan sack on Favre in 2001.
 
-Putting this monumental achievement in the context of other all time seasons is difficult given the different play styles in different eras. For instance, offenses have become considerably more pass-heavy over time, giving defenders more opportunities to sack the quarterback (see plot below). On the other hand, ever since Bill Walsh turned football on its head with the introduction of the west coast offense first in Cincinnati under Paul Brown (1968-1975) before architecting a dynasty with the 49ers using the scheme, short passing has become more and more popular, decreasing the quality of the opportunities that pass rushers receive. In recent years, rich data sources such as that provided by the [Kaggle NFL Big Data Bowl](https://www.kaggle.com/competitions/nfl-big-data-bowl-2026-analytics) have allowed new stats to be developed that are better able to account for these nuances. However, the differences are still difficult to account for historically. On top of all of this, sacks were not counted as an official statistic until 1982, leaving only unofficial counts for many Hall of Famers. In this post, I will be considering unofficial sack totals.
+Putting this monumental achievement in the context of other all time seasons is difficult given the different play styles in different eras. For instance, offenses have become considerably more pass-heavy over time, giving defenders more opportunities to sack the quarterback (see plot below). On the other hand, ever since Bill Walsh turned football on its head with the introduction of the west coast offense first in Cincinnati under Paul Brown (1968-1975) before architecting a dynasty with the 49ers using the scheme, short passing has become more and more popular, decreasing the quality of the opportunities that pass rushers receive. In recent years, rich data sources such as that provided by the [Kaggle NFL Big Data Bowl](https://www.kaggle.com/competitions/nfl-big-data-bowl-2026-analytics) have allowed new stats to be developed that are better able to account for these nuances. However, the differences are still difficult to account for historically. On top of all of this, sacks were not counted as an official statistic until 1982, leaving only unofficial counts for many Hall of Famers. In this post, I will be considering unofficial sack totals, which were tallied by football historian and John Turney for [NFL Football Journal](https://nflfootballjournal.blogspot.com/).
 
 
 <div class="row mt-3">
@@ -50,19 +50,19 @@ Putting this monumental achievement in the context of other all time seasons is 
 
 For this post, we will be taking the sack totals at face value, admittedly a limitation. I will be considering the players that equaled or bettered Deacon Jones's 1967 season with 21.5 sacks, yielding eight players along with Jones. The players and their seasons are:
 
-| Player            | Sack Total    | Season        | Games Played  |
-| :-----------      | :------------:|:------------: |:-------------:|
-| Al Baker          | 23            | 1978          | 16            |
-| Myles Garrett     | 23            | 2025          | 17            |
-| Michael Strahan   | 22.5          | 2001          | 16            |
-| TJ Watt           | 22.5          | 2021          | 15            |
-| Jared Allen       | 22            | 2011          | 16            |
-| Mark Gastineau    | 22            | 1984          | 16            |
-| Justin Houston    | 22            | 2014          | 16            |
-| Deacon Jones      | 22            | 1964          | 14            |
-| Deacon Jones      | 22            | 1968          | 14            |
-| Coy Bacon         | 21.5          | 1976          | 16            |
-| Deacon Jones      | 21.5          | 1967          | 14            |
+| Player            | Sack Total      | Season        | Games Played  |
+| :-----------      | :------------:  |:------------: |:-------------:|
+| Al Baker          | 23              | 1978          | 16            |
+| Myles Garrett     | 23              | 2025          | 17            |
+| Michael Strahan   | 22.5            | 2001          | 16            |
+| TJ Watt           | 22.5            | 2021          | 15            |
+| Jared Allen       | 22              | 2011          | 16            |
+| Mark Gastineau    | 22              | 1984          | 16            |
+| Justin Houston    | 22              | 2014          | 16            |
+| Deacon Jones      | 22              | 1964          | 14            |
+| Deacon Jones      | 22              | 1968          | 14            |
+| Coy Bacon         | 21.5            | 1976          | 16            |
+| Deacon Jones      | 21.5            | 1967          | 14            |
 
 ### The Greatness of Deacon Jones
 
