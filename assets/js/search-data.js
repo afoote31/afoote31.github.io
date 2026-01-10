@@ -23,11 +23,11 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-where-does-myles-garrett-39-s-season-stack-against-all-time-great-sack-seasons",
+        },{id: "post-myles-garrett-broke-the-single-season-sack-record-so",
         
-          title: "Where Does Myles Garrett&#39;s Season Stack Against All Time Great Sack Seasons?",
+          title: "Myles Garrett Broke the Single Season Sack Record. So?",
         
-        description: "With Myles Garrett breaking the official sack record, I wanted to explore how it compares to other all time great pass rushers.",
+        description: "With Myles Garrett breaking the official single season sack record, I explore how it compares to other all time great pass rush seasons.",
         section: "Posts",
         handler: () => {
           
