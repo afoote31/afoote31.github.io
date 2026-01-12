@@ -83,15 +83,24 @@ For our analysis, for each player, we will compute all 14 game subsets of a play
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid path="assets/img/MylesGarrett.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/MichaelStrahan.png" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
+</div>
+<div class="caption">
+  The distribution of sack totals for all 14 game subsets from the top sack seasons. Subsets with more than 22 sacks are highlighted in red.
+</div>
+
+<div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid path="assets/img/TJWatt.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid path="assets/img/JaredAllen.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
+</div>
+<div class="caption">
+  The distribution of sack totals for all 14 game subsets from the top sack seasons. Subsets with more than 22 sacks are highlighted in red.
+</div>
+
+<div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid path="assets/img/MarkGastineau.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
