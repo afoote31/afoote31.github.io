@@ -23,9 +23,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "post-myles-garrett-broke-the-single-season-sack-record-so",
+        },{id: "post-23-sacks-in-17-games-contextualizing-myles-garrett-39-s-record-breaking-season",
         
-          title: "Myles Garrett Broke the Single Season Sack Record. So?",
+          title: "23 Sacks in 17 Games: Contextualizing Myles Garrett&#39;s Record-Breaking Season",
         
         description: "With Myles Garrett breaking the official single season sack record, I explore how it compares to other all time great pass rush seasons.",
         section: "Posts",
