@@ -49,9 +49,9 @@ rss_icon: true
 
 navbar_fixed: true
 footer_fixed: true
-search_enabled: true
-socials_in_search: true
-posts_in_search: true
+search_enabled: false
+socials_in_search: false
+posts_in_search: false
 bib_search: true
 
 # Dimensions
@@ -88,7 +88,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: FooteNotes # blog_name will be displayed in your blog page
-blog_description: I hope to write about papers I find interesting, discuss side projects I'm working on, and provide resources for applying to graduate school.
+blog_description: I write about papers I find interesting, discuss side projects I'm working on, and provide resources for applying to graduate school.
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
