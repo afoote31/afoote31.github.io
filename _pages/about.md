@@ -28,6 +28,8 @@ I'm currently working as a data science consultant with [CMC: Foundation for Cha
 
 For my undergrad I earned a BA with high honors in computer science and data analysis from Wesleyan, researching algorithms and computational complexity problems related to [Nonogram](https://en.wikipedia.org/wiki/Nonogram) with [Danny Krizanc](https://dkrizanc.web.wesleyan.edu/). I also earned an MA in computer science from Wesleyan, developing interpretable ML methods to evaluate feature importance scores for bias. I have experience as a TA for computer science, statistics, and data science courses, and worked as a peer tutor consulting on quantitative social science research during my time at Wesleyan.
 
+I played varsity basketball in high school and ran track in high school and college, so I really enjoy combining my passions for sports and statistics in sports analytics! My blog discusses some projects and thoughts I have about sports, and I hope to write more!
+
 This website is very much a work in progress, but feel free to look around! My CV linked at the top of the page has my email.
 
 <!-- and Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder. -->
