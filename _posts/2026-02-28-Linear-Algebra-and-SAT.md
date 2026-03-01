@@ -38,7 +38,8 @@ My intuition was that for two clauses, if we represent them as binary vectors to
 
 The next task is to compute this efficiently. For a given CNF formula, the first step is to represent each clause as a binary vector. These binary vectors will then be stored in a matrix. I think that a data structure for CNF formulae would reasonably store the highest variable index and number of clauses, which give the dimensions of the matrix. In the Nonogram case, the highest variable index is $n$ which is *much* less than the number of clauses we will have, giving us an incredibly tall matrix $A$. In the process of converting each of the clauses to binary vector representation, one could compute the magnitudes of the vectors by tracking how many one-indices are stored for each vector. Thus, I will assume that we have a vector with the magnitude of the $i$-th clause $c_i$ in binary representation as the $i$-th element.
 
-To compute the dot products between clauses, we simply compute $AA^T$. Then, for entry $A_{ij}$, we know that the vector with minimum magnitude between $\vec{c}_i$ and $\vec{c}_j$ subsumes the larger if $A_{ij} = min(\lVert\vec{c}_i\rVert,\lVert\vec{c}_j\rVert)$. We can gain further efficiency improvements by storing the magnitude vector in sorted order and then processing the smallest vectors first, thus removing as many future comparisons as possible.
+To compute the dot products between clauses, we simply compute $AA^T$. Then, for entry $A_{ij}$, we know that $c_i$ subsumes $c_k$ if 
+$A_{ij} = min(\lVert\vec{c}_i\rVert,\lVert\vec{c}_j\rVert)$. We can gain further efficiency improvements by storing the magnitude vector in sorted order and then processing the smallest vectors first, thus removing as many future comparisons as possible.
 
 ### SVD as a Heuristic for Difficulty
 
