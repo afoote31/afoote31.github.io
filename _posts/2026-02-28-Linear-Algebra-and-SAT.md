@@ -5,7 +5,7 @@ description: Two observations I had on how one might use linear algebra to proce
 tags:
 giscus_comments: true
 date: 2026-02-28
-featured: true
+featured: false
 pretty_table: true
 mermaid:
   enabled: true
@@ -43,6 +43,10 @@ $A_{ij} = min(\lVert\vec{c}_i\rVert,\lVert\vec{c}_j\rVert)$. We can gain further
 
 ### SVD as a Heuristic for Difficulty
 
-With the matrix idea in hand, I was wondering if there were any other possible ways to use it. It occured to me that if one can summarize the matrix in a low-dimensional space, that has the intuitive feel that the SAT instance is not that hard. I haven't dug into this part yet, but that is to come...
+With the binary matrix representation in hand, I was wondering if there were any other possible ways to use it. It occured to me that if one can summarize the matrix in a low-dimensional space, that has the intuitive feel that the SAT instance is not that hard. I wanted to explore this using singular value decomposition (SVD), which attmpts to deconstruct our matrix $A$ into the product of three matrices as $A = U\Sigma V^T$. The real matrix of interest for us if $\Sigma$, which is a diagonal matrix with the singular values of $A$ on the diagonal. The square of these singular values give the eigenvalues, and each of these eigenvalues is the proportion of the variance in the original matrix that is explained by each of the components. In our case, since the SVD treats values in the original matrix as continuous, the new components that we create do not have any meaning logically (that I know of). What I want to explore is the relationship between number of components and proportion of variance explained for different formulas.
+
+The SVD identifies the linear combinations of literals that account for the most variability in clauses. My intuition is that formulas that are easier to solve will end up having a smaller number of literal patterns repeated in clauses, and thus the formula will be summarized in fewer components than a more complex formula. As a side note, SVD is easiest to compute on matrices that are very tall. This applies directly to the use case of Nonogram encoding, as there are only a few variables but there is a large number of clauses.
+
+To test this intuition, I will be doing some experiments using random 3-SAT instances to compare this new heuristic with some standard heuristics. Maybe the most common heuristic is the clause-to-variable ratio<d-cite key="randomSAT"></d-cite>. It has been shown that the difficulty of SAT instances spikes at a ratio of about 4.267 for random 3-SAT. For the analysis, I will consider formulas with 300 variables, and clause-to-variable ratios between 2 and 6. For each ratio, I will create 500 formulas by first sampling sets of three variables without replacement and then negating each with probability 0.5, repeating this process until the desired ratio between clauses and variables is met.
 
 Once I've introduced the idea of dimensionality reduction or SVD for my representation, I will do some empirical comparisons of this approach to measure hardness compared to other approaches that already exist in literature. I'll take a bunch of SAT instances, compute the difficulty according to my metric (probably the number of dimensions to explain some proportion of the variance, which I can do a sensitivity analysis on), and plot that against the other metrics, looking for a correlation.
