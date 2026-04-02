@@ -38,3 +38,11 @@ While there is no silver bullet, I really like the clean, intuitive, approach th
 
 #### P-hacking in meta-analyses: A formalization and new meta-analytic methods
 Having enjoyed the first paper, I dug into to another paper from Mathur that builds out a framework for p-hacking and publication bias more generally<d-cite key="mathur1"></d-cite>. I really like it as a model for these two related concepts, and think it could provide the tools to prove properties about meta-analysis methods in regards to these concepts.
+
+##### Model
+
+##### Right-Truncated Meta-Analysis (RTMA)
+
+In the paper they just recommend doing some diagnostics including a QQ-plot for the Jeffrey's prior, but explore the topic through extensive simulation in a later paper<d-cite key="mathur3"></d-cite>.
+
+##### Meta-Analysis of Non-Affirmative Studies (MAN)
