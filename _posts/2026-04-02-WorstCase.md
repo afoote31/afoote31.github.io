@@ -25,3 +25,5 @@ giscus_comments: true
 bibliography: 2018-12-22-distill.bib
 
 ---
+
+Recently I had an itch to learn a bit about meta analysis methods, so I dug through some papers to learn a bit about it. In this process, I stumbled onto a pair of papers by Professor [Maya Mathur](https://www.mayamathur.com/) at Stanford that I thought were very interesting<d-cite key="mathur1"></d-cite><d-cite key="mathur2"></d-cite>.
