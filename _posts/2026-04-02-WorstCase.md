@@ -48,6 +48,8 @@ $$
 
 with $ \mu_i \sim \mathcal{N}(\mu , \tau^2) $ and $ \epsilon_i \sim \mathcal(0,\sigma_i^2) $. Our study point estimates $ \hat{\theta}_i $ are centered on the study mean effect $\mu_i$, and these are normally distributed around the quantity of interest $\mu$, the overall mean population effect. The variances of the study point estimates are treated as fixed and known, while study effect variances are unknown.
 
+An investigator in a potentially hacked study obtains multiple (possible correlated) estimates $ \{ \hat{\theta}^*\sb{i1}, \hat{\theta}^*\sb{i2}, dots\} $.
+
 
 ##### Right-Truncated Meta-Analysis (RTMA)
 
