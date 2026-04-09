@@ -30,7 +30,7 @@ WHAT IS AN IDEAL ESTIMATE IN THE RTMA AND MODEL PAPER!?!?!
 
 Recently I had an itch to learn a bit about meta-analysis methods, so I dug through some papers to learn a bit about it. In this process, I stumbled onto a pair of papers by Professor [Maya Mathur](https://www.mayamathur.com/) at Stanford that I thought were very interesting.
 
-#### Assessing robustness to worst case publication bias using a simple subset meta-analysis
+## Assessing robustness to worst case publication bias using a simple subset meta-analysis
 In this paper<d-cite key="mathur2"></d-cite>, Mathur proposes an approach to meta-analysis that can be used in order to conduct of "worst case lower bound" sensitivity analysis. Rather than trying to estimate the strength of publication bias, a meta-analysis is conducted using only non-affirmative studies, which are those with non-significant P values
 or point estimates in the undesired direction. This meta-analysis on non-affirmative studies approach (MAN) assumes worst-case publication bias where affirmative studies are infinitely more likely to be published than non-affirmative ones. Without knowing the true relative likelihoods of publication, MAN offers a conservative estimate by assuming the worst. To use MAN, you can use your favorite meta-analysis technique, but just on the non-affirmative studies. Thus, it is a complementary tool rather than a tool to replace other methods. If we find that results are still as we would hope under the worst-case publication bias, we can be optimistic that they will hold generally.
 
@@ -38,10 +38,10 @@ As a student with experience in algorithms research, I really liked this idea of
 
 While there is no silver bullet, I really like the clean, intuitive, approach the MAN offers.
 
-#### P-hacking in meta-analyses: A formalization and new meta-analytic methods
+## P-hacking in meta-analyses: A formalization and new meta-analytic methods
 Having enjoyed the first paper, I dug into to another paper from Mathur that builds out a framework for p-hacking and publication bias more generally<d-cite key="mathur1"></d-cite>. I really like it as a model for these two related concepts, and think it could provide the tools to prove properties about meta-analysis methods in regards to these concepts.
 
-##### Model
+### Model
 The mathematical of publication bias and p-hacking is probably my favorite part of the paper. They distinguish publication bias as selection *across* studies (SAS) where final estimates obtained by papers are selectively offered for review from p-hacking as selection *within* studies (SWS), where multiple estimates may be obtained within one study. Estimates in literature may be subject to either of these influences, or potentially both (a p-hacked estimate is selectively published). A basic model for meta-analysis without either SAS or SWS is 
 
 $$
@@ -50,18 +50,33 @@ $$
 
 with $ \mu_i \sim \mathcal{N}(\mu , \tau^2) $ and $ \epsilon_i \sim \mathcal{N}(0,\sigma_i^2) $. Our study point estimates $ \hat{\theta}_i $ are centered on the study mean effect $\mu_i$, and these are normally distributed around the quantity of interest $\mu$, the overall mean population effect. The variances of the study point estimates are treated as fixed and known, while study effect variances are unknown.
 
-An investigator in a potentially hacked study obtains multiple (possible correlated) estimates $\hat{\theta}^{*}_{i1}, \hat{\theta}^{*}_{i2}, \dots$ but select a single "favored" estimate to report, yielding a favored estimate $\hat{\theta}\^*\_{iF}$. An estimate $\hat{\theta}\_{in}^* $ is affirmative, denoted $A\^*\_{in} = 1$, if 
-$\frac{\hat{\theta}\_{in}\^*}{\sigma\^*\_i} > c $ for some critical value $c$. 
+#### SWS
 
-The paper proposes that hacked studies are hacked because the distribution of the study's ideal estimate differs from the distribution estimate, both marginally and conditional on the affirmative status of these two estimates. This implies that in unhacked studies, the probability that a favored estimate is affirmative is equal to the probability that the ideal estimate is affirmative. A hacked study ($H_i^* = 1$) is successful iff the favored estimate $\hat{\theta}\^*\_{iF}$ is affirmative (otherwise considered unsuccessful).
+An investigator in a potentially hacked study obtains multiple (possible correlated) estimates $\{\hat{\theta}^\ast_{i1}, \hat{\theta}^\ast_{i2}, \dots \}$ but select a single "favored" estimate to report, yielding a favored estimate $\hat{\theta}^\ast_{iF}$. An estimate $\hat{\theta}^\ast_{in} $ is affirmative, denoted $A^\ast_{in} = 1$, if 
+$\frac{\hat{\theta}_{in}^\ast}{\sigma^\ast\_i} > c $ for some critical value $c$. 
 
-As an example
+The paper proposes that hacked studies are hacked because the distribution of the study's ideal estimate differs from the distribution estimate, both marginally and conditional on the affirmative status of these two estimates<d-footnote>The paper has a nice visual example of what this means in the appendix.</d-footnote>. This implies that in unhacked studies, the probability that a favored estimate is affirmative is equal to the probability that the ideal estimate is affirmative. A hacked study ($H_i^* = 1$) is successful iff the favored estimate $\hat{\theta}^\ast_{iF}$ is affirmative (otherwise considered unsuccessful).
 
+#### SAS
+
+Selection across studies operates on studies' favored estimates, ignoring whether they are also ideal, affecting whether the favored estimate is published. Let $D^*_i = 1$ indicate that the $i$-th study is published (zero otherwise). To be used later, they define "stringent SAS" as occurring if
+
+$$
+\mathbb{P}(D_i^* = 1 \vert H_i^* = 1, A^*_{iF} = 0) = 0.
+$$
+
+In words, this means that SAS is stringent if hackers never publish nonaffirmative studies.
 In modeling, they make a handful of assumptions:
 
 1. **Studies are independent** This is a pretty standard assumption.
 2. **Ideal estimates are exchangeable across underlying hacked and unhacked studies** I'll leave the precise mathematical specification of this assumption to the paper, but the upshot of this is that you don't see different ideal estimates if you're hacking or not. This should certainly be the case.
+3. **There is no preference for larger nonaffirmative estimates** Mathematically:
 
+$$
+\text{For each } h \in \{0,1\}, D_i^\ast \perp \!\!\! \perp \hat{\theta}^\ast_{iF} \vert H_i^\ast = h, A^\ast_{iF} = 1.
+$$
+
+In words, regardless of hacking or not, if a favored estimate is unaffirmative then whether it is published or not does not depend on the estimate.
 
 ##### Right-Truncated Meta-Analysis (RTMA)
 
