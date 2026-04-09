@@ -46,9 +46,12 @@ $$
 \hat{\theta}_i = \mu_i + \epsilon_i
 $$
 
-with $ \mu_i \sim \mathcal{N}(\mu , \tau^2) $ and $ \epsilon_i \sim \mathcal(0,\sigma_i^2) $. Our study point estimates $ \hat{\theta}_i $ are centered on the study mean effect $\mu_i$, and these are normally distributed around the quantity of interest $\mu$, the overall mean population effect. The variances of the study point estimates are treated as fixed and known, while study effect variances are unknown.
+with $ \mu_i \sim \mathcal{N}(\mu , \tau^2) $ and $ \epsilon_i \sim \mathcal{N}(0,\sigma_i^2) $. Our study point estimates $ \hat{\theta}_i $ are centered on the study mean effect $\mu_i$, and these are normally distributed around the quantity of interest $\mu$, the overall mean population effect. The variances of the study point estimates are treated as fixed and known, while study effect variances are unknown.
 
-An investigator in a potentially hacked study obtains multiple (possible correlated) estimates $ \{ \hat{\theta}^*\sb{i1}, \hat{\theta}^*\sb{i2}, dots\} $.
+An investigator in a potentially hacked study obtains multiple (possible correlated) estimates $ \{ \hat{\theta}\^*\_{i1}, \hat{\theta}^*\sb{i2}, dots\} $ but select a single "favored" estimate to report, yielding a favored estimate $\hat{\theta}^*\sb{iF}$. An estimate $\hat{\theta}\_{in}^* $ is affirmative, denoted $A\^*\_{in} = 1$, if 
+$\frac{\hat{\theta}\_{in}\^*}{\sigma\^*\_i} > c $ for some critical value $c$.
+
+A hacked study ($H_i^* = 1$) is "successful" iff the favored estimate is affirmative (otherwise considered "unsuccessful").
 
 
 ##### Right-Truncated Meta-Analysis (RTMA)
