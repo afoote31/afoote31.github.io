@@ -40,6 +40,14 @@ While there is no silver bullet, I really like the clean, intuitive, approach th
 Having enjoyed the first paper, I dug into to another paper from Mathur that builds out a framework for p-hacking and publication bias more generally<d-cite key="mathur1"></d-cite>. I really like it as a model for these two related concepts, and think it could provide the tools to prove properties about meta-analysis methods in regards to these concepts.
 
 ##### Model
+The mathematical of publication bias and p-hacking is probably my favorite part of the paper. They distinguish publication bias as selection *across* studies (SAS) where final estimates obtained by papers are selectively offered for review from p-hacking as selection *within* studies (SWS), where multiple estimates may be obtained within one study. Estimates in literature may be subject to either of these influences, or potentially both (a p-hacked estimate is selectively published). A basic model for meta-analysis without either SAS or SWS is 
+
+$$
+\hat{\theta}_i = \mu_i + \epsilon_i
+$$
+
+with $ \mu_i \sim \mathcal{N}(\mu , \tau^2) $ and $ \epsilon_i \sim \mathcal(0,\sigma_i^2) $. Our study point estimates $ \hat{\theta}_i $ are centered on the study mean effect $\mu_i$, and these are normally distributed around the quantity of interest $\mu$, the overall mean population effect. The variances of the study point estimates are treated as fixed and known, while study effect variances are unknown.
+
 
 ##### Right-Truncated Meta-Analysis (RTMA)
 
