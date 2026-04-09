@@ -26,6 +26,8 @@ bibliography: 2018-12-22-distill.bib
 
 ---
 
+WHAT IS AN IDEAL ESTIMATE IN THE RTMA AND MODEL PAPER!?!?!
+
 Recently I had an itch to learn a bit about meta-analysis methods, so I dug through some papers to learn a bit about it. In this process, I stumbled onto a pair of papers by Professor [Maya Mathur](https://www.mayamathur.com/) at Stanford that I thought were very interesting.
 
 #### Assessing robustness to worst case publication bias using a simple subset meta-analysis
@@ -48,10 +50,8 @@ $$
 
 with $ \mu_i \sim \mathcal{N}(\mu , \tau^2) $ and $ \epsilon_i \sim \mathcal{N}(0,\sigma_i^2) $. Our study point estimates $ \hat{\theta}_i $ are centered on the study mean effect $\mu_i$, and these are normally distributed around the quantity of interest $\mu$, the overall mean population effect. The variances of the study point estimates are treated as fixed and known, while study effect variances are unknown.
 
-An investigator in a potentially hacked study obtains multiple (possible correlated) estimates $ \{ \hat{\theta}\^*\_{i1}, \hat{\theta}^*\sb{i2}, dots\} $ but select a single "favored" estimate to report, yielding a favored estimate $\hat{\theta}^*\sb{iF}$. An estimate $\hat{\theta}\_{in}^* $ is affirmative, denoted $A\^*\_{in} = 1$, if 
-$\frac{\hat{\theta}\_{in}\^*}{\sigma\^*\_i} > c $ for some critical value $c$.
-
-A hacked study ($H_i^* = 1$) is "successful" iff the favored estimate is affirmative (otherwise considered "unsuccessful").
+An investigator in a potentially hacked study obtains multiple (possible correlated) estimates $\hat{\theta}^*_{i1}, \hat{\theta}^*\_{i2}, \dots $ but select a single "favored" estimate to report, yielding a favored estimate $\hat{\theta}\^*\_{iF}$. An estimate $\hat{\theta}\_{in}^* $ is affirmative, denoted $A\^*\_{in} = 1$, if 
+$\frac{\hat{\theta}\_{in}\^*}{\sigma\^*\_i} > c $ for some critical value $c$. The paper proposes that hacked studies are hacked because the distribution of the study's ideal estimate differs from the distribution estimate, both marginally and conditional on the affirmative status of these two estimates. This implies that in unhacked studies, the probability that a favored estimate is affirmative is equal to the probability that the ideal estimate is affirmative. A hacked study ($H_i^* = 1$) is successful iff the favored estimate $\hat{\theta}\^*\_{iF}$ is affirmative (otherwise considered unsuccessful).
 
 
 ##### Right-Truncated Meta-Analysis (RTMA)
