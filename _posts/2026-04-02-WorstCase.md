@@ -50,8 +50,17 @@ $$
 
 with $ \mu_i \sim \mathcal{N}(\mu , \tau^2) $ and $ \epsilon_i \sim \mathcal{N}(0,\sigma_i^2) $. Our study point estimates $ \hat{\theta}_i $ are centered on the study mean effect $\mu_i$, and these are normally distributed around the quantity of interest $\mu$, the overall mean population effect. The variances of the study point estimates are treated as fixed and known, while study effect variances are unknown.
 
-An investigator in a potentially hacked study obtains multiple (possible correlated) estimates $\hat{\theta}^*_{i1}, \hat{\theta}^*\_{i2}, \dots $ but select a single "favored" estimate to report, yielding a favored estimate $\hat{\theta}\^*\_{iF}$. An estimate $\hat{\theta}\_{in}^* $ is affirmative, denoted $A\^*\_{in} = 1$, if 
-$\frac{\hat{\theta}\_{in}\^*}{\sigma\^*\_i} > c $ for some critical value $c$. The paper proposes that hacked studies are hacked because the distribution of the study's ideal estimate differs from the distribution estimate, both marginally and conditional on the affirmative status of these two estimates. This implies that in unhacked studies, the probability that a favored estimate is affirmative is equal to the probability that the ideal estimate is affirmative. A hacked study ($H_i^* = 1$) is successful iff the favored estimate $\hat{\theta}\^*\_{iF}$ is affirmative (otherwise considered unsuccessful).
+An investigator in a potentially hacked study obtains multiple (possible correlated) estimates $\hat{\theta}^{*}_{i1}, \hat{\theta}^{*}_{i2}, \dots$ but select a single "favored" estimate to report, yielding a favored estimate $\hat{\theta}\^*\_{iF}$. An estimate $\hat{\theta}\_{in}^* $ is affirmative, denoted $A\^*\_{in} = 1$, if 
+$\frac{\hat{\theta}\_{in}\^*}{\sigma\^*\_i} > c $ for some critical value $c$. 
+
+The paper proposes that hacked studies are hacked because the distribution of the study's ideal estimate differs from the distribution estimate, both marginally and conditional on the affirmative status of these two estimates. This implies that in unhacked studies, the probability that a favored estimate is affirmative is equal to the probability that the ideal estimate is affirmative. A hacked study ($H_i^* = 1$) is successful iff the favored estimate $\hat{\theta}\^*\_{iF}$ is affirmative (otherwise considered unsuccessful).
+
+As an example
+
+In modeling, they make a handful of assumptions:
+
+1. **Studies are independent** This is a pretty standard assumption.
+2. **Ideal estimates are exchangeable across underlying hacked and unhacked studies** I'll leave the precise mathematical specification of this assumption to the paper, but the upshot of this is that you don't see different ideal estimates if you're hacking or not. This should certainly be the case.
 
 
 ##### Right-Truncated Meta-Analysis (RTMA)
