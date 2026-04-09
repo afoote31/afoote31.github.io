@@ -78,6 +78,8 @@ $$
 
 In words, regardless of hacking or not, if a favored estimate is unaffirmative then whether it is published or not does not depend on the estimate.
 
+What stands out to me about this framework is how clean it feels. Each of the core components are isolated and described in modular terms that can be put together cleanly to describe publication bias and p-hacking in very intuitive terms!
+
 ##### Right-Truncated Meta-Analysis (RTMA)
 
 In the paper they just recommend doing some diagnostics including a QQ-plot for the Jeffrey's prior, but explore the topic through extensive simulation in a later paper<d-cite key="mathur3"></d-cite>.
