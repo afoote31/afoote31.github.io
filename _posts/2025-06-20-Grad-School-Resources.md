@@ -28,3 +28,5 @@ Professor [Terence Tao](https://terrytao.wordpress.com/) at UCLA -- [career advi
 Dr. [Jean Yang](https://www.jeanyang.com/) -- [a series of posts about applying to graduate school](https://jxyzabc.blogspot.com/2008/08/cs-grad-school-part-1-deciding-to-apply.html) along with a variety of [other interesting posts](https://jxyzabc.blogspot.com/)
 
 [Simon Pouch](https://www.simonpcouch.com/about/) -- [a post on biostatistics PhD applications](https://www.simonpcouch.com/blog/2021-03-15-apply-to-stats-grad-school/#fn7)
+
+Professor [Sarah Fletcher](https://fletcherlab.science/people) at Stanford -- [Navigating the PhD application process](https://fletcherlab.science/latest-news/navigating-the-graduate-school-application-process)
