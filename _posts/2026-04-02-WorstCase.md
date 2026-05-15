@@ -73,7 +73,7 @@ In modeling, they make a handful of assumptions:
 3. **There is no preference for larger nonaffirmative estimates** Mathematically:
 
 $$
-\text{For each } h \in \{0,1\}, D_i^\ast \perp \!\!\! \perp \hat{\theta}^\ast_{iF} \vert H_i^\ast = h, A^\ast_{iF} = 1.
+\text{For each } h \in \{0,1\}, D_i^\ast \perp \!\!\! \perp \hat{\theta}^\ast_{iF} \vert H_i^\ast = h, A^\ast_{iF} = 0.
 $$
 
 In words, regardless of hacking or not, if a favored estimate is unaffirmative then whether it is published or not does not depend on the estimate.
@@ -82,6 +82,13 @@ What stands out to me about this framework is how clean it feels. Each of the co
 
 ##### Right-Truncated Meta-Analysis (RTMA)
 
-In the paper they just recommend doing some diagnostics including a QQ-plot for the Jeffrey's prior, but explore the topic through extensive simulation in a later paper<d-cite key="mathur3"></d-cite>.
+Right-truncated meta-analysis can be used in the presence of both SWS and SAS. Even if published affirmative estimates are not reflective of ideal affirmative estimates, under some of the assumptions laid out above, the distribution of published nonaffirmative estimates reflect that of ideal nonaffirmative estimates. With RTMA, one uses only published nonaffirmative estimates to impute the distribution of ideal estimates.
+
+Combining with the definition of stringent SAS from before, they define **stringent overall selection** to occur if either of the following hold:
+
+1. Stringent SWS: $\mathbb{P}(A^\ast_{iF} = 0 \perp H^\ast_i = 1) = 0$
+2. Stringent SAS: $\mathbb{P}(D^\ast_i = 1 \perp H^\ast_i = 1, A^\ast_{iF} = 0) = 0
+
+The first condition states that the favored estimate in a hacked study will always be affirmative (researchers will dig until they get a result), and the second is that hacking researchers will never submit a nonaffirmative estimate for publication. Under stringent overall selection, all published nonaffirmative estimates are unhacked. The proof that these assumptions result in the distribution of published nonaffirmative estimates matching the distribution of nonaffirmative ideal estimates. Estimating the parameters of the truncated distribution can be difficult (especially with sample sizes typical to meta-analyses), so they propose using a Jeffrey's prior to improve results. In the paper they just recommend doing some diagnostics including a QQ-plot for the Jeffrey's prior, but explore the topic through extensive simulation in a later paper<d-cite key="mathur3"></d-cite>.
 
 ##### Meta-Analysis of Non-Affirmative Studies (MAN)
