@@ -44,3 +44,18 @@ bibliography: 2018-12-22-distill.bib
 - You have a healthy worker survivor bias, where underlying resilience impacts which players even receive high exposure
 
 - Work has been for the NBA showing that higher minute loads are riskier than a naive analysis would show, giving more credence to load management decisions </d-cite><d-cite key="nbaInjuries"></d-cite>
+
+- FIND LITERATURE ON THE IMPACT OF SUBCONCUSSIVE IMPACTS
+
+##### Modeling Subconcussive Strikes
+- First going to demonstrate the phenomenon mathematically with few time points
+- Then demonstrate it through simulation
+- Present the very simplified model
+  - No competing risks
+  - Ignores play style or position
+  - Difficult to measure prior exposure
+  - Assume effect of a hit is the same over time (one might become more vulnerable as they take more hits)
+- Some literature on accumulated exposure<d-cite key="cte1"></d-cite><d-cite key="cte2"></d-cite><d-cite key="cte3"></d-cite><d-cite key="cte4"></d-cite>
+  - Difficult to measure the intensity of each exposure (watching tape, accelerometers in helmet, mouthguards)
+  - Brain imaging pre/post sometimes
+- Try to inform a simple exposure model using literature
