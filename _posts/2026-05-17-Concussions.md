@@ -1,7 +1,7 @@
 ---
 layout: distill
 title: CTE as an Occupational Health Problem
-date: 2026-0-17 17:30:00
+date: 2026-05-17 17:30:00
 featured: false
 description: Through simulation, I demonstrate the healthy worker survivor bias in measuring concussion risk.
 tags: 
