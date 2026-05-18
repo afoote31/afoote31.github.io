@@ -42,6 +42,6 @@ bibliography: 2018-12-22-distill.bib
 - In our case, the exposure is to repeated subconcussive and concussive head trauma
 - When measuring risk, a typical approach would be to measure cumulative exposure and then look at outcomes
 - This approach would systematically underestimate the risk associated with it
-- You have a healthy worker survivor bias, where
+- You have a healthy worker survivor bias, where underlying resilience impacts which players even receive high exposure
 
-- Work has been for the NBA showing that higher minute loads are riskier than a naive analysis would show, giving more credence to load management decisions 
+- Work has been for the NBA showing that higher minute loads are riskier than a naive analysis would show, giving more credence to load management decisions </d-cite><d-cite key="nbaInjuries"></d-cite>
