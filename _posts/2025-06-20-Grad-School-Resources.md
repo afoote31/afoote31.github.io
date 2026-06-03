@@ -5,7 +5,7 @@ description: A compilation of resources that I found helpful in framing my appli
 tags:
 giscus_comments: true
 date: 2025-06-20
-featured: false
+featured: true
 related_posts: false
 related_publications: false
 
