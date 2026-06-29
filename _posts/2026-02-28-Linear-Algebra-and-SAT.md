@@ -18,6 +18,7 @@ chart:
   vega_lite: true
 tikzjax: true
 typograms: true
+published: false
 
 authors:
   - name: Aaron Foote
