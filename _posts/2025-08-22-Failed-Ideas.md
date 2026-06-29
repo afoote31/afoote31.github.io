@@ -1,6 +1,6 @@
 ---
 layout: distill
-title: Failed Research Ideas
+title: Failed Ideas
 description: A running list, with descriptions, of ideas I had for research that ultimately fell flat (and why).
 tags:
 giscus_comments: true
@@ -58,3 +58,22 @@ $$
 This is where things break down. For Shapley values, the easiest way to see efficiency is observe that the sum of Shapley values ends up being a telescoping sum, leaving $v(N) - v(\emptyset)$, which just ends up as $v(N)$. Unfortunately, by restricting the coalitions to only those above a certain size, the sum no longer telescopes, meaning there is no efficiency.
 
 At this point, I decided that the idea was no longer worth pursuing. To me, efficiency is a fundamental property of the Shapley value and what makes it so desirable.
+
+## Linear Algebra and SAT
+
+In my undergraduate thesis, I spent a long time trying to encode the Nonogram puzzle in CNF. Following <d-cite key="minesweeper"></d-cite>, I tried to iterate over each constraint, and for each constraint enumerate all possible fillings as a DNF formula. They can then convert this into CNF. This approach works wonderfully for Minesweeper, but fails miserably for Nonogram. The reason is that the number of cells in each constraint (the neighborhood) is fixed in Minesweeper but grows with the size of the board $n$, for Nonogram. With this, in Minesweeper you can enumerate all possible fillings for each number that you might see on a cell, and convert that to CNF with only a few possibilities to consider, ever. For Nonogram, the possible constraints depends on $n$, and the number of fillings for a given constraint depends on $n$ as well. You end up with an exponential number of possible constraints and each has an exponential number of solutions, so enumerating all solutions is difficult (although feasible through dynamic programming). The real backbreaker is converting this DNF that has size exponential in $n$ into CNF, risking another exponential blowup in size. 
+
+I implemented a branch-and-bound approach that would eliminate tautological clauses (clauses containing a literal and its negation) as well as subsumed clauses on the fly, but this still proved too slow. Any post-conversion cleaning did not prove effective, as my C program simply ran out of memory.
+
+Ultimately I tried a different strategy to encode Nonogram by leveraging the similarity of its constraints to regular expressions which proved decently effective, but I've always been annoyed by how I was unable to apply the simple encoding strategy that was so effective for Minesweeper. While this post is not about how I ultimately got that encoding strategy to work, I was thinking about how to efficiently detect subsumption on a bike ride home from work and thought that implementing it through matrix operations might be a good route to try.
+
+My intuition was that for two clauses, if we represent them as binary vectors to indicate which literals they contain (positive and negative occurences of a variable are different entries), you would know that the smaller subsumes the larger if the larger can be "projected" onto the smaller one in some sense. More precisely, for two binary vectors $\vec{a}$ and $\vec{b}$, if $\vec{a}\cdot\vec{b} = min(\lVert\vec{a}\rVert,\lVert\vec{b}\rVert)$. Note that the dot product can't be greater than $min(\lVert\vec{a}\rVert,\lVert\vec{b}\rVert)$, and if it is less that means that there is a literal in the smaller clause that is not contained in the larger one, meaning no subsumption.
+
+The next task is to compute this efficiently. For a given CNF formula, the first step is to represent each clause as a binary vector. These binary vectors will then be stored in a matrix. I think that a data structure for CNF formulae would reasonably store the highest variable index and number of clauses, which give the dimensions of the matrix. In the Nonogram case, the highest variable index is $n$ which is *much* less than the number of clauses we will have, giving us an incredibly tall matrix $A$. In the process of converting each of the clauses to binary vector representation, one could compute the magnitudes of the vectors by tracking how many one-indices are stored for each vector. Thus, I will assume that we have a vector with the magnitude of the $i$-th clause $c_i$ in binary representation as the $i$-th element.
+
+To compute the dot products between clauses, we simply compute $AA^T$. Then, for entry $A_{ij}$, we know that $c_i$ subsumes $c_j$ if 
+$A_{ij} = min(\lVert\vec{c}_i\rVert,\lVert\vec{c}_j\rVert)$. We can gain further efficiency improvements by storing the magnitude vector in sorted order and then processing the smallest vectors first, thus removing as many future comparisons as possible.
+
+So far, the idea is fine. It occured to me that if one can summarize the matrix in a low-dimensional space, that has the intuitive feel that the SAT instance is not that hard. I wanted to explore this using singular value decomposition (SVD), which attmpts to deconstruct our matrix $A$ into the product of three matrices as $A = U\Sigma V^T$. The real matrix of interest for us if $\Sigma$, which is a diagonal matrix with the singular values of $A$ on the diagonal. The square of these singular values give the eigenvalues, and each of these eigenvalues is the proportion of the variance in the original matrix that is explained by each of the components. In our case, since the SVD treats values in the original matrix as continuous, the new components that we create do not have any meaning logically (that I know of). What I wanted to explore is the relationship between number of components and proportion of variance explained for different formulas.
+
+The idea falls apart because the SVD takes *much* longer to calculate than just solving the puzzle, at least on my local device. Improving the matrix construction process to be a sparse representation sped things up, but ultimately one would just be better off solving the puzzle.
