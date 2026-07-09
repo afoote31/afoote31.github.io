@@ -1,10 +1,10 @@
 ---
 layout: distill
 title: "Linear Algebra and SAT"
-description: Two observations I had on how one might use linear algebra to process and analyze SAT instances. 
-tags:
-giscus_comments: true
+description: Two observations I had on how one might use linear algebra to process and analyze SAT instances.
 date: 2026-02-28
+published: false
+giscus_comments: true
 featured: false
 pretty_table: true
 mermaid:
@@ -18,7 +18,7 @@ chart:
   vega_lite: true
 tikzjax: true
 typograms: true
-published: false
+
 
 authors:
   - name: Aaron Foote
