@@ -70,3 +70,79 @@ This week, I was listening to the [Wharton Moneyball Podcast](https://open.spoti
 ### Putting it together
 
 I think a table where you can sort by empirical win rates and from there see what sorts of times and leads are comparable. There will be a ton of times so 
+
+
+<div id="blog-post-table"></div>
+
+<link href="https://unpkg.com/tabulator-tables@5.6.1/dist/css/tabulator.min.css" rel="stylesheet">
+<script src="https://unpkg.com/tabulator-tables@5.6.1/dist/js/tabulator.min.js"></script>
+
+<style>
+  #my-table {
+    margin: 2rem 0;
+    font-size: 0.9rem;
+  }
+  /* optional: match al-folio's theme a bit more closely */
+  .tabulator {
+    border: 1px solid var(--global-divider-color, #ddd);
+    border-radius: 6px;
+  }
+</style>
+
+<script>
+  // Replace this with your real data, or load from a JSON/CSV file in assets/
+  const tableData = [
+    {id: 1, name: "Alpha",   category: "Model",   score: 92, year: 2023},
+    {id: 2, name: "Beta",    category: "Dataset",  score: 78, year: 2022},
+    {id: 3, name: "Gamma",   category: "Model",   score: 85, year: 2024},
+    {id: 4, name: "Delta",   category: "Method",  score: 67, year: 2021},
+    {id: 5, name: "Epsilon", category: "Dataset",  score: 90, year: 2023},
+    {id: 6, name: "Zeta",    category: "Method",  score: 73, year: 2022},
+    {id: 7, name: "Eta",     category: "Model",   score: 88, year: 2024},
+    {id: 8, name: "Theta",   category: "Dataset",  score: 81, year: 2023},
+    // ... add as many rows as you need
+  ];
+
+  const table = new Tabulator("#my-table", {
+    data: tableData,
+    layout: "fitColumns",
+    pagination: true,
+    paginationSize: 5,               // rows per page
+    paginationSizeSelector: [5, 10, 20, 50, true], // "true" = "All" option
+    paginationCounter: "rows",        // shows "Showing X-Y of Z rows"
+    columns: [
+      {title: "ID", field: "id", width: 60, sorter: "number"},
+      {
+        title: "Name",
+        field: "name",
+        headerFilter: "input",        // free-text search on this column
+        sorter: "string"
+      },
+      {
+        title: "Category",
+        field: "category",
+        headerFilter: "list",         // dropdown-style filter
+        headerFilterParams: {
+          valuesLookup: true,         // auto-populates dropdown from data
+          clearable: true
+        },
+        sorter: "string"
+      },
+      {
+        title: "Score",
+        field: "score",
+        headerFilter: "number",
+        headerFilterPlaceholder: "min score",
+        headerFilterFunc: ">=",       // filter shows rows >= entered value
+        sorter: "number"
+      },
+      {
+        title: "Year",
+        field: "year",
+        headerFilter: "list",
+        headerFilterParams: {valuesLookup: true, clearable: true},
+        sorter: "number"
+      },
+    ],
+  });
+</script>
