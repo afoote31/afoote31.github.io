@@ -38,3 +38,22 @@ This week, I was listening to the [Wharton Moneyball Podcast](https://open.spoti
 ### Soccer
 - Data from lots of leagues
 - Reference StatsBomb
+- INCLUDE TIES IN COMPUTATION OF WIN PROBABILITIES
+
+<div class="l-page">
+  <iframe src="{{ '/assets/plotly/soccer.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+</div>
+
+
+### Basketball
+- Which leagues
+- I think it'll be `hoopsR`
+
+
+### Football
+- I think it'll be `nflFastR`
+
+
+### Putting it together
+
+I think a table where you can sort by empirical win rates and from there see what sorts of times and leads are comparable. There will be a ton of times so 
