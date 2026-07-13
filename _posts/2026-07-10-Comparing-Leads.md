@@ -49,6 +49,9 @@ This week, I was listening to the [Wharton Moneyball Podcast](https://open.spoti
 - Which leagues
 - I think it'll be `hoopsR`
 
+<div class="l-page">
+  <iframe src="{{ '/assets/plotly/basketball.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+</div>
 
 ### Football
 - I think it'll be `nflFastR`
