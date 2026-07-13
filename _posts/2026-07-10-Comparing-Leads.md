@@ -33,6 +33,8 @@ This week, I was listening to the [Wharton Moneyball Podcast](https://open.spoti
 - Who wins
 - Win probabilities, conditional on lead and time remaining for different sports
 - Line charts are interesting, might want to explore resampling to get estimates of variability
+- Acknowledge that estimating win probabilities is very difficult so this is only a rough estimate (cite Wyner paper)
+- Goal is to compare roughly, and introducing tons of conditioning or strata makes those comparisons less meaningful
 
 
 ### Soccer
@@ -57,7 +59,13 @@ This week, I was listening to the [Wharton Moneyball Podcast](https://open.spoti
 
 ### Football
 - I think it'll be `nflFastR`
-
+- 2018 through 2025 regular season games (after a rule change to over time)
+- I'm going to remove leads/deficits of 17 points or more, but include a stat or two in writing
+  - 3.8% of teams down 17+ at half time have come back to win the game in the regular season
+ 
+<div class="l-page">
+  <iframe src="{{ '/assets/plotly/football.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+</div>
 
 ### Putting it together
 
