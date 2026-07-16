@@ -31,8 +31,8 @@ This week, I was listening to the [Wharton Moneyball Podcast](https://open.spoti
 Part of the inspiration for this post is the World Cup. While I am an informed consumer of basketball and American football, I know almost nothing about soccer. Thus, when I'm watching a game, it's hard for me to discern when a team no longer has a reasonable chance to win the match. With this post, I hope to understand, roughly, what a 2 score lead in the 65th minute means in terms of basketball scoring.
 
 ### Soccer
-- Data from lots of leagues
-- Reference StatsBomb
+The first sport I want to look at is soccer. The data comes from [StatsBomb](https://github.com/statsbomb/open-data/tree/master), who provide a wonderful dataset of event-level data for thousands of games. For our purposes, I focused on men's soccer, and only international competition or matches from top European leagues. These were the Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Champions League, or UEFA Europa League. In total, there were 2524 matches from a variety of years.
+
 - INCLUDE TIES IN COMPUTATION OF WIN PROBABILITIES
 
 <div class="l-page">
