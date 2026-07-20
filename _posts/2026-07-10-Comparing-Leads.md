@@ -21,7 +21,8 @@ typograms: true
 
 authors:
   - name: Aaron Foote
-    affiliation: 🐻 🟨 🟦
+    affiliations:
+      name: 🐻 🟨 🟦
 giscus_comments: true
 bibliography: 2018-12-22-distill.bib
 
