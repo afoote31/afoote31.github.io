@@ -63,7 +63,6 @@ The first sport I want to look at is soccer. The data comes from [StatsBomb](htt
 ### Putting it together
 
 I think a table where you can sort by empirical win rates and from there see what sorts of times and leads are comparable. There will be a ton of times so... 
-
 <div id="wp-controls">
   <label>
     Sport
@@ -76,22 +75,70 @@ I think a table where you can sort by empirical win rates and from there see wha
 
   <label>
     Time elapsed
-    <select id="wp-time">
-      <option value="0">0 min</option>
-      <option value="3">3 min</option>
-      <option value="6">6 min</option>
-      <option value="9">9 min</option>
-    </select>
+    <select id="wp-time"></select>
   </label>
 
   <label>
     Score differential
-    <select id="wp-diff">
-      <option value="-8">-8</option>
-      <option value="-4">-4</option>
-      <option value="0">0</option>
-      <option value="4">+4</option>
-      <option value="8">+8</option>
-    </select>
+    <select id="wp-diff"></select>
   </label>
 </div>
+
+<script>
+  window.addEventListener('load', function () {
+    const sportSelect = document.getElementById("wp-sport");
+    const timeSelect = document.getElementById("wp-time");
+    const diffSelect = document.getElementById("wp-diff");
+
+    const maxTimeBySport = {
+      football: 60,
+      basketball: 48,
+      soccer: 90,
+    };
+
+    const maxDiffBySport = {
+      football: 16,
+      basketball: 30,
+      soccer: 3,
+    };
+
+    function populateTimeOptions() {
+      const sport = sportSelect.value;
+      const maxTime = maxTimeBySport[sport];
+
+      timeSelect.innerHTML = "";
+
+      for (let t = 0; t <= maxTime; t += 3) {
+        const opt = document.createElement("option");
+        opt.value = t;
+        opt.textContent = `${t} min`;
+        timeSelect.appendChild(opt);
+      }
+    }
+
+    function populateDiffOptions() {
+      const sport = sportSelect.value;
+      const maxDiff = maxDiffBySport[sport];
+
+      diffSelect.innerHTML = "";
+
+      for (let d = -maxDiff; d <= maxDiff; d += 1) {
+        const opt = document.createElement("option");
+        opt.value = d;
+        opt.textContent = d > 0 ? `+${d}` : `${d}`;
+        diffSelect.appendChild(opt);
+      }
+
+      // default to 0 differential (tied game) if it's present
+      diffSelect.value = "0";
+    }
+
+    function handleSportChange() {
+      populateTimeOptions();
+      populateDiffOptions();
+    }
+
+    handleSportChange();
+    sportSelect.addEventListener("change", handleSportChange);
+  });
+</script>
