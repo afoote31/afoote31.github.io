@@ -21,6 +21,7 @@ typograms: true
 
 authors:
   - name: Aaron Foote
+  - affiliation: :bear: :yellow_square: :blue_square:
 giscus_comments: true
 bibliography: 2018-12-22-distill.bib
 
