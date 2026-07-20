@@ -48,7 +48,7 @@ The first sport I want to look at is soccer. The data comes from [StatsBomb](htt
 - I like including games that went to overtime in the win probability averaging, but plotting them really muddies the plot, so maybe delete that portion of the plot?
 
 <div class="l-page">
-  <iframe src="{{ '/assets/plotly/basketball.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+  <iframe src="{{ '/assets/plotly/basketball2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
 </div>
 
 ### Football
@@ -58,7 +58,7 @@ The first sport I want to look at is soccer. The data comes from [StatsBomb](htt
   - 3.8% of teams down 17+ at half time have come back to win the game in the regular season
  
 <div class="l-page">
-  <iframe src="{{ '/assets/plotly/football.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+  <iframe src="{{ '/assets/plotly/football2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
 </div>
 
 ### Putting it together
