@@ -35,7 +35,7 @@ The first sport I want to look at is soccer. The data comes from [StatsBomb](htt
 
 - INCLUDE TIES IN COMPUTATION OF WIN PROBABILITIES
 
-<div class="l-body">
+<div class="l-page">
   <iframe src="{{ '/assets/plotly/soccer2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
 </div>
 
