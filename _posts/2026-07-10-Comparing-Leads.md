@@ -65,6 +65,7 @@ The first sport I want to look at is soccer. The data comes from [StatsBomb](htt
 ### Putting it together
 
 I think a table where you can sort by empirical win rates and from there see what sorts of times and leads are comparable. There will be a ton of times so... 
+
 <div id="wp-controls">
   <label>
     Sport
@@ -84,13 +85,19 @@ I think a table where you can sort by empirical win rates and from there see wha
     Score differential
     <select id="wp-diff"></select>
   </label>
+
+  <button id="wp-go">Get win probability</button>
 </div>
+
+<div id="wp-readout"></div>
 
 <script>
   window.addEventListener('load', function () {
     const sportSelect = document.getElementById("wp-sport");
     const timeSelect = document.getElementById("wp-time");
     const diffSelect = document.getElementById("wp-diff");
+    const goButton = document.getElementById("wp-go");
+    const readout = document.getElementById("wp-readout");
 
     const maxTimeBySport = {
       football: 60,
@@ -106,20 +113,19 @@ I think a table where you can sort by empirical win rates and from there see wha
       soccer: ["-3", "-2", "-1", "0", "1", "2", "3"],
     };
 
-    // The label to default-select for each sport, if present
-    // (e.g. whatever bucket represents "tied" in your data).
     const defaultDiffBySport = {
       football: "Tie Game",
       basketball: "Tie Game",
       soccer: "0",
     };
 
+    // This gets filled in once the CSV loads
+    let DATA = [];
+
     function populateTimeOptions() {
       const sport = sportSelect.value;
       const maxTime = maxTimeBySport[sport];
-
       timeSelect.innerHTML = "";
-
       for (let t = 0; t <= maxTime; t += 3) {
         const opt = document.createElement("option");
         opt.value = t;
@@ -131,16 +137,13 @@ I think a table where you can sort by empirical win rates and from there see wha
     function populateDiffOptions() {
       const sport = sportSelect.value;
       const values = diffValuesBySport[sport];
-
       diffSelect.innerHTML = "";
-
       values.forEach(label => {
         const opt = document.createElement("option");
         opt.value = label;
         opt.textContent = label;
         diffSelect.appendChild(opt);
       });
-
       const fallback = defaultDiffBySport[sport];
       if (values.includes(fallback)) {
         diffSelect.value = fallback;
@@ -152,7 +155,51 @@ I think a table where you can sort by empirical win rates and from there see wha
       populateDiffOptions();
     }
 
+    // ---- NEW: lookup + display win probability ----
+    function lookupWinProb() {
+      const sport = sportSelect.value;
+      const time = Number(timeSelect.value);
+      const diff = diffSelect.value;
+
+      const match = DATA.find(row =>
+        row.sport === sport &&
+        Number(row.time) === time &&
+        row.diff === diff
+      );
+
+      if (!match) {
+        readout.textContent = "No data found for that combination.";
+        return;
+      }
+
+      const wp = Number(match.wp);
+      readout.textContent =
+        `${sport}, ${time} min, differential ${diff} → win probability: ${(wp * 100).toFixed(1)}%`;
+    }
+
+    // ---- NEW: load the CSV ----
+    // Replace this path with wherever you upload your CSV in the repo.
+    // Expected columns: sport,time,diff,wp
+    fetch("{{ '/assets/allWP.csv' | relative_url }}")
+      .then(res => res.text())
+      .then(csvText => {
+        const lines = csvText.trim().split("\n");
+        const headers = lines[0].split(",");
+        DATA = lines.slice(1).map(line => {
+          const values = line.split(",");
+          const row = {};
+          headers.forEach((h, i) => { row[h.trim()] = values[i].trim(); });
+          return row;
+        });
+        readout.textContent = "Data loaded. Choose a sport, time, and differential, then click the button.";
+      })
+      .catch(err => {
+        readout.textContent = "Couldn't load data — check the CSV path.";
+        console.error(err);
+      });
+
     handleSportChange();
     sportSelect.addEventListener("change", handleSportChange);
+    goButton.addEventListener("click", lookupWinProb);
   });
 </script>
