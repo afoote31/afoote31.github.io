@@ -70,9 +70,9 @@ I think a table where you can sort by empirical win rates and from there see wha
   <label>
     Sport
     <select id="wp-sport">
-      <option value="football">Football</option>
-      <option value="basketball">Basketball</option>
-      <option value="soccer">Soccer</option>
+      <option value="Football">Football</option>
+      <option value="Basketball">Basketball</option>
+      <option value="Soccer">Soccer</option>
     </select>
   </label>
 
@@ -100,23 +100,23 @@ I think a table where you can sort by empirical win rates and from there see wha
     const readout = document.getElementById("wp-readout");
 
     const maxTimeBySport = {
-      football: 60,
-      basketball: 48,
-      soccer: 90,
+      Football: 60,
+      Basketball: 48,
+      Soccer: 90,
     };
 
     // Hard-coded differential RANGE labels per sport, as strings —
     // match these exactly to the category labels in your dataframe.
     const diffValuesBySport = {
-      basketball: ["Up 30+", "Up 20-29", "Up 10-19", "Up 1-9", "Tie Game", "Down 1-9", "Down 10-19", "Down 20-29", "Down 30+"],
-      football: ["Up 9-16", "Up 4-8", "Up 1-3", "Tie Game", "Down 1-3", "Down 4-8", "Down 9-16"],
-      soccer: ["-3", "-2", "-1", "0", "1", "2", "3"],
+      Basketball: ["Up 30+", "Up 20-29", "Up 10-19", "Up 1-9", "Tie Game", "Down 1-9", "Down 10-19", "Down 20-29", "Down 30+"],
+      Football: ["Up 9-16", "Up 4-8", "Up 1-3", "Tie Game", "Down 1-3", "Down 4-8", "Down 9-16"],
+      Soccer: ["-3", "-2", "-1", "0", "1", "2", "3"],
     };
 
     const defaultDiffBySport = {
-      football: "Tie Game",
-      basketball: "Tie Game",
-      soccer: "0",
+      Football: "Tie Game",
+      Basketball: "Tie Game",
+      Soccer: "0",
     };
 
     // This gets filled in once the CSV loads
