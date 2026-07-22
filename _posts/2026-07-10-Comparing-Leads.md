@@ -232,7 +232,11 @@ I think a table where you can sort by empirical win rates and from there see wha
             },
           },
           scales: {
-            x: { title: { display: true, text: "minutes elapsed", font: { size: 10 } }, ticks: { font: { size: 9 } } },
+            x: {
+              type: "linear",
+              title: { display: true, text: "minutes elapsed", font: { size: 10 } },
+              ticks: { font: { size: 9 } }
+            },
             y: { min: 0, max: 1, title: { display: true, text: "win probability", font: { size: 10 } }, ticks: { font: { size: 9 } } },
           },
         },
