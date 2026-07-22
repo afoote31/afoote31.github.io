@@ -37,16 +37,20 @@ The plots from this post are produced using Plotly, so they are interactive. You
 ### Soccer
 The first sport I want to look at is soccer. The data comes from [StatsBomb](https://github.com/statsbomb/open-data/tree/master), who provide a wonderful dataset of event-level data for thousands of games. For our purposes, I focused on men's soccer, and only international competition or matches from top European leagues. These were the Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Champions League, or UEFA Europa League. In total, there were 2524 matches from a variety of years. I've excluded game states where the score differential is greater than three goals, as these states make up only 2.2% of states, and adding those lines would make the plot harder to read and interact with.
 
+For the larger goal differences, those leads naturally took longer to build up, hence those lines start later. Those deficits look to be very difficult to overcome, and fans with those leads can feel comfortable that their team is likely to win.
+
+WHATS GOING ON WITH ZERO SCORE DIFFERENTIAL
+
 <div class="l-page">
   <iframe src="{{ '/assets/plotly/soccer2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
 </div>
 
 
 ### Basketball
-- Which leagues
-- I think it'll be `hoopsR`
-- Update plot to have data from more years than just last season!
-- I like including games that went to overtime in the win probability averaging, but plotting them really muddies the plot, so maybe delete that portion of the plot?
+
+For basketball, I used the R package `hoopsR` to load play-by-play data from the 2015 through 2026 seasons, for a total of 15,480 games. Games that went into overtime were included in the computation of win probabilities, but I did not compute those win probabilities for the overtime minutes, as there is considerable volatility in those minutes and most viewers will not be watching a game that went into overtime (only 5.43% of games went to overtime).
+
+In a similar manner to soccer, large leads/deficits take time to build up, and no home team was able to get up by 30 or more points before the 9 minute mark in the game. Being tied at the end of regulation has a 53.5% win rate for the home team on average, compared to the 55.9% win rate at the start of the game. We see a drop in win probability for the home team when winning by 1-9 points and a jump for a home team losing by 1-9 points at the 48 minute mark due to the potential for a game-winner to swing the game.
 
 <div class="l-page">
   <iframe src="{{ '/assets/plotly/basketball2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
