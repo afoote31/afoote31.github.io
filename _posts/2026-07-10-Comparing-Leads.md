@@ -57,10 +57,8 @@ In a similar manner to soccer, large leads/deficits take time to build up, and n
 </div>
 
 ### Football
-- I think it'll be `nflFastR`
-- 2018 through 2025 regular season games (after a rule change to over time)
-- I'm going to remove leads/deficits of 17 points or more, but include a stat or two in writing
-  - 3.8% of teams down 17+ at half time have come back to win the game in the regular season
+
+For American football, I used the `nflFastR` package to obtain play-by-play data from the 2018 through 2025 seasons, only including regular season games to account for different overtime rules in the playoffs. In the plot, I removed score differentials of 17+ (three score games) as they are uncommon (12% of game states) and make the plot harder to read without providing much information. Due to the odd point values assigned to scoring plays (3 for a field goal, 7 for a touchdown with extra point, 2 for safety), I broke up the scoring into close one score games, difference of more than a field goal but still one score, and two scores. Home teams that are winning in the final minutes of a game but are still in a close game are prone to lose due to the other team making a walk-off field goal, while in every other non-tied scenario the game is virtually over.
  
 <div class="l-page">
   <iframe src="{{ '/assets/plotly/football2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
