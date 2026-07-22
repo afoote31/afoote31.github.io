@@ -32,10 +32,10 @@ This week, I was listening to the [Wharton Moneyball Podcast](https://open.spoti
 
 Part of the inspiration for this post is the World Cup. While I am an informed consumer of basketball and American football, I know almost nothing about soccer. Thus, when I'm watching a game, it's hard for me to discern when a team no longer has a reasonable chance to win the match. With this post, I hope to understand, roughly, what a 2 score lead in the 65th minute means in terms of basketball scoring.
 
-### Soccer
-The first sport I want to look at is soccer. The data comes from [StatsBomb](https://github.com/statsbomb/open-data/tree/master), who provide a wonderful dataset of event-level data for thousands of games. For our purposes, I focused on men's soccer, and only international competition or matches from top European leagues. These were the Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Champions League, or UEFA Europa League. In total, there were 2524 matches from a variety of years.
+The plots from this post are produced using Plotly, so they are interactive. You can double-click on an icon in the legend to hide all other lines, and then double click on it again to restore the rest of the lines. To hide or show a line, just click on its icon in the legend. You can also select portions of the plot to zoom in on using a click and drag to highlight the area of interest. Click on the home button in the top right to return the plot to the original axes. Lastly, hovering over the points will show their values!
 
-- INCLUDE TIES IN COMPUTATION OF WIN PROBABILITIES
+### Soccer
+The first sport I want to look at is soccer. The data comes from [StatsBomb](https://github.com/statsbomb/open-data/tree/master), who provide a wonderful dataset of event-level data for thousands of games. For our purposes, I focused on men's soccer, and only international competition or matches from top European leagues. These were the Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Champions League, or UEFA Europa League. In total, there were 2524 matches from a variety of years. I've excluded game states where the score differential is greater than three goals, as these states make up only 2.2% of states, and adding those lines would make the plot harder to read and interact with.
 
 <div class="l-page">
   <iframe src="{{ '/assets/plotly/soccer2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
