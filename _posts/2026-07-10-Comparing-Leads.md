@@ -94,9 +94,9 @@ I think a table where you can sort by empirical win rates and from there see wha
 <div id="wp-readout"></div>
 
 <div class="wp-charts">
-  <div class="wp-chart-wrap"><canvas id="wp-chart-football"></canvas></div>
-  <div class="wp-chart-wrap"><canvas id="wp-chart-basketball"></canvas></div>
-  <div class="wp-chart-wrap"><canvas id="wp-chart-soccer"></canvas></div>
+  <div class="wp-chart-wrap"><canvas id="wp-chart-Football"></canvas></div>
+  <div class="wp-chart-wrap"><canvas id="wp-chart-Basketball"></canvas></div>
+  <div class="wp-chart-wrap"><canvas id="wp-chart-Soccer"></canvas></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
