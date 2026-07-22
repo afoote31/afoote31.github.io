@@ -103,18 +103,14 @@ I think a table where you can sort by empirical win rates and from there see wha
 
 <style>
   .wp-charts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.2rem;
-    margin-top: 1.2rem;
-  }
-  .wp-chart-wrap {
-    position: relative;
-    height: 280px;
-    border: 1px solid var(--global-divider-color, #eee);
-    border-radius: 8px;
-    padding: 0.6rem;
-  }
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.2rem;
+}
+.wp-chart-wrap {
+  height: 380px;
+}
 </style>
 
 <script>
