@@ -88,10 +88,34 @@ I think a table where you can sort by empirical win rates and from there see wha
     <select id="wp-diff"></select>
   </label>
 
-  <button id="wp-go">Get win probability</button>
+  <button id="wp-go">Compare across sports</button>
 </div>
 
 <div id="wp-readout"></div>
+
+<div class="wp-charts">
+  <div class="wp-chart-wrap"><canvas id="wp-chart-football"></canvas></div>
+  <div class="wp-chart-wrap"><canvas id="wp-chart-basketball"></canvas></div>
+  <div class="wp-chart-wrap"><canvas id="wp-chart-soccer"></canvas></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+
+<style>
+  .wp-charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+  }
+  .wp-chart-wrap {
+    position: relative;
+    height: 280px;
+    border: 1px solid var(--global-divider-color, #eee);
+    border-radius: 8px;
+    padding: 0.6rem;
+  }
+</style>
 
 <script>
   window.addEventListener('load', function () {
@@ -101,14 +125,17 @@ I think a table where you can sort by empirical win rates and from there see wha
     const goButton = document.getElementById("wp-go");
     const readout = document.getElementById("wp-readout");
 
+    const SPORTS = ["Football", "Basketball", "Soccer"];
+    const SPORT_LABELS = { Football: "Football", Basketball: "Basketball", Soccer: "Soccer" };
+    const BAND_WIDTH = 0.1; // +/- around target win probability
+
     const maxTimeBySport = {
       Football: 60,
       Basketball: 48,
       Soccer: 90,
     };
 
-    // Hard-coded differential RANGE labels per sport, as strings —
-    // match these exactly to the category labels in your dataframe.
+    // Match these exactly to the category labels in your CSV.
     const diffValuesBySport = {
       Basketball: ["Up 30+", "Up 20-29", "Up 10-19", "Up 1-9", "Tie Game", "Down 1-9", "Down 10-19", "Down 20-29", "Down 30+"],
       Football: ["Up 9-16", "Up 4-8", "Up 1-3", "Tie Game", "Down 1-3", "Down 4-8", "Down 9-16"],
@@ -121,8 +148,13 @@ I think a table where you can sort by empirical win rates and from there see wha
       Soccer: "0",
     };
 
-    // This gets filled in once the CSV loads
+    const PALETTE = [
+      "#e6194b", "#3cb44b", "#4363d8", "#f58231", "#911eb4",
+      "#46b3b3", "#f032e6", "#9a9a00", "#fa8072",
+    ];
+
     let DATA = [];
+    let charts = {};
 
     function populateTimeOptions() {
       const sport = sportSelect.value;
@@ -157,31 +189,164 @@ I think a table where you can sort by empirical win rates and from there see wha
       populateDiffOptions();
     }
 
-    // ---- NEW: lookup + display win probability ----
-    function lookupWinProb() {
+    function bySport(sport) {
+      return DATA.filter(r => r.sport.toLowerCase() === sport.toLowerCase());
+    }
+
+    function buildBaseDatasets(sport) {
+      const rows = bySport(sport);
+      const diffs = diffValuesBySport[sport];
+      return diffs.map((diff, i) => {
+        const seriesRows = rows
+          .filter(r => r.diff === diff)
+          .sort((a, b) => Number(a.time) - Number(b.time));
+        return {
+          label: diff,
+          data: seriesRows.map(r => ({ x: Number(r.time), y: Number(r.wp) })),
+          borderColor: PALETTE[i % PALETTE.length],
+          backgroundColor: "transparent",
+          borderWidth: 1.5,
+          pointRadius: 2,
+          tension: 0.1,
+        };
+      });
+    }
+
+    function buildChart(sport) {
+      const ctx = document.getElementById(`wp-chart-${sport}`).getContext("2d");
+      const chart = new Chart(ctx, {
+        type: "line",
+        data: { datasets: buildBaseDatasets(sport) },
+        options: {
+          animation: false,
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            title: { display: true, text: SPORT_LABELS[sport], font: { size: 13, weight: "600" } },
+            tooltip: {
+              callbacks: {
+                title: items => `${items[0].parsed.x} min`,
+                label: item => `${item.dataset.label}: ${(item.parsed.y * 100).toFixed(1)}%`,
+              },
+            },
+          },
+          scales: {
+            x: { title: { display: true, text: "minutes elapsed", font: { size: 10 } }, ticks: { font: { size: 9 } } },
+            y: { min: 0, max: 1, title: { display: true, text: "win probability", font: { size: 10 } }, ticks: { font: { size: 9 } } },
+          },
+        },
+      });
+      charts[sport] = chart;
+    }
+
+    function initCharts() {
+      SPORTS.forEach(buildChart);
+    }
+
+    // Remove any previously-added band/highlight datasets, keep the base lines
+    function clearOverlay(sport) {
+      const chart = charts[sport];
+      chart.data.datasets = chart.data.datasets.filter(ds => !ds._overlay);
+    }
+
+    function addBand(sport, target) {
+      const chart = charts[sport];
+      const rows = bySport(sport);
+      const times = rows.map(r => Number(r.time));
+      const minT = Math.min(...times);
+      const maxT = Math.max(...times);
+      const lower = Math.max(0, target - BAND_WIDTH);
+      const upper = Math.min(1, target + BAND_WIDTH);
+
+      // lower bound line (invisible), upper bound line (fills down to lower)
+      chart.data.datasets.push({
+        label: "_band_lower",
+        data: [{ x: minT, y: lower }, { x: maxT, y: lower }],
+        borderWidth: 0,
+        pointRadius: 0,
+        fill: false,
+        _overlay: true,
+      });
+      chart.data.datasets.push({
+        label: "comparable range",
+        data: [{ x: minT, y: upper }, { x: maxT, y: upper }],
+        borderWidth: 0,
+        pointRadius: 0,
+        backgroundColor: "rgba(120,120,120,0.15)",
+        fill: "-1",
+        _overlay: true,
+      });
+    }
+
+    function addHighlightPoints(sport, target, isTargetSport, selectedRow) {
+      const chart = charts[sport];
+      const rows = bySport(sport);
+      const lower = target - BAND_WIDTH;
+      const upper = target + BAND_WIDTH;
+
+      const inBand = rows.filter(r => {
+        const wp = Number(r.wp);
+        return wp >= lower && wp <= upper;
+      });
+
+      chart.data.datasets.push({
+        label: "within \u00b10.1 of target",
+        data: inBand.map(r => ({ x: Number(r.time), y: Number(r.wp) })),
+        borderColor: "#111",
+        backgroundColor: "rgba(17,17,17,0.75)",
+        pointRadius: 4,
+        pointStyle: "circle",
+        showLine: false,
+        _overlay: true,
+      });
+
+      if (isTargetSport && selectedRow) {
+        chart.data.datasets.push({
+          label: "your selection",
+          data: [{ x: Number(selectedRow.time), y: Number(selectedRow.wp) }],
+          borderColor: "#111",
+          backgroundColor: "#ffd700",
+          pointRadius: 7,
+          pointStyle: "star",
+          showLine: false,
+          _overlay: true,
+        });
+      }
+    }
+
+    function compareAcrossSports() {
       const sport = sportSelect.value;
       const time = Number(timeSelect.value);
       const diff = diffSelect.value;
 
-      const match = DATA.find(row =>
-        row.sport === sport &&
+      const selectedRow = DATA.find(row =>
+        row.sport.toLowerCase() === sport.toLowerCase() &&
         Number(row.time) === time &&
         row.diff === diff
       );
 
-      if (!match) {
+      if (!selectedRow) {
         readout.textContent = "No data found for that combination.";
         return;
       }
 
-      const wp = Number(match.wp);
-      readout.textContent =
-        `${sport}, ${time} min, differential ${diff} → win probability: ${(wp * 100).toFixed(1)}%`;
+      const target = Number(selectedRow.wp);
+
+      SPORTS.forEach(s => {
+        clearOverlay(s);
+        addBand(s, target);
+        addHighlightPoints(s, target, s === sport, selectedRow);
+        charts[s].update();
+      });
+
+      readout.innerHTML =
+        `<strong>${SPORT_LABELS[sport]}</strong>, ${diff}, ${time} min → win probability ` +
+        `<strong>${(target * 100).toFixed(1)}%</strong>. Shaded band shows ` +
+        `${((target - BAND_WIDTH) * 100).toFixed(0)}%&ndash;${((target + BAND_WIDTH) * 100).toFixed(0)}% ` +
+        `across all three sports; dark dots mark game states in that range.`;
     }
 
-    // ---- NEW: load the CSV ----
-    // Replace this path with wherever you upload your CSV in the repo.
-    // Expected columns: sport,time,diff,wp
     fetch("{{ '/assets/allWP.csv' | relative_url }}")
       .then(res => res.text())
       .then(csvText => {
@@ -194,6 +359,7 @@ I think a table where you can sort by empirical win rates and from there see wha
           return row;
         });
         readout.textContent = "Data loaded. Choose a sport, time, and differential, then click the button.";
+        initCharts();
       })
       .catch(err => {
         readout.textContent = "Couldn't load data — check the CSV path.";
@@ -202,6 +368,6 @@ I think a table where you can sort by empirical win rates and from there see wha
 
     handleSportChange();
     sportSelect.addEventListener("change", handleSportChange);
-    goButton.addEventListener("click", lookupWinProb);
+    goButton.addEventListener("click", compareAcrossSports);
   });
 </script>
