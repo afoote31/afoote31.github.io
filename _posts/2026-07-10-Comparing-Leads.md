@@ -37,11 +37,9 @@ Part of the inspiration for this post is also the World Cup. While I am an infor
 The first three plots in this post are produced using Plotly, so they are interactive. You can double-click on an icon in the legend to hide all other lines, and then double click on it again to restore them. To hide or show a line, just click on its icon in the legend. You can also select portions of the plot to zoom in on using a click and drag to highlight the region of interest. Click on the home button in the top right to return the plot to the original axes. Lastly, hovering over the points will show their values!
 
 ### Soccer
-The first sport I want to look at is soccer. The data comes from [StatsBomb](https://github.com/statsbomb/open-data/tree/master), who provide a wonderful dataset of event-level data for thousands of games. For our purposes, I focused on men's soccer, and only international competition or matches from top European leagues (Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Champions League, or UEFA Europa League). In total, there were 2524 matches from a variety of years. I've excluded game states where the score differential is greater than three goals, as these states make up only 2.2% of states, and adding those lines would make the plot harder to read and interact with.
+The first sport I want to look at is soccer. The data comes from [StatsBomb](https://github.com/statsbomb/open-data/tree/master), who provide a wonderful dataset of event-level data for thousands of games. For our purposes, I focused on men's soccer, and only international competition or matches from top European leagues (Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Champions League, or UEFA Europa League). In total, there were 2524 matches from a variety of years. I've excluded game states where the score differential is greater than three goals, as these states make up only 2.2% of states, and adding those lines would make the plot harder to read and interact with. Note that the zero goal differential line steadily crawls down to zero because matches those matches will end in a tie.
 
 For the larger goal differences, those leads naturally took longer to build up, hence those lines start later. Those deficits look to be very difficult to overcome, and fans with those leads can feel comfortable that their team is likely to win.
-
-WHATS GOING ON WITH ZERO SCORE DIFFERENTIAL
 
 <div class="l-page">
   <iframe src="{{ '/assets/plotly/soccer2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
@@ -55,7 +53,7 @@ For basketball, I used the R package `hoopsR` to load play-by-play data from the
 In a similar manner to soccer, large leads/deficits take time to build up, and no home team was able to get up by 30 or more points before the 9 minute mark in the game. Being tied at the end of regulation has a 53.5% win rate for the home team on average, compared to the 55.9% win rate at the start of the game. This makes sense, as home teams are typically advantaged, but the fact that the teams went to overtime by being tied after 48 minutes of play should pull our estimate of team quality towards an even split, even if the home team still has a small advantage. We see a drop in win probability for the home team when winning by 1-9 points and a jump for a home team losing by 1-9 points at the 48 minute mark due to the potential for a game-winner to swing the game.
 
 <div class="l-page">
-  <iframe src="{{ '/assets/plotly/basketball2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="90%" style="border: 1px dashed grey;"></iframe>
+  <iframe src="{{ '/assets/plotly/basketball2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
 </div>
 
 ### Football
@@ -63,7 +61,7 @@ In a similar manner to soccer, large leads/deficits take time to build up, and n
 For American football, I used the `nflFastR` package to obtain play-by-play data from the 2018 through 2025 seasons, only including regular season games to account for different overtime rules in the playoffs. In the plot, I removed score differentials of 17+ (three score games) as they are uncommon (12% of game states) and make the plot harder to read without providing much information. Due to the odd point values assigned to scoring plays (3 for a field goal, 7 for a touchdown with extra point, 2 for safety), I broke up the scoring into close one score games (1-3 points), difference of more than a field goal but still one score (4-8 points), and two scores (9-16 points). Home teams that are winning in the final minutes of a game but are still in a close game are prone to lose due to the other team making a walk-off field goal, while in every other non-tied scenario the game is virtually over.
  
 <div class="l-page">
-  <iframe src="{{ '/assets/plotly/football2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="80%" style="border: 1px dashed grey;"></iframe>
+  <iframe src="{{ '/assets/plotly/football2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
 </div>
 
 ### Putting it together
