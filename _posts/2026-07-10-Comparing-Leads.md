@@ -28,14 +28,16 @@ bibliography: 2018-12-22-distill.bib
 
 ---
 
-This week, I was listening to the [Wharton Moneyball Podcast](https://open.spotify.com/show/7euXqPldw3dB4gX0HP2J5H?si=d51bd39ac5854adf) hosted by professors who discuss statistics in sports. Professor [Adi Wyner](https://statistics.wharton.upenn.edu/profile/ajw/) and one of his graduate student collaborators, [Jonathan Pipping](https://www.linkedin.com/in/jdpipping/), mentioned their [research from NESSIS 2025](https://www.youtube.com/watch?v=J0-GQnOtSkI) on win probabilities. While they focused on blown leads, it got me thinking about how different leads compare. In this post, I explore how different leads compare across soccer, basketball, and American football. Conditional on time elapsed in the game and score differential, I estimate the probability that the home team will win the game by simply taking the proportion of home teams that have won the game in the data. Previous research from Wyner and Ryan Brill demonstrate that the complexity in estimating win probability is not adequately appreciated, and factors such as selection bias lead to biased estimates that don't properly communicate the uncertainty<d-cite key="brillHumility"></d-cite><d-cite key="brillHumilitySim"></d-cite>. With this in mind, my model certainly does not capture all of the intricacies of estimating win probability. However, conditioning on team quality and game state factors would make comparisons across sports more difficult, as those variables would inherently be intertwined with the specific rules of the game, whereas time elapsed is common to all sports studied, and works commonly in each of them. 
+This week, I was listening to the [Wharton Moneyball Podcast](https://open.spotify.com/show/7euXqPldw3dB4gX0HP2J5H?si=d51bd39ac5854adf) hosted by professors who discuss statistics in sports. Professor [Adi Wyner](https://statistics.wharton.upenn.edu/profile/ajw/) and one of his graduate student collaborators, [Jonathan Pipping](https://www.linkedin.com/in/jdpipping/), mentioned their [research from NESSIS 2025](https://www.youtube.com/watch?v=J0-GQnOtSkI) on win probabilities. While they focused on blown leads, it got me thinking about how different leads compare, which I explore for soccer, basketball, and American football in this post. Conditional on time elapsed in the game and score differential, I estimate the probability that the home team will win the game by simply taking the proportion of home teams that have won the game in the data. 
 
-Part of the inspiration for this post is the World Cup. While I am an informed consumer of basketball and American football, I know almost nothing about soccer. Thus, when I'm watching a game, it's hard for me to discern when a team no longer has a reasonable chance to win the match. With this post, I hope to understand, roughly, what a 2 score lead in the 65th minute means in terms of basketball scoring.
+Previous research from Wyner and Ryan Brill demonstrate that the complexity in estimating win probability is not adequately appreciated, and factors such as selection bias lead to unreliable estimates that don't properly communicate the uncertainty<d-cite key="brillHumility"></d-cite><d-cite key="brillHumilitySim"></d-cite>. With this in mind, my model certainly does not capture all of the intricacies of estimating win probability, thus the estimates are probably a little bit off. However, conditioning on team quality and game state factors would make comparisons across sports more difficult, as those variables would inherently be intertwined with the specific rules of the game, whereas time elapsed is common to all sports studied. 
 
-The plots from this post are produced using Plotly, so they are interactive. You can double-click on an icon in the legend to hide all other lines, and then double click on it again to restore the rest of the lines. To hide or show a line, just click on its icon in the legend. You can also select portions of the plot to zoom in on using a click and drag to highlight the area of interest. Click on the home button in the top right to return the plot to the original axes. Lastly, hovering over the points will show their values!
+Part of the inspiration for this post is also the World Cup. While I am an informed consumer of basketball and American football, I know almost nothing about soccer. When I watch a game, it's hard for me to discern when a team no longer has a reasonable chance to win the match. With this post, I hope to understand, roughly, what a 2 score lead in the 65th minute means in terms of basketball or American football scoring.
+
+The first three plots in this post are produced using Plotly, so they are interactive. You can double-click on an icon in the legend to hide all other lines, and then double click on it again to restore them. To hide or show a line, just click on its icon in the legend. You can also select portions of the plot to zoom in on using a click and drag to highlight the region of interest. Click on the home button in the top right to return the plot to the original axes. Lastly, hovering over the points will show their values!
 
 ### Soccer
-The first sport I want to look at is soccer. The data comes from [StatsBomb](https://github.com/statsbomb/open-data/tree/master), who provide a wonderful dataset of event-level data for thousands of games. For our purposes, I focused on men's soccer, and only international competition or matches from top European leagues. These were the Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Champions League, or UEFA Europa League. In total, there were 2524 matches from a variety of years. I've excluded game states where the score differential is greater than three goals, as these states make up only 2.2% of states, and adding those lines would make the plot harder to read and interact with.
+The first sport I want to look at is soccer. The data comes from [StatsBomb](https://github.com/statsbomb/open-data/tree/master), who provide a wonderful dataset of event-level data for thousands of games. For our purposes, I focused on men's soccer, and only international competition or matches from top European leagues (Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Champions League, or UEFA Europa League). In total, there were 2524 matches from a variety of years. I've excluded game states where the score differential is greater than three goals, as these states make up only 2.2% of states, and adding those lines would make the plot harder to read and interact with.
 
 For the larger goal differences, those leads naturally took longer to build up, hence those lines start later. Those deficits look to be very difficult to overcome, and fans with those leads can feel comfortable that their team is likely to win.
 
@@ -48,25 +50,25 @@ WHATS GOING ON WITH ZERO SCORE DIFFERENTIAL
 
 ### Basketball
 
-For basketball, I used the R package `hoopsR` to load play-by-play data from the 2015 through 2026 seasons, for a total of 15,480 games. Games that went into overtime were included in the computation of win probabilities, but I did not compute those win probabilities for the overtime minutes, as there is considerable volatility in those minutes and most viewers will not be watching a game that went into overtime (only 5.43% of games went to overtime).
+For basketball, I used the R package `hoopsR` to load play-by-play data from the 2015 through 2026 seasons, for a total of 15,480 games. Games that went into overtime were included in the computation of win probabilities, but I did not compute those win probabilities for the overtime portions of the games, as there is considerable volatility in those minutes and most viewers will not be watching a game that went into overtime (only 5.43% of games went to overtime).
 
-In a similar manner to soccer, large leads/deficits take time to build up, and no home team was able to get up by 30 or more points before the 9 minute mark in the game. Being tied at the end of regulation has a 53.5% win rate for the home team on average, compared to the 55.9% win rate at the start of the game. We see a drop in win probability for the home team when winning by 1-9 points and a jump for a home team losing by 1-9 points at the 48 minute mark due to the potential for a game-winner to swing the game.
+In a similar manner to soccer, large leads/deficits take time to build up, and no home team was able to get up by 30 or more points before the 9 minute mark in the game. Being tied at the end of regulation has a 53.5% win rate for the home team on average, compared to the 55.9% win rate at the start of the game. This makes sense, as home teams are typically advantaged, but the fact that the teams went to overtime by being tied after 48 minutes of play should pull our estimate of team quality towards an even split, even if the home team still has a small advantage. We see a drop in win probability for the home team when winning by 1-9 points and a jump for a home team losing by 1-9 points at the 48 minute mark due to the potential for a game-winner to swing the game.
 
 <div class="l-page">
-  <iframe src="{{ '/assets/plotly/basketball2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+  <iframe src="{{ '/assets/plotly/basketball2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="90%" style="border: 1px dashed grey;"></iframe>
 </div>
 
 ### Football
 
-For American football, I used the `nflFastR` package to obtain play-by-play data from the 2018 through 2025 seasons, only including regular season games to account for different overtime rules in the playoffs. In the plot, I removed score differentials of 17+ (three score games) as they are uncommon (12% of game states) and make the plot harder to read without providing much information. Due to the odd point values assigned to scoring plays (3 for a field goal, 7 for a touchdown with extra point, 2 for safety), I broke up the scoring into close one score games, difference of more than a field goal but still one score, and two scores. Home teams that are winning in the final minutes of a game but are still in a close game are prone to lose due to the other team making a walk-off field goal, while in every other non-tied scenario the game is virtually over.
+For American football, I used the `nflFastR` package to obtain play-by-play data from the 2018 through 2025 seasons, only including regular season games to account for different overtime rules in the playoffs. In the plot, I removed score differentials of 17+ (three score games) as they are uncommon (12% of game states) and make the plot harder to read without providing much information. Due to the odd point values assigned to scoring plays (3 for a field goal, 7 for a touchdown with extra point, 2 for safety), I broke up the scoring into close one score games (1-3 points), difference of more than a field goal but still one score (4-8 points), and two scores (9-16 points). Home teams that are winning in the final minutes of a game but are still in a close game are prone to lose due to the other team making a walk-off field goal, while in every other non-tied scenario the game is virtually over.
  
 <div class="l-page">
-  <iframe src="{{ '/assets/plotly/football2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="100%" style="border: 1px dashed grey;"></iframe>
+  <iframe src="{{ '/assets/plotly/football2.html' | relative_url }}" frameborder='0' scrolling='no' height="500px" width="80%" style="border: 1px dashed grey;"></iframe>
 </div>
 
 ### Putting it together
 
-I think a table where you can sort by empirical win rates and from there see what sorts of times and leads are comparable. There will be a ton of times so... 
+The important part is bringing everything together to compare across sports! Below, you can choose a sport, time elapsed in the game, and score differential, and find out the probability of the home team winning (from this one can compute the probability of the away team winning). Some states do not have support in the data, such as enormous leads very early in the game. Then, in the plots, scenarios with similar win probabilities will be highlighted in each plot, allowing you to see what sorts of time/score combinations yield similar win probabilities in the other sports.
 
 <div id="wp-controls">
   <label>
@@ -230,10 +232,10 @@ I think a table where you can sort by empirical win rates and from there see wha
           scales: {
             x: {
               type: "linear",
-              title: { display: true, text: "minutes elapsed", font: { size: 10 } },
+              title: { display: true, text: "Minutes Elapsed", font: { size: 10 } },
               ticks: { font: { size: 9 } }
             },
-            y: { min: 0, max: 1, title: { display: true, text: "win probability", font: { size: 10 } }, ticks: { font: { size: 9 } } },
+            y: { min: 0, max: 1, title: { display: true, text: "Win Probability", font: { size: 10 } }, ticks: { font: { size: 9 } } },
           },
         },
       });
@@ -341,10 +343,8 @@ I think a table where you can sort by empirical win rates and from there see wha
       });
 
       readout.innerHTML =
-        `<strong>${SPORT_LABELS[sport]}</strong>, ${diff}, ${time} min → win probability ` +
-        `<strong>${(target * 100).toFixed(1)}%</strong>. Shaded band shows ` +
-        `${((target - BAND_WIDTH) * 100).toFixed(0)}%&ndash;${((target + BAND_WIDTH) * 100).toFixed(0)}% ` +
-        `across all three sports; dark dots mark game states in that range.`;
+        `<strong>${SPORT_LABELS[sport]}</strong> | ${diff} | ${time} min → win probability ` +
+        `<strong>${(target * 100).toFixed(1)}%</strong>.`;
     }
 
     fetch("{{ '/assets/allWP.csv' | relative_url }}")
