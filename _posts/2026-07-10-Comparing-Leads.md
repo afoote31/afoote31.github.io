@@ -109,7 +109,7 @@ I think a table where you can sort by empirical win rates and from there see wha
   margin-top: 1.2rem;
 }
 .wp-chart-wrap {
-  height: 380px;
+  height: 480px;
 }
 </style>
 
