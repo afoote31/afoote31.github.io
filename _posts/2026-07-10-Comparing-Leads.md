@@ -5,7 +5,7 @@ date: 2026-07-10 16:00:00
 featured: false
 description: How do leads compare across different sports?
 tags: 
-categories: 
+categories: sports
 pretty_table: true
 mermaid:
   enabled: true
