@@ -65,3 +65,5 @@ In the rest of this post I will demonstrate just how damaging the application of
   - Difficult to measure the intensity of each exposure (watching tape, accelerometers in helmet, mouthguards)
   - Brain imaging pre/post sometimes
 - Try to inform a simple exposure model using literature
+
+To simulate the effect of brain trauma in NFL players, I want to give everyone a baseline. That will be normally distributed. In addition, the vulnerability to brain trauma is random, so that should be sampled. Then is concussive impacts at the NFL level. You can receive 
