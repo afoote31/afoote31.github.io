@@ -43,7 +43,9 @@ bibliography: 2018-12-22-distill.bib
 - This approach would systematically underestimate the risk associated with it
 - You have a healthy worker survivor bias, where underlying resilience impacts which players even receive high exposure
 
-- Work has been for the NBA showing that higher minute loads are riskier than a naive analysis would show, giving more credence to load management decisions </d-cite><d-cite key="nbaInjuries"></d-cite>
+- Work has been for the NBA showing that higher minute loads are riskier than a naive analysis would show, giving more credence to load management decisions <d-cite key="nbaInjuries"></d-cite>
+
+- Literature has shown that playing in the NFL improves longevity <d-cite key="footballGood"></d-cite> but the methodology has been critiqued <d-cite key="Grashow2019"></d-cite>, particularly for not considering the healthy worker survivor bias
 
 - FIND LITERATURE ON THE IMPACT OF SUBCONCUSSIVE IMPACTS
 
