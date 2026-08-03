@@ -21,6 +21,8 @@ typograms: true
 
 authors:
   - name: Aaron Foote
+    affiliations:
+      name: UC Berkeley
 giscus_comments: true
 bibliography: 2018-12-22-distill.bib
 
