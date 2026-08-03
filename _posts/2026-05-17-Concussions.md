@@ -47,6 +47,8 @@ bibliography: 2018-12-22-distill.bib
 
 - Literature has shown that playing in the NFL improves longevity <d-cite key="footballGood"></d-cite> but the methodology has been critiqued <d-cite key="Grashow2019"></d-cite>, particularly for not considering the healthy worker survivor bias
 
+- Research using replacement players from an NFL strike (as opposed to the general population) as the comparison group found an increased risk of death over the course of the study for NFL players compared to replacement players <d-cite key="footballGoodGood"></d-cite>, reversing the effect found from other studies
+
 - FIND LITERATURE ON THE IMPACT OF SUBCONCUSSIVE IMPACTS
 
 ##### Modeling Subconcussive Strikes
