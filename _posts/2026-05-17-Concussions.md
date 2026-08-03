@@ -27,12 +27,10 @@ bibliography: 2018-12-22-distill.bib
 ---
 
 ##### Intro to CTE
-- Risk when playing football
-- Can come from concussions, but also from repeated subconcussive injuries
-- Discovered by Dr. Bennet Omalu<d-cite key="Omalu1"></d-cite><d-cite key="Omalu2"></d-cite>
-- Work was dismissed and silenced by the NFL
-- Still very much an issue, and currently it can only be diagnosed after death
-- Boston University has an [awesome academic center](https://www.bu.edu/cte/) dedicated to CTE research
+
+American football is an inherently violent sport. Athletes wear extensive padding on their thighs, chest, and shoulders, and are required to wear a helmet. Prior research has found an average of 172 hamstring strains per year, with over half coming in the preseason and early regular season <d-cite key="hamstrings"></d-cite>, around 50 ACL tears each season <d-cite key="ACLs"></d-cite>, and many players play through injuries that would put us normal people out of commission for weeks. Sports medicine has made enormous strides over the years, with injuries that would formerly end careers (ACL and Achilles tears) now being setbacks that can usually be recovered from in a year or less.
+
+A class of injury that is much more difficult to diagnose and treat is brain injuries. For years, the NFL highlighted violent collisions as a core entertainment aspect, with segments such as [Jacked Up](https://www.youtube.com/watch?v=3VxxmVr2GFw) celebrating helmet-to-helmet hits. Science has shown that these hits lead to concussions, a bouncing of the brain inside of the skull. For years, the NFL denied that concussions have any long-term negative health impacts, but Dr. Bennet Omalu proved otherwise in his analysis of NFL players' brains<d-cite key="Omalu1"></d-cite><d-cite key="Omalu2"></d-cite>. He showed that repeated sub-concussive impacts can also create lasting damage to the brain, contributing to a variety of mental health, neurodegenerative, and physical ailments. Today, Boston University has an [awesome academic center](https://www.bu.edu/cte/) dedicated to CTE research.
 
 ##### Measuring CTE Risk as an Occupational Risk
 - NFL tries to downplay the impact or outright deny the existence of CTE
