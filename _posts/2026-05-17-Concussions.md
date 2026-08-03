@@ -49,6 +49,8 @@ bibliography: 2018-12-22-distill.bib
 
 - Research using replacement players from an NFL strike (as opposed to the general population) as the comparison group found an increased risk of death over the course of the study for NFL players compared to replacement players <d-cite key="footballGoodGood"></d-cite>, reversing the effect found from other studies
 
+- Other work shows that after accounting for selection bias, college/NFL players are 2.38 times as likely to suffer from CTE as high school players <d-cite key="cte5"></d-cite>
+
 - FIND LITERATURE ON THE IMPACT OF SUBCONCUSSIVE IMPACTS
 
 ##### Modeling Subconcussive Strikes
