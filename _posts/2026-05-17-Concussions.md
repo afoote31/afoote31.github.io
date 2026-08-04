@@ -34,7 +34,7 @@ American football is an inherently violent sport. Athletes wear extensive paddin
 
 A class of injury that is much more difficult to diagnose and treat is brain injuries. For years, the NFL highlighted violent collisions as a core entertainment aspect, with segments such as [Jacked Up](https://www.youtube.com/watch?v=3VxxmVr2GFw) celebrating helmet-to-helmet hits. Science has shown that these hits lead to concussions, a bouncing of the brain inside of the skull. For years, the NFL denied that concussions have any long-term negative health impacts, but Dr. Bennet Omalu proved otherwise in his analysis of NFL players' brains<d-cite key="Omalu1"></d-cite><d-cite key="Omalu2"></d-cite>. He showed that repeated sub-concussive impacts can also create lasting damage to the brain, contributing to a variety of mental health, neurodegenerative, and physical ailments. Today, Boston University has an [awesome academic center](https://www.bu.edu/cte/) dedicated to CTE research.
 
-##### Measuring CTE Risk as an Occupational Risk
+### Measuring CTE Risk as an Occupational Risk
 
 A natural question that one studying CTE would like to answer is what the negative impact that repeated brain trauma has on NFL players, on average. Given that players cannot be randomized into different levels of head trauma, all we have to work with is observational data from games played. For this, we can turn to methods and approaches from the field of occupational epidemiology. Typically, occupational epidemiology is concerned with worker cohorts in settings like mines or factories with potentially dangerous chemicals where you want to measure the risk associated with exposure to those chemicals, but in our case the dangerous exposure is brain trauma, and the cohort is NFL players.
 
@@ -53,15 +53,21 @@ Accounting for both of these sources of bias is *essential* in order to reliably
 In the rest of this post I will demonstrate just how damaging the application of naive methods can be through simulation. With this, I hope that others can identify settings in which similar biases occur in their work and use this post to improve their understanding of methods to control for these biases.
 
 
-##### Modeling Subconcussive Strikes
-- First going to demonstrate the phenomenon mathematically with few time points
+### Simulation Study
+
+We'll be working with a cohort of 1000, and each will have an initial vulnerability to concussions $v$, modeled as a multiplicative factor by which cumulated brain trauma is multiplied. Players can sustain concussions or more frequent sub-concussive impacts, which are an essential part to understanding the risks involved with playing football<d-cite key="cte1"></d-cite><d-cite key="cte2"></d-cite><d-cite key="cte3"></d-cite><d-cite key="cte4"></d-cite>. Each unit of time is a season, which is made up of 800 plays or so for each player. Each play brings a probability $p_b$ of sustaining a big concussive impact, yielding $d_b$ damage to the player, and a probability $p_s$ of sustaining a small concussive impact, yielding $d_s$ damage. I am assuming that these impacts are independent across plays, so the number of concussions and sub-concussive impacts are both binomially distributed. Before entering the NFL, each player has already accumulated multiple head impacts through youth, high school, and college play. To account for this, I treat their initial accumulated exposure as normally distributed with mean being the average exposure over six seasons of play, and the standard deviation to be 25, as this allows variability without risking negative accumulated exposures.
+
+$$
+v \sim N(1,0.05)
+$$
+
 - Then demonstrate it through simulation
 - Present the very simplified model
   - No competing risks
   - Ignores play style or position
   - Difficult to measure prior exposure
   - Assume effect of a hit is the same over time (one might become more vulnerable as they take more hits)
-- Some literature on accumulated exposure<d-cite key="cte1"></d-cite><d-cite key="cte2"></d-cite><d-cite key="cte3"></d-cite><d-cite key="cte4"></d-cite>
+- Some literature on accumulated exposure
   - Difficult to measure the intensity of each exposure (watching tape, accelerometers in helmet, mouthguards)
   - Brain imaging pre/post sometimes
 - Try to inform a simple exposure model using literature
