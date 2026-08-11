@@ -116,4 +116,7 @@ If we would like to estimate the average brain damage accumulated after playing 
 Thankfully, there are methods that can handle time-varying treatment 
 
 
+This post was meant to be an exploration of the healthy worker survivor bias and the methods that are typically used to resolve the bias. I'm starting the biostatistics masters program at Berkeley in a week or two, and I'm excited to learn more about TMLE and its applications from the faculty who developed it! 
+
+
 
