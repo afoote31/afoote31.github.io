@@ -89,25 +89,25 @@ $$
 
 #### Results
 
-To demonstrate how the selection process filters out the players most likely to sustain more damage, I've plotted the average vulnerability in each of the seasons. Prior to any NFL play, the average vulnerability is one. However, as the seasons go on, only the most resilient players are able to stick around. Additionally, the rate at which the average vulnerability drops increases over time.
+To demonstrate how the selection process filters out the players most likely to sustain more damage, I've plotted the average vulnerability in each of the seasons. Prior to any NFL play, the average vulnerability is one. However, as the seasons go on, only the most resilient players are able to stick around. Additionally, the rate at which the average vulnerability drops increases over time. Another way to look at it is to examine observed versus true damage that would have occurred if the selection mechanism had not removed players from the cohort. Clearly, as the seasons go on, the damage that would have occurred if players had not retired outpaces the damage that is observed due to the selection for resilient players.
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/avgV.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/avgV.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/avgD.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
-<div class="caption">
-  As players accumulate more damage by playing more seasons, only the least resilient players remain.
-</div>
-
-Another way to look at it is to examine observed versus true damage that would have occurred if the selection mechanism had not removed players from the cohort. 
 
 If we would like to estimate the average brain damage accumulated after playing in the NFL for six seasons, the naive estimate would take the average of the damage accumulated by the players after six seasons. As we've established, this gives a biased underestimate. Since we've simulated the data, we know precisely how much bias there is relative to our ground truth estimate, which takes the average damage accumulated by all players *if they had played six seasons* with no retirement mechanism. Below we see that the HWSE if biasing our estimates considerably.
 
 |   Method       | Estimate  | Bias      | Percent Bias   |
 |   :---------:  | :--:      | :-------: | :------:       |
-| Truth          | 287.31    |   0       | 0              |
-| Survivors      | 250.614   |   -36.7   | -12.8          |
+| Truth          | 287.47    |   0       | 0              |
+| Survivors      | 250.80    |   -36.7   | -12.8          |
+
+Thankfully, there are methods that can handle time-varying treatment 
 
 
 
