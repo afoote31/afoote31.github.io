@@ -30,6 +30,7 @@ bibliography: 2018-12-22-distill.bib
 
 - Visuals and naive estimates
 - Background on g-computation
+- Simulation setup
 - Demonstrate it
 - LTMLE to come!
 
@@ -61,10 +62,23 @@ In the rest of this post I will demonstrate just how damaging the application of
 
 ### Simulation Study
 
-We'll be working with a cohort of 1000, and each will have an initial vulnerability to concussions $v$, modeled as a multiplicative factor by which cumulated brain trauma is multiplied. Players can sustain concussions or more frequent sub-concussive impacts, which are an essential part to understanding the risks involved with playing football<d-cite key="cte1"></d-cite><d-cite key="cte2"></d-cite><d-cite key="cte3"></d-cite><d-cite key="cte4"></d-cite>. Each unit of time is a season, which is made up of 800 plays or so for each player. Each play brings a probability $p_b$ of sustaining a big concussive impact, yielding $d_b$ damage to the player, and a probability $p_s$ of sustaining a small concussive impact, yielding $d_s$ damage. I am assuming that these impacts are independent across plays, so the number of concussions and sub-concussive impacts are both binomially distributed. Before entering the NFL, each player has already accumulated multiple head impacts through youth, high school, and college play. To account for this, I treat their initial accumulated exposure as normally distributed with mean being the average exposure over six seasons of play, and the standard deviation to be 25, as this allows variability without risking negative accumulated exposures.
+We'll be working with a cohort of 2000, and each will have an initial vulnerability to concussions $v$, modeled as a multiplicative factor by which cumulated brain trauma is multiplied. Although concussions that remove a player from competition are more frequently discussed, head impacts occur on a spectrum, and subconcussive impacts are an essential part to understanding the risks involved with playing football<d-cite key="cte1"></d-cite><d-cite key="cte2"></d-cite><d-cite key="cte3"></d-cite><d-cite key="cte4"></d-cite>. Each player has around 800 plays per season, giving them 800 chances for an impact. I set the probability of an impact to be 0.025. The accumulated damage from one season is simulated from a Tweedie distribution, which naturally combines the binomial nature of impacts with continuous Gamma-distributed possible brain damage for each impact. I've included code to replicate my simulation study [here](https://github.com/afoote31/blog-post-code).
+
+Prior to entering the NFL, players have typically played youth, high school, and college football. Thus, each comes in with prior damage accumulated. To model this, I give each player six seasons worth of damage (multiplied by their vulnerability) at time 0.
 
 $$
-v \sim N(1,0.05)
+v_i \sim N(1,0.05) \\
+d_{i,0} \sim Tw(\mu = 144,\phi = 0.171,p = 14/9)\ast v_i \\
+d_{i,t} = d_{i,t-1} + v_i\ast Tw(\mu = 24,\phi = 0.462,p = 14/9)
+$$
+
+As players accumulate damage, they are more likely to retire. In order to maintain positivity, we use a simple logistic probabilistic model. Combined with our damage generating process, we can simulate both the damage accumulated by players if they never retired along with the cohort that results from selection.
+
+$$
+\beta_0 = -10
+\beta_1 = 0.05
+
+\mathbb{P}(\text{Retire after season t}) = \frac{1}{1 + exp(-\beta_1 L_{t-1} - \beta_0)}
 $$
 
 - Then demonstrate it through simulation
@@ -78,4 +92,4 @@ $$
   - Brain imaging pre/post sometimes
 - Try to inform a simple exposure model using literature
 
-To simulate the effect of brain trauma in NFL players, I want to give everyone a baseline. That will be normally distributed. In addition, the vulnerability to brain trauma is random, so that should be sampled. Then is concussive impacts at the NFL level. You can receive 
+
