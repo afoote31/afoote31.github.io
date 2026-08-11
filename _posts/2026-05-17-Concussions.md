@@ -28,6 +28,12 @@ bibliography: 2018-12-22-distill.bib
 
 ---
 
+- Visuals and naive estimates
+- Background on g-computation
+- Demonstrate it
+- LTMLE to come!
+
+
 In this post, I explore the healthy worker survivor effect and methods to account for it through simulation. I use CTE in the NFL as an example of an exposure for which it is easy to underestimate the risk.
 
 American football is an inherently violent sport. Athletes wear extensive padding on their thighs, chest, and shoulders, and are required to wear a helmet. Prior research has found an average of 172 hamstring strains per year, with over half coming in the preseason and early regular season <d-cite key="hamstrings"></d-cite>, around 50 ACL tears each season <d-cite key="ACLs"></d-cite>, and many players play through injuries that would put us normal people out of commission for weeks. Sports medicine has made enormous strides over the years, with injuries that would formerly end careers (ACL and Achilles tears) now being setbacks that can usually be recovered from in a year or less.
