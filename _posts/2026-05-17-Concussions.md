@@ -78,9 +78,11 @@ As players accumulate damage, they are more likely to retire. In order to mainta
 $$
 \beta_0 = -10
 $$
+
 $$
 \beta_1 = 0.05
 $$
+
 $$
 \mathbb{P}(\text{Retire after season t}) = \frac{1}{1 + exp(-\beta_1 L_{t-1} - \beta_0)}
 $$
