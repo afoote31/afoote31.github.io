@@ -98,15 +98,12 @@ To demonstrate how the selection process filters out the players most likely to 
   As players accumulate more damage by playing more seasons, only the least resilient players remain.
 </div>
 
-- Then demonstrate it through simulation
-- Present the very simplified model
-  - No competing risks
-  - Ignores play style or position
-  - Difficult to measure prior exposure
-  - Assume effect of a hit is the same over time (one might become more vulnerable as they take more hits)
-- Some literature on accumulated exposure
-  - Difficult to measure the intensity of each exposure (watching tape, accelerometers in helmet, mouthguards)
-  - Brain imaging pre/post sometimes
-- Try to inform a simple exposure model using literature
+If we would like to estimate the average brain damage accumulated after playing in the NFL for six seasons, the naive estimate would take the average of the damage accumulated by the players after six seasons. As we've established, this gives a biased underestimate. Since we've simulated the data, we know precisely how much bias there is relative to our ground truth estimate, which takes the average damage accumulated by all players *if they had played six seasons* with no retirement mechanism. Below we see that the HWSE if biasing our estimates considerably.
+
+|   Method       | Estimate  | Bias      | Percent Bias   |
+|   :---------:  | :--:      | :-------: | :------:       |
+| Truth          | 287.31    |   0       | 0              |
+| Survivors      | 250.614   |   -36.7   | -12.8          |
+
 
 
