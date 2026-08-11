@@ -62,6 +62,7 @@ In the rest of this post I will demonstrate just how damaging the application of
 
 ### Simulation Study
 
+#### Setup
 We'll be working with a cohort of 2000, and each will have an initial vulnerability to concussions $v$, modeled as a multiplicative factor by which cumulated brain trauma is multiplied. Although concussions that remove a player from competition are more frequently discussed, head impacts occur on a spectrum, and subconcussive impacts are an essential part to understanding the risks involved with playing football<d-cite key="cte1"></d-cite><d-cite key="cte2"></d-cite><d-cite key="cte3"></d-cite><d-cite key="cte4"></d-cite>. Each player has around 800 plays per season, giving them 800 chances for an impact. I set the probability of an impact to be 0.025. The accumulated damage from one season is simulated from a Tweedie distribution, which naturally combines the binomial nature of impacts with continuous Gamma-distributed possible brain damage for each impact. I've included code to replicate my simulation study [here](https://github.com/afoote31/blog-post-code).
 
 Prior to entering the NFL, players have typically played youth, high school, and college football. Thus, each comes in with prior damage accumulated. To model this, I give each player six seasons worth of damage (multiplied by their vulnerability) at time 0.
@@ -76,10 +77,26 @@ As players accumulate damage, they are more likely to retire. In order to mainta
 
 $$
 \beta_0 = -10
+$$
+$$
 \beta_1 = 0.05
-
+$$
+$$
 \mathbb{P}(\text{Retire after season t}) = \frac{1}{1 + exp(-\beta_1 L_{t-1} - \beta_0)}
 $$
+
+#### Results
+
+To demonstrate how the selection process filters out the players most likely to sustain more damage, I've plotted the average vulnerability in each of the seasons. Prior to any NFL play, the average vulnerability is one. However, as the seasons go on, only the most resilient players are able to stick around. Additionally, the rate at which the average vulnerability drops increases over time.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/avgV.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+  As players accumulate more damage by playing more seasons, only the least resilient players remain.
+</div>
 
 - Then demonstrate it through simulation
 - Present the very simplified model
