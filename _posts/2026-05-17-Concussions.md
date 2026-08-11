@@ -68,8 +68,14 @@ We'll be working with a cohort of 2000, and each will have an initial vulnerabil
 Prior to entering the NFL, players have typically played youth, high school, and college football. Thus, each comes in with prior damage accumulated. To model this, I give each player six seasons worth of damage (multiplied by their vulnerability) at time 0.
 
 $$
-v_i \sim N(1,0.05) \\
-d_{i,0} \sim Tw(\mu = 144,\phi = 0.171,p = 14/9)\ast v_i \\
+v_i \sim N(1,0.05)
+$$
+
+$$
+d_{i,0} \sim Tw(\mu = 144,\phi = 0.171,p = 14/9)\ast v_i
+$$
+
+$$
 d_{i,t} = d_{i,t-1} + v_i\ast Tw(\mu = 24,\phi = 0.462,p = 14/9)
 $$
 
