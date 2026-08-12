@@ -126,9 +126,15 @@ The g-formula fixes exposures rather than variables, simulating to allow for fle
 5. Generate final $Y^\ast$ by first setting $A_1 = 1$ for everyone and then use the model from step 2 along with the simulated $L_1^\ast$ values.
 6. The estimated outcome from policy $A_0, L_1, A_1$ is then just $\bar{Y}^\ast$.
 
-Now this method seems sort of magical to me, and very non-intuitive. Here is my understanding of how g-formula gets around the roadblocks from above. In standard regression, by conditioning on $L_1$, you fix its value, preventing changes in $A_0$ from pushing it up or down and preventing the indirect effect of $A_0$ on $Y$ through $L_1$ to be measured. The g-formula does not hold $L_1$ fixed. After you set the treatment in the simulation, you generate new values for $L_1$, allowing $A_0$ to impact $Y$ further up the chain. Additionally, the $L_1^\ast$ values are generated from a model that only depends on $A_0$, preventing the collider bias from occurring. I found both introductory papers on the topic <d-cite key="gMethodsIntro1"></d-cite><d-cite key="gMethodsIntro2"></d-cite>, as well as the original monograph <d-cite key="gMethodsIntro3"></d-cite>to be helpful in building my understanding.
+Now this method seems sort of magical to me, and very non-intuitive. Here is my understanding of how g-formula gets around the roadblocks from above. In standard regression, by conditioning on $L_1$, you fix its value, preventing changes in $A_0$ from pushing it up or down and preventing the indirect effect of $A_0$ on $Y$ through $L_1$ to be measured. The g-formula does not hold $L_1$ fixed. After you set the treatment in the simulation, you generate new values for $L_1$, allowing $A_0$ to impact $Y$ further up the chain. Additionally, the $L_1^\ast$ values are generated from a model that only depends on $A_0$, preventing the collider bias from occurring. I found both introductory papers on the topic <d-cite key="gMethodsIntro"></d-cite><d-cite key="gMethodsIntro2"></d-cite>, as well as the original monograph <d-cite key="gMethodsIntro3"></d-cite>to be helpful in building my understanding.
 
-Now to apply it! When applied to our simulated data, it is able to recover the 
+Now to apply it! When applied to our simulated data, it is able to recover the true average damage accumulated, and is even resilient to model misspecification in this case. Additionally, by bootstrapping players, we can construct confidence intervals, which end up being quite tight. The 95% confidence interval in this case being 286 to 294.
+
+|   Method       | Estimate  | Bias      | Percent Bias   |
+|   :---------:  | :--:      | :-------: | :------:       |
+| Truth          | 289       |   0       | 0              |
+| Survivors      | 249       |   -39.4   | -13.6          |
+| G-Formula      | 290       |   1.38    | 0.479          |
 
 
 This post was meant to be an exploration of the healthy worker survivor bias and the methods that are typically used to resolve the bias. A major limitation of g-formula is its vulnerability to model misspecification. A suite of methods that is more flexible yet still highly rigorous is TMLE. The math behind those methods is mystifying to me, but I'm starting the biostatistics masters program at Berkeley in a week or two, and I'm excited to learn more about TMLE from the faculty who developed it! 
