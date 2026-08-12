@@ -28,13 +28,6 @@ bibliography: 2018-12-22-distill.bib
 
 ---
 
-- Visuals and naive estimates
-- Background on g-computation
-- Simulation setup
-- Demonstrate it
-- LTMLE to come!
-
-
 In this post, I explore the healthy worker survivor effect and methods to account for it through simulation. I use CTE in the NFL as an example of an exposure for which it is easy to underestimate the risk.
 
 American football is an inherently violent sport. Athletes wear extensive padding on their thighs, chest, and shoulders, and are required to wear a helmet. Prior research has found an average of 172 hamstring strains per year, with over half coming in the preseason and early regular season <d-cite key="hamstrings"></d-cite>, around 50 ACL tears each season <d-cite key="ACLs"></d-cite>, and many players play through injuries that would put us normal people out of commission for weeks. Sports medicine has made enormous strides over the years, with injuries that would formerly end careers (ACL and Achilles tears) now being setbacks that can usually be recovered from in a year or less.
@@ -118,41 +111,11 @@ Modeling the healthy worker survivor effect is a bit tricky, as traditional regr
 
 With a traditional regression approach, we are in a pickle whether or not we include $L_1$ in the model. If you leave it out, we are omitting a variable that has an impact on the outcome $Y$ as well as our treatment $A_1$, introducing confounding. However, if we are to condition on $L_1$, we create a collider bias, where a spurious association between prior treatment $A_0$ and unobserved vulnerability muddies the estimate of the effect of $A_0$, as unobserved vulnerability is also causally linked with $Y$. So either way you cannot isolate the causal effect of interest.
 
-```mermaid
-classDiagram
-direction LR
-    class Animal {
-        +String species
-        +int age
-        +makeSound()
-    }
-    class Dog {
-        +String breed
-        +bark()
-    }
-    class Cat {
-        +String color
-        +meow()
-    }
-    class Bird {
-        +String wingSpan
-        +fly()
-    }
-    class Owner {
-        +String name
-        +int age
-        +adoptAnimal(Animal animal)
-    }
-
-    Animal <|-- Dog
-    Animal <|-- Cat
-    Animal <|-- Bird
-    Owner "1" --> "0..*" Animal
-
-    Dog : +fetch()
-    Cat : +purr()
-    Bird : +sing()
-```
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/DAG.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
 
 The g-formula fixes exposures rather than variables, simulating to allow for flexibility. The steps are:
 
@@ -165,7 +128,7 @@ The g-formula fixes exposures rather than variables, simulating to allow for fle
 
 Now this method seems sort of magical to me, and very non-intuitive. Here is my understanding of how g-formula gets around the roadblocks from above. In standard regression, by conditioning on $L_1$, you fix its value, preventing changes in $A_0$ from pushing it up or down and preventing the indirect effect of $A_0$ on $Y$ through $L_1$ to be measured. The g-formula does not hold $L_1$ fixed. After you set the treatment in the simulation, you generate new values for $L_1$, allowing $A_0$ to impact $Y$ further up the chain. Additionally, the $L_1^\ast$ values are generated from a model that only depends on $A_0$, preventing the collider bias from occurring. I found both introductory papers on the topic <d-cite key="gMethodsIntro1"></d-cite><d-cite key="gMethodsIntro2"></d-cite>, as well as the original monograph <d-cite key="gMethodsIntro3"></d-cite>to be helpful in building my understanding.
 
-Now to apply it! 
+Now to apply it! When applied to our simulated data, it is able to recover the 
 
 
 This post was meant to be an exploration of the healthy worker survivor bias and the methods that are typically used to resolve the bias. A major limitation of g-formula is its vulnerability to model misspecification. A suite of methods that is more flexible yet still highly rigorous is TMLE. The math behind those methods is mystifying to me, but I'm starting the biostatistics masters program at Berkeley in a week or two, and I'm excited to learn more about TMLE from the faculty who developed it! 
