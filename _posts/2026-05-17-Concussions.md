@@ -113,39 +113,44 @@ If we would like to estimate the average brain damage accumulated after playing 
 | Truth          | 287.47    |   0       | 0              |
 | Survivors      | 250.80    |   -36.7   | -12.8          |
 
-Modeling the healthy worker survivor effect is a bit tricky. Consider the DAG below for just two time points, depicting causal relationships with arrows. We want to model the effect of exposures $A$ (playing in a season) on outcome $Y$ (total damage). The intermediate variable $L_1$ is the damage accumulated after the first exposure.
+Modeling the healthy worker survivor effect is a bit tricky. Consider the DAG below for just two time points, depicting causal relationships with arrows. We want to model the effect of exposures $A$ (playing in a season) on outcome $Y$ (total damage). The intermediate variable $L_1$ is the damage accumulated after the first exposure. Notice that initial exposure $A_0$ affects $L_1$, making $L_1$ a mediator between $A_0$ and $Y$. To properly estimate the causal effect of $A_0$ on $Y$, we *must not* adjust for $L_1$. However, $L_1$ has a causal relationship with both $Y$ and $A_1$ (which also has a causal relationship with $Y$). In the context of CTE, players decide whether or not to continue playing in the NFL ($A_1$) based on their accumulated damage $L_1$ and accumulated damage at $L_1$ has influence on the final outcome $Y$. Now, in order to properly estimate the causal effect of $A_1$ on $Y$, you *must* adjust for $L_1$. If we are to include it in the regression, we compute the effect of $A_0$ while holding $L_1$ fixed, blocking some of its influence on $Y$, while leaving it out creates confounding.
 
+The 
 ```mermaid
-graph LR
-    %% Style configurations
-    classDef large font-size:18px,stroke-width:2px;
-    classDef dashed stroke-dasharray: 5 5;
+classDiagram
+direction LR
+    class Animal {
+        +String species
+        +int age
+        +makeSound()
+    }
+    class Dog {
+        +String breed
+        +bark()
+    }
+    class Cat {
+        +String color
+        +meow()
+    }
+    class Bird {
+        +String wingSpan
+        +fly()
+    }
+    class Owner {
+        +String name
+        +int age
+        +adoptAnimal(Animal animal)
+    }
 
-    %% Nodes
-    A0["A₀"]:::large
-    L1["L₁"]:::large
-    A1["A₁"]:::large
-    Y["Y"]:::large
-    U["U"]:::large
+    Animal <|-- Dog
+    Animal <|-- Cat
+    Animal <|-- Bird
+    Owner "1" --> "0..*" Animal
 
-    %% Time-sequential paths
-    A0 --> L1
-    L1 --> A1
-    A1 --> Y
-
-    %% Direct / Longer exposure paths
-    A0 --> A1
-    A0 --> Y
-    L1 --> Y
-
-    %% Unmeasured confounder paths (dashed lines)
-    U --> L1
-    U --> Y
-    
-    %% Apply dashed style to the U confounder arrows
-    linkStyle 6,7 stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+    Dog : +fetch()
+    Cat : +purr()
+    Bird : +sing()
 ```
-
 
 
 
