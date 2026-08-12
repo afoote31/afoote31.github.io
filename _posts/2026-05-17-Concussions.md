@@ -53,7 +53,7 @@ Without idealized randomization, the next best option is to find a natural compa
 
 2. Healthy Worker Survivor Bias
 
-The healthy worker survivor bias has to do with who even gets measured for brain trauma in the population of interest. For a given exposure, some members of the cohort are more vulnerable to the ill effects than other members, even for the same fixed amount of exposure. The reason for this can be as simple as genetic variability. Thus, as exposure accumulates, some of the members of the cohort will be filtered out as they experience negative effects of the exposure. In this context, this could be a player retiring after a family member notices cognitive difficulties and pushes them to consider their health. With this, they will not accumulate any more brain trauma. Over time, this process will result in only the most naturally resilient cohort members accumulating the most exposure. This gradual selection will dampen the observed effect of the exposure, biasing the estimate towards the null hypothesis. In the extreme case, it can even show that the exposure is beneficial, a clearly nonsensical result.
+The healthy worker survivor bias has to do with who even gets measured for brain trauma in the population of interest. For a given exposure, some members of the cohort are more vulnerable to the ill effects than other members, even for the same fixed amount of exposure. The reason for this can be as simple as genetic variability. Thus, as exposure accumulates, some of the members of the cohort will be filtered out as they experience negative effects of the exposure. In this context, this could be a player retiring after a family member notices cognitive difficulties and pushes them to consider their health. Over time, only the most naturally resilient cohort members accumulating the most exposure. This gradual selection will dampen the observed effect of the exposure, biasing the estimate towards the null hypothesis. In the extreme case, it can even show that the exposure is beneficial, a clearly nonsensical result.
 
 Accounting for both of these sources of bias is *essential* in order to reliably estimate the risk of exposures. After accounting for selection bias, college/NFL players are 2.38 times as likely to suffer from CTE as high school players <d-cite key="cte5"></d-cite>. Similar analyses have been conducted in the NBA, showing that higher minute loads are riskier than a naive analysis would show, giving more credence to load management decisions <d-cite key="nbaInjuries"></d-cite>. 
 
@@ -113,7 +113,37 @@ If we would like to estimate the average brain damage accumulated after playing 
 | Truth          | 287.47    |   0       | 0              |
 | Survivors      | 250.80    |   -36.7   | -12.8          |
 
-Thankfully, there are methods that can handle time-varying treatment 
+Modeling the healthy worker survivor effect is a bit tricky. Consider the DAG below for just two time points, depicting causal relationships with arrows.
+
+<script type="text/tikz">
+  \begin{tikzpicture}[
+      node distance=1.8cm and 2.2cm,
+      >=Stealth,
+      thick,
+      every node/.style={font=\large}
+  ]
+      % Nodes
+      \node (A0) {$A_0$};
+      \node (L1) [right=of A0] {$L_1$};
+      \node (A1) [right=of L1] {$A_1$};
+      \node (Y)  [right=of A1] {$Y$};
+      \node (U)  [above=1.5cm of L1, xshift=1.1cm] {$U$};
+  
+      % Time-sequential causal paths
+      \draw[->] (A0) -- (L1);
+      \draw[->] (L1) -- (A1);
+      \draw[->] (A1) -- (Y);
+  
+      % Direct/Longer exposure paths
+      \draw[->] (A0) to[bend right=35] (A1);
+      \draw[->] (A0) to[bend right=55] (Y);
+      \draw[->] (L1) to[bend left=30] (Y);
+  
+      % Unmeasured confounder paths (dashed)
+      \draw[->, dashed] (U) -- (L1);
+      \draw[->, dashed] (U) -- (Y);
+  \end{tikzpicture}
+</script>
 
 
 This post was meant to be an exploration of the healthy worker survivor bias and the methods that are typically used to resolve the bias. I'm starting the biostatistics masters program at Berkeley in a week or two, and I'm excited to learn more about TMLE and its applications from the faculty who developed it! 
