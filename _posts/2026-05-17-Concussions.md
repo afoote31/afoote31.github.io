@@ -115,36 +115,37 @@ If we would like to estimate the average brain damage accumulated after playing 
 
 Modeling the healthy worker survivor effect is a bit tricky. Consider the DAG below for just two time points, depicting causal relationships with arrows. We want to model the effect of exposures $A$ (playing in a season) on outcome $Y$ (total damage). The intermediate variable $L_1$ is the damage accumulated after the first exposure.
 
-<script type="text/tikz">
-  \usetikzlibrary{arrows.meta,positioning}
-  \begin{tikzpicture}[
-      node distance=1.8cm and 2.2cm,
-      >=Stealth,
-      thick,
-      every node/.style={font=\large}
-  ]
-      % Nodes
-      \node (A0) {$A_0$};
-      \node (L1) [right=of A0] {$L_1$};
-      \node (A1) [right=of L1] {$A_1$};
-      \node (Y)  [right=of A1] {$Y$};
-      \node (U)  [above=1.5cm of L1, xshift=1.1cm] {$U$};
-  
-      % Time-sequential causal paths
-      \draw[->] (A0) -- (L1);
-      \draw[->] (L1) -- (A1);
-      \draw[->] (A1) -- (Y);
-  
-      % Direct/Longer exposure paths
-      \draw[->] (A0) to[bend right=35] (A1);
-      \draw[->] (A0) to[bend right=55] (Y);
-      \draw[->] (L1) to[bend left=30] (Y);
-  
-      % Unmeasured confounder paths (dashed)
-      \draw[->, dashed] (U) -- (L1);
-      \draw[->, dashed] (U) -- (Y);
-  \end{tikzpicture}
-</script>
+```mermaid
+graph LR
+    %% Style configurations
+    classDef large font-size:18px,stroke-width:2px;
+    classDef dashed stroke-dasharray: 5 5;
+
+    %% Nodes
+    A0["A₀"]:::large
+    L1["L₁"]:::large
+    A1["A₁"]:::large
+    Y["Y"]:::large
+    U["U"]:::large
+
+    %% Time-sequential paths
+    A0 --> L1
+    L1 --> A1
+    A1 --> Y
+
+    %% Direct / Longer exposure paths
+    A0 --> A1
+    A0 --> Y
+    L1 --> Y
+
+    %% Unmeasured confounder paths (dashed lines)
+    U --> L1
+    U --> Y
+    
+    %% Apply dashed style to the U confounder arrows
+    linkStyle 6,7 stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+```
+
 
 
 
