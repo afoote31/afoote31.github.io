@@ -113,9 +113,10 @@ If we would like to estimate the average brain damage accumulated after playing 
 | Truth          | 287.47    |   0       | 0              |
 | Survivors      | 250.80    |   -36.7   | -12.8          |
 
-Modeling the healthy worker survivor effect is a bit tricky. Consider the DAG below for just two time points, depicting causal relationships with arrows.
+Modeling the healthy worker survivor effect is a bit tricky. Consider the DAG below for just two time points, depicting causal relationships with arrows. We want to model the effect of exposures $A$ (playing in a season) on outcome $Y$ (total damage). The intermediate variable $L_1$ is the damage accumulated after the first exposure.
 
 <script type="text/tikz">
+  \usetikzlibrary{arrows.meta,positioning}
   \begin{tikzpicture}[
       node distance=1.8cm and 2.2cm,
       >=Stealth,
@@ -144,6 +145,7 @@ Modeling the healthy worker survivor effect is a bit tricky. Consider the DAG be
       \draw[->, dashed] (U) -- (Y);
   \end{tikzpicture}
 </script>
+
 
 
 This post was meant to be an exploration of the healthy worker survivor bias and the methods that are typically used to resolve the bias. I'm starting the biostatistics masters program at Berkeley in a week or two, and I'm excited to learn more about TMLE and its applications from the faculty who developed it! 
