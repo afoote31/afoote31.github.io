@@ -113,13 +113,10 @@ If we would like to estimate the average brain damage accumulated after playing 
 | Truth          | 287.47    |   0       | 0              |
 | Survivors      | 250.80    |   -36.7   | -12.8          |
 
-Modeling the healthy worker survivor effect is a bit tricky. Consider the DAG below for just two time points, depicting causal relationships with arrows. We want to model the effect of exposures $A$ (playing in a season) on outcome $Y$ (total damage). The intermediate variable $L_1$ is the damage accumulated after the first exposure. Notice that initial exposure $A_0$ affects $L_1$, making $L_1$ a mediator between $A_0$ and $Y$. To properly estimate the causal effect of $A_0$ on $Y$, we *must not* adjust for $L_1$. However, $L_1$ has a causal relationship with both $Y$ and $A_1$ (which also has a causal relationship with $Y$). In the context of CTE, players decide whether or not to continue playing in the NFL ($A_1$) based on their accumulated damage $L_1$ and accumulated damage at $L_1$ has influence on the final outcome $Y$. Now, in order to properly estimate the causal effect of $A_1$ on $Y$, you *must* adjust for $L_1$. If we are to include it in the regression, we compute the effect of $A_0$ while holding $L_1$ fixed, blocking some of its influence on $Y$, while leaving it out creates confounding.
 
-The g-formula approach resolves the issue by simulating interventions rather than conditioning on observations. It formulates our causal question, "what would the outcomes be if *everyone* followed a specific treatment regime". In our case, we want to know the exposure that would have been accumulated if everyone had played all six seasons. The steps are:
+Modeling the healthy worker survivor effect is a bit tricky, as traditional regression fails. Consider the DAG below for just two time points, depicting causal relationships with arrows. The variables $A_0$ and $A_1$ are binary indicators of exposure (playing football), $L_1$ is damage accumulated after $A_0$, and $Y$ is total accumulated exposure after all possible treatments. We want to know the average brain trauma accumulated if a player were to play all seasons ($A_0 = 1, A_1 = 1$). Traditional regression conditions on variables, asking questions like, "Among people who ended up with the exact same intermediate score $L_1 = 297$, what is the association between exposure $A_0$ and outcome $Y$?". What we really want to do is fix a treatment regime and estimate an outcome. Questions of the form, "If we force everyone to take treatment $A_0 = 1$, what continuous values of $L_1$ would they naturally develop, and what final outcome $Y$ would those dynamic $L_1$ values produce?".
 
-1. Estimate the effect of initial exposure $A_0$ on $L_1$.
-2. 
-
+With a traditional regression approach, we are in a pickle whether or not we include $L_1$ in the model. If you leave it out, we are omitting a variable that has an impact on the outcome $Y$ as well as our treatment $A_1$, introducing confounding. However, if we are to condition on $L_1$, we create a collider bias, where a spurious association between prior treatment $A_0$ and unobserved vulnerability muddies the estimate of the effect of $A_0$, as unobserved vulnerability is also causally linked with $Y$. So either way you cannot isolate the causal effect of interest.
 
 ```mermaid
 classDiagram
@@ -157,9 +154,21 @@ direction LR
     Bird : +sing()
 ```
 
+The g-formula fixes exposures rather than variables, simulating to allow for flexibility. The steps are:
+
+1. Fit a model to predict $L_1$ from baseline treatment $A_0$ using observed data.
+2. Fit a model using observed data to predict $Y$ from ($A_0, L_1, A_1$).
+3. Simulate the cohort under the desired intervention ($A_0 = 1, A_1 = 1$).
+4. With this simulated dataset, generate new values $L_1^\ast$ using the model fit in step 1. This allows $L_1$ to experience the full variability from $A_0 = 1$, rather than fixing it.
+5. Generate final $Y^\ast$ by first setting $A_1 = 1$ for everyone and then use the model from step 2 along with the simulated $L_1^\ast$ values.
+6. The estimated outcome from policy $A_0, L_1, A_1$ is then just $\bar{Y}^\ast$.
+
+Now this method seems sort of magical to me, and very non-intuitive. Here is my understanding of how g-formula gets around the roadblocks from above. In standard regression, by conditioning on $L_1$, you fix its value, preventing changes in $A_0$ from pushing it up or down and preventing the indirect effect of $A_0$ on $Y$ through $L_1$ to be measured. The g-formula does not hold $L_1$ fixed. After you set the treatment in the simulation, you generate new values for $L_1$, allowing $A_0$ to impact $Y$ further up the chain. Additionally, the $L_1^\ast$ values are generated from a model that only depends on $A_0$, preventing the collider bias from occurring. I found both introductory papers on the topic <d-cite key="gMethodsIntro1"></d-cite><d-cite key="gMethodsIntro2"></d-cite>, as well as the original monograph <d-cite key="gMethodsIntro3"></d-cite>to be helpful in building my understanding.
+
+Now to apply it! 
 
 
-This post was meant to be an exploration of the healthy worker survivor bias and the methods that are typically used to resolve the bias. I'm starting the biostatistics masters program at Berkeley in a week or two, and I'm excited to learn more about TMLE and its applications from the faculty who developed it! 
+This post was meant to be an exploration of the healthy worker survivor bias and the methods that are typically used to resolve the bias. A major limitation of g-formula is its vulnerability to model misspecification. A suite of methods that is more flexible yet still highly rigorous is TMLE. The math behind those methods is mystifying to me, but I'm starting the biostatistics masters program at Berkeley in a week or two, and I'm excited to learn more about TMLE from the faculty who developed it! 
 
 
 
