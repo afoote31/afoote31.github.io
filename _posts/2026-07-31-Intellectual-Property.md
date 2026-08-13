@@ -39,11 +39,21 @@ In the US, AIDS was thought of as a gay disease, but it also spread rapidly thro
 ### Private sector protection
 ### Relevant articles
 
-## USTR
-### USTR Special 301 Mechanism
-- Trump using it today
-- 2024 examples to give an idea
-- Intention
+## USTR and the Special 301 Mechanism
+Section 182 of the Trade Act of 1974 requires the Office of the United States Trade Representative to conduct an annual review to identify countries abusing intellectual property rights or denying fair market access to American goods. US companies and IP holders can submit complaints for review, but the complaints can only be about other governments violating their IP, not other companies. Between 1996 and 2000, most of the requests have been submitted by pharmaceutical companies<d-cite key="pppl"></d-cite>. Countries that fail the review process can be placed into three categories:
+
+##### Watch List
+This is the least severe category. This is for countries with weak enforcement of IP, barriers to market access, or gaps in their laws that don’t meet international standards, but are still generally cooperative with the US. The 2024 report included Algeria, Barbados, Belarus, Bolivia, Brazil, Bulgaria, Canada, Colombia, Ecuador, Egypts, Guatemala, Mexico, Pakistan, Paraguay, Peru, Thailand, Trinidad and Tobago, Turkey, Turkmenistan, and Vietnam<d-cite key="specialReport2024"></d-cite>.
+
+##### Priority Watch List
+You end up in this category if you have more severe and longstanding IP issues, a lack of progress on implementing policy, or minimal to no cooperation in dialogue with the US. In 2024, this category included Argentina, Chile, China, India, Indonesia, Russia, and Venezuela<d-cite key="specialReport2024"></d-cite>.
+
+##### Priority Foreign Country
+This is for the most severe IP offenders, and countries are rarely put into this category. This is for nations for which IP violations are the most severe, are clearly government-enabled, and show no sign of slowing down. In 2024, no countries were placed into this category<d-cite key="specialReport2024"></d-cite>.
+
+At the time of this post's writing, the Trump is using this mechanism to levy tariffs on [many countries](https://www.whitehouse.gov/presidential-actions/2026/07/actions-by-the-united-states-in-the-investigations-under-section-301-of-the-trade-act-of-1974-of-the-acts-policies-and-practices-of-60-economies-related-to-the-failure-of-each-economy-to-impose-and/). This practice is [not expected](https://www.piie.com/blogs/realtime-economics/2026/why-trump-will-lose-again-new-challenge-his-tariffs) to hold up in court.
+
+Consequences of being placed on these lists include sanctions, increased tariffs (the Trump strategy), or being taken to international court. It has been criticized for effectively being a tool for corporations to force the US government to use its power to enforce corporate IP preferences across the world. For instance, under TRIPS, compulsory licensing is allowed. However, in practice, when countries try to issue compulsory licenses to get access to treatments to harrowing diseases like AIDS, the USTR steps in and punishes them<d-cite key="Vick"></d-cite>.
 
 ## Result
 Private sector pushing to get tighter controls
