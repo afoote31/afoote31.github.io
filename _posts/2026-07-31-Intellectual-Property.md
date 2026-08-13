@@ -34,8 +34,13 @@ In the US, AIDS was thought of as a gay disease, but it also spread rapidly thro
 
 **There needs to be a bit on TB here. Something like "It is much the same today..." and then give a sentence or two on how things have changed (generally), how the same candidate solutions have the same hurdles, and what is the current state.** That'll be the end of the intro.
 
-# The UTS and the TRIPS Agreement
+# The USTR and the TRIPS Agreement
 ## TRIPS Agreement
+
+International protection of IP was a concept brought to the US government by about a dozen corporate executives who banded together to form the Intellectual Property Committee. Their effectiveness at organizing amongst themselves and alongside their European and Japanese counterparts was essential to their success in turning their vision for international intellectual property into law<d-cite key="Mizruchi"></d-cite>, and their access to experts in intellectual property law relative to other parties gave them a considerable leg up in negotiations<d-cite key="pppl"></d-cite> of TRIPS. 
+
+Fundamentally, stakeholders in developed nations wanted tighter intellectual property restrictions in developing nations along with policies that gave those restrictions teeth, while developing nations wanted to continue to protect their fledgling domestic industries. Two of the more controversial strategies used by developing countries to were compulsory licensing and parallel importation. Through compulsory licensing, a government grants a license to a company to produce a product patented by a different company (e.g. an African country giving a domestic manufacturer the license to produce an HIV antiretroviral treatment). A country that engages in parallel importation purchases a patented product from a party that produced the product other than the patent holder (e.g. an African country importing HIV antiretroviral treatments from India rather than from a US manufacturer).
+
 ### Private sector protection
 ### Relevant articles
 
