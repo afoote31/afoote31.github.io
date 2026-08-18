@@ -34,19 +34,19 @@ In the US, AIDS was thought of as a gay disease, but it also spread rapidly thro
 
 **There needs to be a bit on TB here. Something like "It is much the same today..." and then give a sentence or two on how things have changed (generally), how the same candidate solutions have the same hurdles, and what is the current state.** That'll be the end of the intro.
 
-## The TRIPS Agreement
+### The TRIPS Agreement
 
 In the early 1990s, the binding force in international trade was the General Agreement on Tariffs and Trade (GATT). However, this agreement proved insufficient for a developing world economy, and lacked enforcement power. Thus, in 1995, the World Trade Organization was founded through the extension of GATT and the reimagining of member responsibilities and enforcement mechanisms. During the same negotiations, the Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS) was signed, laying out the foundation upon which today's international IP law is built.
 
 International protection of IP was a concept brought to the US government by about a dozen corporate executives who banded together to form the Intellectual Property Committee. Their effectiveness at organizing amongst themselves and alongside their European and Japanese counterparts was essential to their success in turning their vision for international intellectual property into law<d-cite key="Mizruchi"></d-cite>, and their access to experts in intellectual property law relative to other parties gave them a considerable leg up in negotiations<d-cite key="pppl"></d-cite> of TRIPS. 
 
-Fundamentally, stakeholders in developed nations wanted tighter intellectual property restrictions in developing nations along with policies that gave those restrictions teeth, while developing nations wanted to continue to protect their fledgling domestic industries. Two of the more controversial strategies used by developing countries to were compulsory licensing and parallel importation. Through compulsory licensing, a government grants a license to a company to produce a product patented by a different company (e.g. an African country giving a domestic manufacturer the license to produce an HIV antiretroviral treatment). A country that engages in parallel importation purchases a patented product from a party that produced the product other than the patent holder (e.g. an African country importing HIV antiretroviral treatments from India rather than from a US manufacturer).
+Fundamentally, stakeholders in developed nations wanted tighter intellectual property restrictions in developing nations along with policies that gave those restrictions teeth, while developing nations wanted to continue to protect their fledgling domestic industries. Two of the more controversial strategies used by developing countries were compulsory licensing and parallel importation. Through compulsory licensing, a government grants a license to a company to produce a product patented by a different company (e.g. an African country giving a domestic manufacturer the license to produce an HIV antiretroviral treatment). A country that engages in parallel importation purchases a patented product from a party that produced the product other than the patent holder (e.g. an African country importing HIV antiretroviral treatments from India rather than from a US manufacturer).
 
-Regarding drug treatments specifically, pharmaceutical industries were able to get legislation included to enforce data exclusivity. While not directly blocking companies from developing generic treatment alternatives, Article [39](https://www.wto.org/english/docs_e/legal_e/27-trips_04d_e.htm) allows patent holders to block other companies from using their clinical trial data in order to assist in the approval of a generic alternative. While there is certainly support for such a provision<d-cite key="dataExclusivity"></d-cite>, this measure kills any attempt at generic drug development before it can even begin, since companies are forced to essentially replicate findings that have already been established through trials funded in large part by the government. 
+In TRIPS, pharmaceutical industries were able to get legislation included to enforce data exclusivity. While not directly blocking companies from developing generic treatment alternatives, Article [39](https://www.wto.org/english/docs_e/legal_e/27-trips_04d_e.htm) allows patent holders to block other companies from using their clinical trial data in order to assist in the approval of a generic alternative. There is certainly support for such a provision<d-cite key="dataExclusivity"></d-cite>, but this measure kills nearly any attempt at generic drug development before it can even begin, since companies are forced to essentially replicate findings that have already been established through trials funded in large part by the government. 
 
 Other articles give developing nations ground to stand on to argue protective policies they have in place. For instance, Article [8](https://www.wto.org/english/res_e/publications_e/ai17_e/trips_art8_jur.pdf) granted member nations the right to "adopt measures necessary to protect public health and nutrition... provided that such measures are consistent with the provisions of this Agreement". The wording leaves the interpretation up to the states regarding protection, although it does mention consistency with the TRIPS Agreement, creating ambiguity. Article [31](https://www.wto.org/english/docs_e/legal_e/27-trips_04c_e.htm) pertains to compulsory licensing. As with the other articles, it gives a lot of room for interpretation to member nations. However, only a member nation can grant a compulsory license. Additionally, before doing so, the potential licensee must have reasonably tried to negotiation with the license holder. This reasonable negotiation can be waived by the member nation if there is a national emergency. The member nation must pay "adequate remuneration" to the license holder, which is hard to calculate. It is pointed out that article (f), stating "any such use shall be authorized predominantly for the supply of the domestic market of the Member authorizing such use" leaves ambiguous whether the member nation granting the compulsory license must manufacture the product domestically or if they're allowed to import it<d-cite key="leis"></d-cite>. Finally, TRIPS specifically leaves the issue of parallel importation up to the member nations. 
 
-## USTR and the Special 301 Mechanism
+### USTR and the Special 301 Mechanism
 Section 182 of the Trade Act of 1974 requires the Office of the United States Trade Representative to conduct an annual review to identify countries abusing intellectual property rights or denying fair market access to American goods. US companies and IP holders can submit complaints for review, but the complaints can only be about other governments violating their IP, not other companies. Between 1996 and 2000, most of the requests have been submitted by pharmaceutical companies<d-cite key="pppl"></d-cite>. Countries that fail the review process can be placed into three categories:
 
 ##### Watch List
@@ -62,12 +62,18 @@ At the time of this post's writing, the Trump is using this mechanism to levy ta
 
 Consequences of being placed on these lists include sanctions, increased tariffs (the Trump strategy), or being taken to international court. It has been criticized for effectively being a tool for corporations to force the US government to use its power to enforce corporate IP preferences across the world. For instance, under TRIPS, compulsory licensing is allowed. However, in practice, when countries try to issue compulsory licenses to get access to treatments to harrowing diseases like AIDS, the USTR steps in and punishes them<d-cite key="Vick"></d-cite>.
 
-## Result
-Private sector pushing to get tighter controls
-
 # India, South Africa, and Access to Affordable Treatment
-## India
-## South Africa Acts
+
+- TRIPS added rules that were hard to follow immediately
+- Public health goals became uncertain since drug treatment became uncertain
+- Nations with terrible AIDS epidemics needed to help their own
+
+## South Africa and SAMRSA
+
+- Some data on South Africa and AIDS at the time
+- SAMRSA and relevant pieces from it
+- Interpretation from legal scholars
+  
 ## Government and legal action
 ## Activist involvement
 ## Resolution
