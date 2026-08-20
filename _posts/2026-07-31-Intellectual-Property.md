@@ -30,7 +30,7 @@ bibliography: 2018-12-22-distill.bib
 
 **This is a topic that I am actively learning more about, so if you have an insight, comment, or critique on what I present here, please leave it as a comment at the bottom!**
 
-In the US, AIDS was thought of as a gay disease, but it also spread rapidly through blood bank negligence <d-cite key="BloodBankBook"></d-cite><d-cite key="bloodBankRuling"></d-cite>, users of injected drugs, and heterosexual sex <d-footnote>I highly recommend *And the Band Played On* by Randy Shilts <d-cite key="shilts"></d-cite> for an account of AIDS in the US.</d-footnote>. Africa did not associate AIDS with homosexuality, as the disease spread through heterosexual intercourse, mother-to-child transmission, and injections/transfusions. By the end of 1997, around 30.5 million people lived with AIDS, with 21 million of them residing in Sub-Saharan Africa <d-cite key="unaids1998"></d-cite>. In developed countries, blood screening had been enforced, AZT treatment was given to mothers and newborns during/after pregnancy to reduce vertical transmission, and highly active antiretroviral therapy changed HIV from a death sentence to a manageable disease. However, these prevention/treatment tools were not widely available in Africa simply because the drugs were not affordable. In this post, I explore the role that international intellectual property played in preventing access to life-saving drugs for AIDS.
+In the US, AIDS was thought of as a gay disease, but it also spread rapidly through blood bank negligence<d-cite key="BloodBankBook"></d-cite><d-cite key="bloodBankRuling"></d-cite>, users of injected drugs, and heterosexual sex <d-footnote>I highly recommend *And the Band Played On* by Randy Shilts <d-cite key="shilts"></d-cite> for an account of AIDS in the US.</d-footnote>. Africa did not associate AIDS with homosexuality, as the disease spread through heterosexual intercourse, mother-to-child transmission, and injections/transfusions. By the end of 1997, around 30.5 million people lived with AIDS, with 21 million of them residing in Sub-Saharan Africa<d-cite key="unaids1998"></d-cite>. In developed countries, blood screening had been enforced, AZT treatment was given to mothers and newborns during/after pregnancy to reduce vertical transmission, and highly active antiretroviral therapy changed HIV from a death sentence to a manageable disease. However, these prevention/treatment tools were not widely available in Africa simply because the drugs were not affordable. In this post, I explore the role that international intellectual property played in preventing access to life-saving drugs for AIDS.
 
 **There needs to be a bit on TB here. Something like "It is much the same today..." and then give a sentence or two on how things have changed (generally), how the same candidate solutions have the same hurdles, and what is the current state.** That'll be the end of the intro.
 
@@ -62,17 +62,14 @@ At the time of this post's writing, the Trump is using this mechanism to levy ta
 
 Consequences of being placed on these lists include sanctions, increased tariffs (the Trump strategy), or being taken to international court. It has been criticized for effectively being a tool for corporations to force the US government to use its power to enforce corporate IP preferences across the world. For instance, under TRIPS, compulsory licensing is allowed. However, in practice, when countries try to issue compulsory licenses to get access to treatments to harrowing diseases like AIDS, the USTR steps in and punishes them<d-cite key="Vick"></d-cite>.
 
-# India, South Africa, and Access to Affordable Treatment
-
-- TRIPS added rules that were hard to follow immediately
-- Public health goals became uncertain since drug treatment became uncertain
-- Nations with terrible AIDS epidemics needed to help their own
-
 ## South Africa and SAMRSA
 
-- Some data on South Africa and AIDS at the time
-- SAMRSA and relevant pieces from it
-- Interpretation from legal scholars
+In 1997, the South African government passed the South African Medicines and Related Substances Act, granting the Minister of Health broad powers regarding intellectual property for medicine in South Africa. The goal of the act was to make affordable medication available to protect public health, which was necessary in a year that saw 700,000 South Africans become infected with HIV<d-cite key="unaids1998"></d-cite>. However, there was swift pushback internationally, as pharmaceutical companies felt that this act violated TRIPS. In particular, Section 15c allowed the South African Minister of Health, in order to protect public health, to decide that the rights of a patent holder cannot be acted upon. This prevented companies from going to court to have their patents enforced. Additionally, Section 22c gives the Minister of Health the power to grant licenses to manufacture, sell, import, export or distribute medicines or medical devices. Notably, the manufacturer/distributor need not be domestic<d-cite key="leis"></d-cite>.
+
+A critic concerned with the compliance of this act with international law would point to Sections 15c and 22c. The broad powers granted to the South African government by this law are argued to conflict with the TRIPS agreement. They point to section 15c failing to explicitly require adequate compensation and good faith negotiations, and that section 15c(b) gives South Africa the power to issue compulsory licenses to foreign nations. Critics believe that SAMRSA oversteps by delving into international trade, while article 31f of TRIPs states “any such use shall be authorized predominantly for the supply of the domestic market of the Member authorizing such use”. A counter would be that some countries are unable to produce the drug themselves, and thus are acting within their rights as respondents to an emergency by granting these compulsory licenses.
+
+In response to the Act, 39 members of the Pharmaceutical Manufacturers of South Africa filed a lawsuit to take South Africa to international court. Additionally, the Pharmaceutical Research and Manufacturers of America successfully pressured the US government to get South Africa placed on the 301 Watch List, and later put additional pressure by getting further trade benefits removed. 
+
   
 ## Government and legal action
 ## Activist involvement
